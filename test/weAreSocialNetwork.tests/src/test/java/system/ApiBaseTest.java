@@ -1,13 +1,14 @@
 package system;
 
-import com.google.gson.Gson;
+
+import models.api.request.UserRequests;
 import org.junit.jupiter.api.BeforeEach;
 
 public class ApiBaseTest {
-    protected Gson gson;
-
-    @BeforeEach
-    public void beforeEach(){
-        gson = new Gson();
-    }
+//    protected UserRequests userRequests;
+//
+//    @BeforeEach
+//    public void beforeEach(){
+//        userRequests = new UserRequests();
+//    }
 }

@@ -10,12 +10,12 @@ public class UserRequestModel {
     private String[] authorities;
     @SerializedName("category")
     private Category category;
-    @SerializedName("username")
-    private String username;
-    @SerializedName("password")
-    private String password;
-    @SerializedName("email")
-    private String email;
     @SerializedName("confirmPassword")
     private String confirmPassword;
+    @SerializedName("email")
+    private String email;
+    @SerializedName("password")
+    private String password;
+    @SerializedName("username")
+    private String username;
 }

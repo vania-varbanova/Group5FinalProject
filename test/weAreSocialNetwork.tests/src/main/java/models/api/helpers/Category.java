@@ -7,4 +7,6 @@ import lombok.Data;
 public class Category {
     @SerializedName("id")
     private int categoryId;
+    @SerializedName("name")
+    private String name;
 }
