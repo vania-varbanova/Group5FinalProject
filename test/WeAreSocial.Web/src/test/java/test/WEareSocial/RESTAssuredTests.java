@@ -9,5 +9,15 @@ public class RESTAssuredTests {
     public void testCreateUser() {
         apiUser.createUser();
 
+        //tests
+
     }
+    @Test
+    public void testAuthenticateUser() {
+        apiUser.authenticateUser();
+
+        //tests
+
+    }
+
 }
