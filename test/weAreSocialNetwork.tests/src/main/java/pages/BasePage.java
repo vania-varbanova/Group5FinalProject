@@ -1,10 +1,10 @@
-package com.telerikacademy.infrastructure.selenium.pages;
+package pages;
 
-import com.telerikacademy.infrastructure.selenium.UserActions;
+import testFramework.UserActions;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
-import static com.telerikacademy.infrastructure.selenium.Utils.getConfigPropertyByKey;
+import static testFramework.Utils.getConfigPropertyByKey;
 
 public abstract class BasePage {
 

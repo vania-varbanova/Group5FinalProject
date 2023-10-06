@@ -1,4 +1,4 @@
-package com.telerikacademy.infrastructure.selenium;
+package testFramework;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.telerikacademy.infrastructure.selenium.Utils.*;
 import static java.lang.String.format;
 
 public class UserActions {
@@ -19,23 +18,23 @@ public class UserActions {
     }
 
     public UserActions() {
-        driver = getWebDriver();
+        driver = Utils.getWebDriver();
         timeoutSettings = new TimeoutSettings();
         driverActions = new Actions(driver);
     }
 
     public static void loadBrowser(String baseUrlKey) {
-        getWebDriver().get(getConfigPropertyByKey(baseUrlKey));
+        Utils.getWebDriver().get(Utils.getConfigPropertyByKey(baseUrlKey));
     }
 
     public static void quitDriver() {
-        tearDownWebDriver();
+        Utils.tearDownWebDriver();
     }
 
     public void clickElement(String key, Object... arguments) {
         String locator = getLocatorValueByKey(key, arguments);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
         element.click();
     }
@@ -82,7 +81,7 @@ public class UserActions {
     }
 
     public void assertElementPresent(String locator) {
-        Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
+        Assertions.assertNotNull(driver.findElement(By.xpath(Utils.getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
     }
 
@@ -94,11 +93,11 @@ public class UserActions {
     }
 
     private String getLocatorValueByKey(String locator) {
-        return format(getUIMappingByKey(locator));
+        return format(Utils.getUIMappingByKey(locator));
     }
 
     private String getLocatorValueByKey(String locator, Object[] arguments) {
-        return format(getUIMappingByKey(locator), arguments);
+        return String.format(Utils.getUIMappingByKey(locator), arguments);
     }
 
     private void waitForElementVisibleUntilTimeout(String locator, Object... locatorArguments) {
@@ -135,7 +134,7 @@ public class UserActions {
     public void hoverElement(String key, Object... arguments) {
         // TODO: Implement the The Logger message
         var element = findElementByXpath(key);
-        LOGGER.info("Hovering element with locator");
+        Utils.LOGGER.info("Hovering element with locator");
         driverActions.moveToElement(element).perform();
 
     }
@@ -175,14 +174,14 @@ public class UserActions {
     //############# ASSERTS #########
     public void assertNavigatedUrl(String urlKey) {
         // TODO: Implement the method
-        String expectedUrl = getConfigPropertyByKey(urlKey);
+        String expectedUrl = Utils.getConfigPropertyByKey(urlKey);
         String actualUrl = driver.getCurrentUrl();
 
         Assertions.assertEquals(expectedUrl, actualUrl, String.format("Expected url is: %s, but actual url is %s", expectedUrl, actualUrl));
     }
 
     public void pressKey(Keys key) {
-        LOGGER.info("Sending Key:" + key.toString());
+        Utils.LOGGER.info("Sending Key:" + key.toString());
         driverActions.sendKeys(key);
     }
 
@@ -195,7 +194,7 @@ public class UserActions {
     }
 
     private WebElement findElementByXpath(String locatorKey) {
-        String value = getUIMappingByKey(locatorKey);
+        String value = Utils.getUIMappingByKey(locatorKey);
 
         return driver.findElement(By.xpath(value));
     }

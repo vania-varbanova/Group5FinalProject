@@ -1,4 +1,4 @@
-package com.telerikacademy.infrastructure.selenium.api;
+package api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

@@ -1,4 +1,4 @@
-package com.telerikacademy.infrastructure.selenium;
+package testFramework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +10,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
-import static com.telerikacademy.infrastructure.selenium.Utils.*;
-import static com.telerikacademy.infrastructure.selenium.Utils.getConfigPropertyByKey;
 
 public class Driver implements WebDriver {
 
@@ -20,7 +18,7 @@ public class Driver implements WebDriver {
 
     public Driver(WebDriver driver) {
         webDriver = driver;
-        Duration timeout = Duration.ofSeconds(Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds")));
+        Duration timeout = Duration.ofSeconds(Integer.parseInt(Utils.getConfigPropertyByKey("config.defaultTimeoutSeconds")));
         webDriverWait = new WebDriverWait(driver, timeout);
     }
 
@@ -30,58 +28,58 @@ public class Driver implements WebDriver {
 
     @Override
     public void get(String s) {
-        LOGGER.info("Navigating to page: " + s);
+        Utils.LOGGER.info("Navigating to page: " + s);
         webDriver.get(s);
     }
 
     @Override
     public String getCurrentUrl() {
         String currentUrl = webDriver.getCurrentUrl();
-        LOGGER.info("Getting current URL: " + currentUrl);
+        Utils.LOGGER.info("Getting current URL: " + currentUrl);
         return currentUrl;
     }
 
     @Override
     public String getTitle() {
         String currentTitle = webDriver.getTitle();
-        LOGGER.info("Getting Title: " + currentTitle);
+        Utils.LOGGER.info("Getting Title: " + currentTitle);
         return currentTitle;
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        LOGGER.info("Finding element with locator: " + by.toString());
+        Utils.LOGGER.info("Finding element with locator: " + by.toString());
         return webDriver.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        LOGGER.info("Finding all elements with locator: " + by.toString());
+        Utils.LOGGER.info("Finding all elements with locator: " + by.toString());
         WebElement elementFound = webDriver.findElement(by);
         return webDriverWait.until(ExpectedConditions.visibilityOf(elementFound));
     }
 
     @Override
     public String getPageSource() {
-        LOGGER.info("Getting page source...");
+        Utils.LOGGER.info("Getting page source...");
         return webDriver.getPageSource();
     }
 
     @Override
     public void close() {
-        LOGGER.info("Closing Browser...");
+        Utils.LOGGER.info("Closing Browser...");
         webDriver.close();
     }
 
     @Override
     public void quit() {
-        LOGGER.info("Quiting driver...");
+        Utils.LOGGER.info("Quiting driver...");
         webDriver.quit();
     }
 
     @Override
     public Set<String> getWindowHandles() {
-        LOGGER.info("Getting Window handles...");
+        Utils.LOGGER.info("Getting Window handles...");
         return webDriver.getWindowHandles();
     }
 

@@ -1,4 +1,4 @@
-package com.telerikacademy.infrastructure.selenium;
+package testFramework;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

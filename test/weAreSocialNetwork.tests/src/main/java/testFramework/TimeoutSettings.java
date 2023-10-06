@@ -1,4 +1,4 @@
-package com.telerikacademy.infrastructure.selenium;
+package testFramework;
 
 import java.time.Duration;
 
