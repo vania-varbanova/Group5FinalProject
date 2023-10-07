@@ -5,9 +5,9 @@ import utils.ConsoleLogger;
 import java.sql.*;
 
 public class DatabaseService {
-    private static final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11650045";
-    private static final String USERNAME = "sql11650045";
-    private static final String PASSWORD = "SNuijeQ5aI";
+    private static final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11651605";
+    private static final String USERNAME = "sql11651605";
+    private static final String PASSWORD = "SJ7l9YqCua";
 
     public void deleteUserWithId(String id) throws SQLException {
         Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);

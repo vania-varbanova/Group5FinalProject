@@ -8,7 +8,6 @@ import utils.ConfigPropertiesReader;
 
 public abstract class BaseRequest {
     protected Gson jsonParser;
-    protected String cookieValue = "";
 
     public BaseRequest() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
