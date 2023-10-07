@@ -8,13 +8,14 @@ import utils.ConfigPropertiesReader;
 
 public abstract class BaseRequest {
     protected Gson jsonParser;
-    public  BaseRequest() {
-//        EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
-//                .appendDefaultContentCharsetToContentTypeIfUndefined(false);
+    protected String cookieValue = "";
 
-//        RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
-//        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-//        RestAssured.basePath = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.basePath");
+    public BaseRequest() {
+        EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
+                .appendDefaultContentCharsetToContentTypeIfUndefined(false);
+
+        RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
+        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         jsonParser = new Gson();
     }
 }
