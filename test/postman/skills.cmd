@@ -1,0 +1,1 @@
+newman run collections/Skills.postman_collection.json -e environment/LocalEnvironment.postman_environment.json -r htmlextra --reporter-htmlextra-export ./reports/skills_report.html --reporter-htmlextra-browserTitle "Skills tests report" --reporter-htmlextra-displayProgressBar --reporter-htmlextra-title "Skills tests report dashaboard" & cd reports & start skills_report.html

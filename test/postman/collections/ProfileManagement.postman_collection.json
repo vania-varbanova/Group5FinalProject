@@ -1,0 +1,697 @@
+{
+	"info": {
+		"_postman_id": "24ee8a5f-4197-4762-b349-3dee76c513b5",
+		"name": "Profile management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-24ee8a5f-4197-4762-b349-3dee76c513b5?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const professionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const username = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"password\", password);\r",
+							"pm.collectionVariables.set(\"email\", email);\r",
+							"pm.collectionVariables.set(\"username\", username);\r",
+							"pm.collectionVariables.set(\"professionId\", professionId);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const userId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"userId\",userId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"username\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"adminUserId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"userId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{professionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{password}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"username\": \"{{username}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update all User data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const firstName = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"const lastName = pm.variables.replaceIn('{{$randomLastName}}');\r",
+							"\r",
+							"const randomYear = Math.floor(Math.random() * (2000 - 1920 + 1)) + 1920;\r",
+							"const randomMonth = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');\r",
+							"const randomDay = String(Math.floor(Math.random() * 28) + 1).padStart(2, '0');\r",
+							"const birthYear = `${randomYear}-${randomMonth}-${randomDay}`;\r",
+							"\r",
+							"const cityId = Math.floor(Math.random() * 39) + 1;\r",
+							"const picturePrivacy = Math.random() < 0.5;\r",
+							"const sex = Math.random() < 0.5 ? \"MALE\" : \"FEMALE\";\r",
+							"\r",
+							"pm.collectionVariables.set(\"firstName\", firstName);\r",
+							"pm.collectionVariables.set(\"lastName\", lastName)\r",
+							"pm.collectionVariables.set(\"birthYear\", birthYear);\r",
+							"pm.collectionVariables.set(\"picturePrivacy\", picturePrivacy);\r",
+							"pm.collectionVariables.set(\"sex\", sex);\r",
+							"pm.collectionVariables.set(\"cityId\", cityId)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"The username's first name is the expected one\", function(){\r",
+							"    const expectedFirstName = pm.collectionVariables.get(\"firstName\");\r",
+							"\r",
+							"\r",
+							"    const actualFirstName=responseData.firstName;\r",
+							"    pm.expect(actualFirstName).to.equals(expectedFirstName);\r",
+							"});\r",
+							"pm.test(\"The username's last name is the expected one\", function(){\r",
+							"    const expectedLastName = pm.collectionVariables.get(\"lastName\");\r",
+							"\r",
+							"\r",
+							"    const actualLastName=responseData.lastName;\r",
+							"    pm.expect(actualLastName).to.equals(expectedLastName);\r",
+							"});\r",
+							"pm.test(\"City id is expected\", function(){\r",
+							"    const expectedCityId = pm.collectionVariables.get(\"cityId\");\r",
+							"\r",
+							"\r",
+							"    const actualCityId=responseData.location.city.id;\r",
+							"    pm.expect(actualCityId).to.equals(expectedCityId);\r",
+							"});\r",
+							"pm.test(\"The user's gender is the expected one\", function(){\r",
+							"    const expectedGender = pm.collectionVariables.get(\"sex\");\r",
+							"\r",
+							"\r",
+							"    const actualGender=responseData.sex;\r",
+							"    pm.expect(actualGender).to.equals(expectedGender);\r",
+							"});\r",
+							"pm.test(\"The user's date of birth is the expected one\", function(){\r",
+							"    const expectedBirthDate = pm.collectionVariables.get(\"birthYear\");\r",
+							"\r",
+							"    const actualBirthDate=responseData.birthYear;\r",
+							"    \r",
+							"    pm.expect(actualBirthDate).to.equals(expectedBirthDate);\r",
+							"});\r",
+							"pm.test(\"Member since date set to current date when new user created\", function(){\r",
+							"    const pmDateTimeUtility = require('moment');\r",
+							"    const expectedDate = pmDateTimeUtility().format(\"DD/MM/YYYY\");\r",
+							"\r",
+							"    const actualDate = responseData.memberSince;\r",
+							"    \r",
+							"    pm.expect(actualDate).contains(expectedDate)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"{{birthYear}}\",\r\n  \"firstName\": \"{{firstName}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": {{cityId}}\r\n    },\r\n    \"id\": 1\r\n  },\r\n  \"picturePrivacy\": {{picturePrivacy}},\r\n  \"sex\": \"{{sex}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update first name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const updateFirstName = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"updateFirstName\", updateFirstName);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"User successfully updated first name\", function(){\r",
+							"    const expectedFirstName = pm.collectionVariables.get(\"updateFirstName\");\r",
+							"\r",
+							"\r",
+							"    const actualFirstName=responseData.firstName;\r",
+							"    pm.expect(actualFirstName).to.equals(expectedFirstName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"\",\r\n  \"firstName\": \"{{updateFirstName}}\",\r\n  \"lastName\": \"\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": 1\r\n    },\r\n    \"id\": 1\r\n  },\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"MALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"User successfully updated last name\", function(){\r",
+							"    const expectedLastName = pm.collectionVariables.get(\"updateLastName\");\r",
+							"\r",
+							"\r",
+							"    const actualLastName=responseData.lastName;\r",
+							"    pm.expect(actualLastName).to.equals(expectedLastName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const updateLastName = pm.variables.replaceIn('{{$randomLastName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"updateLastName\", updateLastName)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"\",\r\n  \"firstName\": \"\",\r\n  \"lastName\": \"{{updateLastName}}\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": 1\r\n    },\r\n    \"id\": 1\r\n  },\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"MALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update city",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const updateCityId = Math.floor(Math.random() * 39) + 1;\r",
+							"\r",
+							"pm.collectionVariables.set(\"updateCityId\", updateCityId);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"User successfully updated city\", function(){\r",
+							"    const expectedCity = pm.collectionVariables.get(\"updateCityId\");\r",
+							"\r",
+							"\r",
+							"    const actualCity=responseData.location.city.id;\r",
+							"    pm.expect(actualCity).to.equals(expectedCity);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"\",\r\n  \"firstName\": \"\",\r\n  \"lastName\": \"\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": {{updateCityId}}\r\n    }\r\n  },\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"MALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update birthday date",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomYear = Math.floor(Math.random() * (2000 - 1920 + 1)) + 1920;\r",
+							"const randomMonth = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');\r",
+							"const randomDay = String(Math.floor(Math.random() * 28) + 1).padStart(2, '0');\r",
+							"\r",
+							"const birthDate = `${randomYear}-${randomMonth}-${randomDay}`;\r",
+							"\r",
+							"pm.collectionVariables.set(\"birthDate\", birthDate);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"User successfully updated birth date\", function(){\r",
+							"    const expectedBirthDate = pm.collectionVariables.get(\"birthDate\");\r",
+							"\r",
+							"\r",
+							"    const actualBirthDate=responseData.birthYear;\r",
+							"    pm.expect(actualBirthDate).to.equals(expectedBirthDate);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"{{birthDate}}\",\r\n  \"firstName\": \"\",\r\n  \"lastName\": \"\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": 1\r\n    },\r\n    \"id\": 1\r\n  },\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"MALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change picture visability",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const updatePicturePrivacy = Math.random() < 0.5;\r",
+							"\r",
+							"pm.collectionVariables.set(\"updatePicturePrivacy\", updatePicturePrivacy);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"User successfully updated picture visibility\", function(){\r",
+							"    const expectedPictureVisibility = pm.collectionVariables.get(\"updatePicturePrivacy\");\r",
+							"\r",
+							"\r",
+							"    const actualPictureVisibility=responseData.picturePrivacy;\r",
+							"    pm.expect(actualPictureVisibility).to.equals(expectedPictureVisibility);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"birthYear\": \"\",\r\n  \"firstName\": \"\",\r\n  \"lastName\": \"\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"\",\r\n      \"country\": {},\r\n      \"id\": 1\r\n    },\r\n    \"id\": 1\r\n  },\r\n  \"picturePrivacy\": \"{{updatePicturePrivacy}}\",\r\n  \"sex\": \"MALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}/personal",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{randomPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{randomUsername}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "birthYear",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "firstName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "lastName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "cityId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "picturePrivacy",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sex",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "professionId",
+			"value": ""
+		},
+		{
+			"key": "updateFirstName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "updateLastName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "updateCityId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "birthDate",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "updatePicturePrivacy",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
