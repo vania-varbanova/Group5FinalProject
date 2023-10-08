@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "8d2bd83b-7ab8-4ce2-8c3c-d4493acb3b01",
+		"name": "Connections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-8d2bd83b-7ab8-4ce2-8c3c-d4493acb3b01?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create sender user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const senderUserProfessionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const senderPassword = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const senderEmail = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const senderUsername = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"senderPassword\", senderPassword);\r",
+							"pm.collectionVariables.set(\"senderEmail\", senderEmail);\r",
+							"pm.collectionVariables.set(\"senderUsername\", senderUsername);\r",
+							"pm.collectionVariables.set(\"senderUserProfessionId\", senderUserProfessionId)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const senderId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"senderId\",senderId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"senderUsername\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"senderId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"senderId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{senderUserProfessionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{senderPassword}}\",\r\n  \"email\": \"{{senderEmail}}\",\r\n  \"password\": \"{{senderPassword}}\",\r\n  \"username\": \"{{senderUsername}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create reciever user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const resieverUserProfessionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const resieverPassword = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const resieverEmail = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const resieverUsername = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"resieverPassword\", resieverPassword);\r",
+							"pm.collectionVariables.set(\"resieverEmail\", resieverEmail);\r",
+							"pm.collectionVariables.set(\"resieverUsername\", resieverUsername);\r",
+							"pm.collectionVariables.set(\"resieverUserProfessionId\", resieverUserProfessionId);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const receivedId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"receivedId\",receivedId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"resieverUsername\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"receivedId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"receivedId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{resieverUserProfessionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{resieverPassword}}\",\r\n  \"email\": \"{{resieverEmail}}\",\r\n  \"password\": \"{{resieverPassword}}\",\r\n  \"username\": \"{{resieverUsername}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate sender",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{senderUsername}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{senderPassword}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"\r",
+							"pm.test(\"Sender name is as expected\", function(){\r",
+							"    const expectedSenderName = pm.collectionVariables.get(\"senderUsername\");\r",
+							"\r",
+							"    const actualSenderName= responseArray[0];\r",
+							"    pm.expect(actualSenderName).to.equals(expectedSenderName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Reciever name is as expected\", function(){\r",
+							"    const expectedRecieverName = pm.collectionVariables.get(\"resieverUsername\");\r",
+							"\r",
+							"    const actualReceiverName= responseArray[responseArray.length - 1];\r",
+							"    pm.expect(actualReceiverName).to.equals(expectedRecieverName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": {{receivedId}},\r\n  \"username\": \"{{resieverUsername}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/auth/request",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"auth",
+						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate reciever",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{resieverUsername}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{resieverPassword}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"const requestId = responseData[0].id;\r",
+							"console.log(requestId);\r",
+							"pm.collectionVariables.set(\"requestId\", requestId);\r",
+							"\r",
+							"pm.test(\"Request id is not null\", function(){\r",
+							"    const requestId = responseData[0].id;\r",
+							"    pm.collectionVariables.set(\"requestId\", requestId);\r",
+							"\r",
+							"    pm.expect(requestId).to.be.not.null;\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/auth/users/{{receivedId}}/request/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"auth",
+						"users",
+						"{{receivedId}}",
+						"request",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get last user request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"\r",
+							"pm.test(\"Reciever name is as expected\", function(){\r",
+							"    const expectedReceiverName = pm.collectionVariables.get(\"resieverUsername\");\r",
+							"\r",
+							"    const actualRecieverName= responseArray[0];\r",
+							"    pm.expect(actualRecieverName).to.equals(expectedReceiverName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sender name is as expected\", function(){\r",
+							"    const expectedSenderName = pm.collectionVariables.get(\"senderUsername\");\r",
+							"\r",
+							"    const actualSenderName= responseArray[responseArray.length - 1];\r",
+							"    pm.expect(actualSenderName).to.equals(expectedSenderName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseApiUrl}}/auth/users/{{receivedId}}/request/approve?requestId={{requestId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"auth",
+						"users",
+						"{{receivedId}}",
+						"request",
+						"approve"
+					],
+					"query": [
+						{
+							"key": "requestId",
+							"value": "{{requestId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{randomPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{randomUsername}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "senderId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "receivedId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "senderPassword",
+			"value": ""
+		},
+		{
+			"key": "senderEmail",
+			"value": ""
+		},
+		{
+			"key": "senderUsername",
+			"value": ""
+		},
+		{
+			"key": "senderUserProfessionId",
+			"value": ""
+		},
+		{
+			"key": "resieverPassword",
+			"value": ""
+		},
+		{
+			"key": "resieverEmail",
+			"value": ""
+		},
+		{
+			"key": "resieverUsername",
+			"value": ""
+		},
+		{
+			"key": "resieverUserProfessionId",
+			"value": ""
+		},
+		{
+			"key": "requestId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}

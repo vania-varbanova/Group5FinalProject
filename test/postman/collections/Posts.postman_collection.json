@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "bb8f3f72-d945-4f04-843c-c4a6288be070",
+		"name": "Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-bb8f3f72-d945-4f04-843c-c4a6288be070?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const userProfessionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"const password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const username = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"password\", password);\r",
+							"pm.collectionVariables.set(\"userEmail\", email);\r",
+							"pm.collectionVariables.set(\"username\", username);\r",
+							"pm.collectionVariables.set(\"userProfessionId\", userProfessionId)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const userId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"userId\",userId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"username\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"adminUserId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"userId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{userProfessionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{password}}\",\r\n  \"email\": \"{{userEmail}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"username\": \"{{username}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Post id is not empty when new post created\", function() {\r",
+							"    const postId = responseData.postId;\r",
+							"    \r",
+							"    pm.collectionVariables.set(\"postId\", postId);  \r",
+							"\r",
+							"    pm.expect(postId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post content is set when new post created\", function(){\r",
+							"    const expectedPostContent = pm.collectionVariables.get(\"postContent\");\r",
+							"\r",
+							"    const actualPostContent = responseData.content;\r",
+							"    \r",
+							"    pm.expect(expectedPostContent).to.equals(actualPostContent);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post date set to current date when new post created\", function(){\r",
+							"    const pmDateTimeUtility = require('moment');\r",
+							"    const expectedDate = pmDateTimeUtility().format(\"DD/MM/YYYY\");\r",
+							"\r",
+							"    const actualDate = responseData.date;\r",
+							"    \r",
+							"    pm.expect(actualDate).contains(expectedDate)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post's likes is empty when new post is created\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post's comments is empty when new post is created\", function(){\r",
+							"    const comments  = responseData.comments;\r",
+							"    \r",
+							"    pm.expect(comments).to.have.length(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post's liked value equals false when new post created\", function(){\r",
+							"    const liked  = responseData.liked;\r",
+							"    \r",
+							"    pm.expect(liked).to.be.false;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Post's category id equals user profession id when new post created\", function(){\r",
+							"    const expectedPostCategoryId = pm.collectionVariables.get(\"userProfessionId\");\r",
+							"    const actualPostCategoryId = responseData.category.id;\r",
+							"\r",
+							"    pm.expect(expectedPostCategoryId).to.equals(actualPostCategoryId);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const postContent = pm.variables.replaceIn('{{$randomPhrase}}');\r",
+							"const postPicture = pm.variables.replaceIn('{{$randomAvatarImage}}')\r",
+							"const postVisibility = pm.variables.replaceIn('{{$randomBoolean}}')\r",
+							"\r",
+							"pm.collectionVariables.set(\"postContent\", postContent);\r",
+							"pm.collectionVariables.set(\"postPicture\", postPicture);\r",
+							"pm.collectionVariables.set(\"postVisibility\", postVisibility);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"{{postContent}}\",\r\n  \"picture\": \"{{postPicture}}\",\r\n  \"public\": \"{{postVisibility}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/creator",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"creator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all posts",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response body contains posts\", function(){\r",
+							"    pm.expect(response).to.be.not.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseApiUrl}}/post/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit my post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const editPostContent = pm.variables.replaceIn('{{$randomPhrase}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"editPostContent\", editPostContent);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"{{editPostContent}}\",\r\n  \"picture\": \"none\",\r\n  \"public\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/editor?postId={{postId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"editor"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "{{postId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like my post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Liked array is not empty when liking post\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/likesUp?postId={{postId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"likesUp"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "{{postId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dislike my post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Liked is empty when disliking a post\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/likesUp?postId={{postId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"likesUp"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "{{postId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete my post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/manager?postId={{postId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"manager"
+					],
+					"query": [
+						{
+							"key": "sorted",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "unsorted",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "postId",
+							"value": "{{postId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "postContent",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "postVisibility",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "postPicture",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "postId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userEmail",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userProfessionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "editPostContent",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}

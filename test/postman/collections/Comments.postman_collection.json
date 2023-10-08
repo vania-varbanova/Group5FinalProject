@@ -1,0 +1,727 @@
+{
+	"info": {
+		"_postman_id": "5de326c0-514a-42e1-8bbd-54f1cc4efd3b",
+		"name": "Comments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-5de326c0-514a-42e1-8bbd-54f1cc4efd3b?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const userProfessionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const username = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"password\", password);\r",
+							"pm.collectionVariables.set(\"userEmail\", email);\r",
+							"pm.collectionVariables.set(\"username\", username);\r",
+							"pm.collectionVariables.set(\"userProfessionId\", userProfessionId)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const userId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"userId\",userId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{userProfessionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{password}}\",\r\n  \"email\": \"{{userEmail}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"username\": \"{{username}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"const postId = responseData.postId;\r",
+							"pm.collectionVariables.set(\"postId\", postId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const postContent = pm.variables.replaceIn('{{$randomPhrase}}');\r",
+							"const postPicture = pm.variables.replaceIn('{{$randomAvatarImage}}')\r",
+							"const postVisibility = pm.variables.replaceIn('{{$randomBoolean}}')\r",
+							"\r",
+							"pm.collectionVariables.set(\"postContent\", postContent);\r",
+							"pm.collectionVariables.set(\"postPicture\", postPicture);\r",
+							"pm.collectionVariables.set(\"postVisibility\", postVisibility);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"{{postContent}}\",\r\n  \"picture\": \"{{postPicture}}\",\r\n  \"public\": \"{{postVisibility}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/post/auth/creator",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"post",
+						"auth",
+						"creator"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"const commentId = responseData.commentId;\r",
+							"pm.collectionVariables.set(\"commentId\",commentId);\r",
+							"\r",
+							"pm.test(\"Comment id is not empty when new comment created\", function() {\r",
+							"    pm.expect(commentId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The content of comment is set when new comment created\", function(){\r",
+							"    const expectedContentText = pm.collectionVariables.get(\"commentContent\");\r",
+							"\r",
+							"    const actualContentText = responseData.content;\r",
+							"\r",
+							"    pm.expect(expectedContentText).to.equals(actualContentText);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Likes are false when a new comment is created\", function(){\r",
+							"    const liked  = responseData.liked;\r",
+							"    \r",
+							"    pm.expect(liked).to.be.false;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Comment date set to current date when new comment created\", function(){\r",
+							"    const pmDateTimeUtility = require('moment');\r",
+							"    const expectedDate = pmDateTimeUtility().format(\"DD/MM/YYYY\");\r",
+							"\r",
+							"    const actualDate = responseData.date;\r",
+							"    \r",
+							"    pm.expect(actualDate).contains(expectedDate)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Comment's likes is empty when new comment is created\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const commentContent = pm.variables.replaceIn('{{$randomPhrase}}');\r",
+							"pm.collectionVariables.set(\"commentContent\", commentContent);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{commentContent}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": \"{{postId}}\",\r\n  \"userId\": \"{{userId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/auth/creator",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"auth",
+						"creator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response body contains comments\", function(){\r",
+							"    pm.expect(response).to.be.not.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Comment id equals requested comment id\", function() {\r",
+							"    const expectedCommentId = pm.collectionVariables.get(\"commentId\");\r",
+							"\r",
+							"    const actualCommentId = responseData.commentId;\r",
+							"    \r",
+							"    pm.expect(actualCommentId).to.equals(expectedCommentId);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The content of comment is correct\", function(){\r",
+							"    const expectedContentText = pm.collectionVariables.get(\"commentContent\");\r",
+							"\r",
+							"    const actualContentText = responseData.content;\r",
+							"\r",
+							"    pm.expect(expectedContentText).to.equals(actualContentText);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/single?commentId={{commentId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"single"
+					],
+					"query": [
+						{
+							"key": "commentId",
+							"value": "{{commentId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all comments of single post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response body contains comments\", function(){\r",
+							"    pm.expect(response).to.be.not.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/byPost?&postId={{postId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"byPost"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "postId",
+							"value": "{{postId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like my comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Likes is not empty when liking comment\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Liked is true when likes comment\", function(){\r",
+							"    const liked  = responseData.liked;\r",
+							"\r",
+							"    pm.expect(liked).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/auth/likesUp?commentId={{commentId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"auth",
+						"likesUp"
+					],
+					"query": [
+						{
+							"key": "commentId",
+							"value": "{{commentId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dislike my comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Likes is empty when disliking  comment\", function(){\r",
+							"    const likes  = responseData.likes;\r",
+							"\r",
+							"    pm.expect(likes).to.have.length(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Like is falsewhen disliking  comment\", function(){\r",
+							"    const liked  = responseData.liked;\r",
+							"    \r",
+							"    pm.expect(liked).to.be.false;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/auth/likesUp?commentId={{commentId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"auth",
+						"likesUp"
+					],
+					"query": [
+						{
+							"key": "commentId",
+							"value": "{{commentId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit my comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/auth/editor?commentId={{commentId}}&content={{commentContent}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"auth",
+						"editor"
+					],
+					"query": [
+						{
+							"key": "commentId",
+							"value": "{{commentId}}"
+						},
+						{
+							"key": "content",
+							"value": "{{commentContent}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete my comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/comment/auth/manager?commentId={{commentId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"comment",
+						"auth",
+						"manager"
+					],
+					"query": [
+						{
+							"key": "commentId",
+							"value": "{{commentId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{randomPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{randomUsername}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "commentContent",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "postId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "postContent",
+			"value": ""
+		},
+		{
+			"key": "postPicture",
+			"value": ""
+		},
+		{
+			"key": "postVisibility",
+			"value": ""
+		},
+		{
+			"key": "userEmail",
+			"value": ""
+		},
+		{
+			"key": "userProfessionId",
+			"value": ""
+		},
+		{
+			"key": "commentId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
