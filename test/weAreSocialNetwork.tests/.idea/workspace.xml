@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WeAreSocial.Web/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../WeAreSocial.Web/src/test/resources/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/RestApiCreateUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/BaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/BaseRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequestModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/TimeoutSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/TimeoutSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/IssueKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annotations/IssueKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ApiBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/BaseIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,21 +75,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegistrationProcessTests.userSuccessfullyCreated_when_validInformation">
-    <configuration name="RestApiCreateUser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="api.RestApiCreateUser" />
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationProcessTests.userSuccessfullyCreated_when_validInformation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PostIntegrationTests.postSuccessfullyCreate">
+    <configuration name="CommentsIntegrationTests.postSuccessfullyLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -97,24 +85,72 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.RegistrationProcessTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyCreated_when_validInformation" />
+      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
+      <option name="METHOD_NAME" value="postSuccessfullyLiked" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationProcessTests.userSuccessfullyRegistered_when_validInformation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostIntegrationTests.postEditSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="system.*" />
+          <option name="PATTERN" value="integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="system" />
-      <option name="MAIN_CLASS_NAME" value="system.RegistrationProcessTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyRegistered_when_validInformation" />
+      <option name="PACKAGE_NAME" value="integration" />
+      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
+      <option name="METHOD_NAME" value="postEditSuccessfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostIntegrationTests.postSuccessfullyCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="integration" />
+      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
+      <option name="METHOD_NAME" value="postSuccessfullyCreate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostIntegrationTests.postSuccessfullyDispliked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="integration" />
+      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
+      <option name="METHOD_NAME" value="postSuccessfullyDispliked" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostIntegrationTests.postSuccessfullyLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="integration" />
+      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
+      <option name="METHOD_NAME" value="postSuccessfullyLiked" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,9 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RegistrationProcessTests.userSuccessfullyCreated_when_validInformation" />
-        <item itemvalue="JUnit.RegistrationProcessTests.userSuccessfullyRegistered_when_validInformation" />
-        <item itemvalue="Application.RestApiCreateUser" />
+        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyCreate" />
+        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyDispliked" />
+        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyLiked" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.postSuccessfullyLiked" />
+        <item itemvalue="JUnit.PostIntegrationTests.postEditSuccessfully" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +178,9 @@
       <workItem from="1696684870678" duration="43000" />
       <workItem from="1696684946539" duration="477000" />
       <workItem from="1696685952201" duration="329000" />
+      <workItem from="1696686468062" duration="14944000" />
+      <workItem from="1696745093063" duration="25802000" />
+      <workItem from="1696784508804" duration="5000" />
     </task>
     <servers />
   </component>
@@ -155,24 +196,24 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/system/RegistrationProcessTests.java</url>
           <line>11</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/integration/RegistrationProcessTests.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

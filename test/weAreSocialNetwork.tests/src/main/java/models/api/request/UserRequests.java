@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
+import org.junit.jupiter.api.Assertions;
 import utils.ConsoleLogger;
 
 import java.util.Arrays;
@@ -23,7 +24,7 @@ public class UserRequests extends BaseRequest {
                 .contentType("application/json")
                 .body(requestBody)
                 .post("/users/");
-
+        Assertions.assertEquals(200, response.statusCode());
         String responseBody = response.body().print();
         var parsedResponseBody = Arrays.stream(responseBody.split(" ")).collect(Collectors.toList());
         String name= parsedResponseBody.get(USERNAME_INDEX);

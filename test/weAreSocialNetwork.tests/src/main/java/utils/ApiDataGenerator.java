@@ -3,10 +3,10 @@ package utils;
 import com.github.javafaker.Faker;
 import models.api.Authorities;
 import models.api.helpers.Category;
-import models.api.request.CommentRequestModel;
+import models.api.requestModel.CommentRequestModel;
+import models.api.requestModel.EditPostRequestModel;
 import models.api.requestModel.PostRequestModel;
 import models.api.requestModel.UserRequestModel;
-import models.ui.UserUiModel;
 
 public class ApiDataGenerator {
 
@@ -19,10 +19,11 @@ public class ApiDataGenerator {
     public CommentRequestModel createComment(String userId, String postId){
         String commentContent = faker.lorem().characters(10,15);
         CommentRequestModel commentRequestModel = new CommentRequestModel();
-        commentRequestModel.setContent(commentContent);
+        commentRequestModel.setContentComment(commentContent);
         commentRequestModel.setUserId(userId);
         commentRequestModel.setPostId(postId);
-        return null;
+        return commentRequestModel;
+
     }
 
     public UserRequestModel createUserWithRoleUser() {
@@ -69,5 +70,15 @@ public class ApiDataGenerator {
         postRequestModel.setPublic(isPublic ? true : false);
 
         return postRequestModel;
+    }
+    public EditPostRequestModel createEditPost(boolean isPublic) {
+        String postContent = faker.lorem().characters(5,10);
+        String postPicture = faker.avatar().image();
+        EditPostRequestModel editPostRequestModel = new EditPostRequestModel();
+        editPostRequestModel.setContent(postContent);
+        editPostRequestModel.setPicture(postPicture);
+        editPostRequestModel.setPublic(isPublic ? true : false);
+
+        return editPostRequestModel;
     }
 }

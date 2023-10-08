@@ -68,7 +68,7 @@ public class UserActions {
         waitForElementToBeClickableUntilTimeout(locatorKey, arguments);
     }
 
-    public void waitForPageToLoadCompletely() {
+    public void waitForJavascript() {
         WebDriverWait wait = new WebDriverWait(driver, timeoutSettings.jsScripts());
         JavascriptExecutor js = (JavascriptExecutor) driver;
 

@@ -8,8 +8,10 @@ import java.time.LocalDate;
 @Data
 public class PostResponseModel {
     @SerializedName("postId")
-    private String id;
+    private String  id;
+    @SerializedName("content")
     private String content;
+    @SerializedName("picture")
     private String picture;
     @SerializedName("date")
     private String date;
@@ -17,4 +19,6 @@ public class PostResponseModel {
     private boolean isPublic;
     @SerializedName("liked")
     private boolean isLiked;
+    @SerializedName("likes")
+    private Object[] likes;
 }

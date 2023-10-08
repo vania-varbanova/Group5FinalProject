@@ -1,7 +1,8 @@
 package testFramework;
 
-import java.time.Duration;
+import lombok.Data;
 
+import java.time.Duration;
 public class TimeoutSettings {
     private Duration elementToBeVisible;
     private Duration elementToBePresent;
