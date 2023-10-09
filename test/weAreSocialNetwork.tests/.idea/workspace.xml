@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../postman/reports/skills_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/../postman/reports/skills_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequestModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/TimeoutSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/TimeoutSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/CommentResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/CommentResponseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/IssueKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annotations/IssueKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ApiBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +72,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PostIntegrationTests.postSuccessfullyCreate">
-    <configuration name="CommentsIntegrationTests.postSuccessfullyLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CommentsIntegrationTests.commentSuccessfullyDeleted_when_sendRequestWithValidBody">
+    <configuration name="CommentsIntegrationTests.commentEditSuccessfully_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -86,13 +83,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
       <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
-      <option name="METHOD_NAME" value="postSuccessfullyLiked" />
+      <option name="METHOD_NAME" value="commentEditSuccessfully_when_sendRequestWithValidBody" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostIntegrationTests.postEditSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentsIntegrationTests.commentSuccessfullyDeleted_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -101,14 +98,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
-      <option name="METHOD_NAME" value="postEditSuccessfully" />
+      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
+      <option name="METHOD_NAME" value="commentSuccessfullyDeleted_when_sendRequestWithValidBody" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostIntegrationTests.postSuccessfullyCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentsIntegrationTests.commentSuccessfullyDisliked_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -117,14 +114,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
-      <option name="METHOD_NAME" value="postSuccessfullyCreate" />
+      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
+      <option name="METHOD_NAME" value="commentSuccessfullyDisliked_when_sendRequestWithValidBody" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostIntegrationTests.postSuccessfullyDispliked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentsIntegrationTests.commentSuccessfullyLiked_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -133,14 +130,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
-      <option name="METHOD_NAME" value="postSuccessfullyDispliked" />
+      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
+      <option name="METHOD_NAME" value="commentSuccessfullyLiked_when_sendRequestWithValidBody" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostIntegrationTests.postSuccessfullyLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentsIntegrationTests.createCommentUnderPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -149,8 +146,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
-      <option name="METHOD_NAME" value="postSuccessfullyLiked" />
+      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
+      <option name="METHOD_NAME" value="createCommentUnderPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyCreate" />
-        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyDispliked" />
-        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyLiked" />
-        <item itemvalue="JUnit.CommentsIntegrationTests.postSuccessfullyLiked" />
-        <item itemvalue="JUnit.PostIntegrationTests.postEditSuccessfully" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyDeleted_when_sendRequestWithValidBody" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.commentEditSuccessfully_when_sendRequestWithValidBody" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyDisliked_when_sendRequestWithValidBody" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyLiked_when_sendRequestWithValidBody" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.createCommentUnderPost" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +177,8 @@
       <workItem from="1696685952201" duration="329000" />
       <workItem from="1696686468062" duration="14944000" />
       <workItem from="1696745093063" duration="25802000" />
-      <workItem from="1696784508804" duration="5000" />
+      <workItem from="1696784508804" duration="562000" />
+      <workItem from="1696827722700" duration="13833000" />
     </task>
     <servers />
   </component>
@@ -199,21 +197,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/system/RegistrationProcessTests.java</url>
           <line>11</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

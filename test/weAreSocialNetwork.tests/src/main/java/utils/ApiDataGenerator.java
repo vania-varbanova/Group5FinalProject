@@ -3,10 +3,9 @@ package utils;
 import com.github.javafaker.Faker;
 import models.api.Authorities;
 import models.api.helpers.Category;
-import models.api.requestModel.CommentRequestModel;
-import models.api.requestModel.EditPostRequestModel;
-import models.api.requestModel.PostRequestModel;
-import models.api.requestModel.UserRequestModel;
+import models.api.requestModel.*;
+
+import java.text.SimpleDateFormat;
 
 public class ApiDataGenerator {
 
@@ -70,6 +69,34 @@ public class ApiDataGenerator {
         postRequestModel.setPublic(isPublic ? true : false);
 
         return postRequestModel;
+    }
+    private SkillsRequestModel creatSkill(){
+        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
+        String skill = faker.job().keySkills();
+        SkillsRequestModel skillsRequestModel=new SkillsRequestModel();
+        skillsRequestModel.setProfessionID(professionId);
+        skillsRequestModel.setSkill(skill);
+        return skillsRequestModel;
+    }
+    private ProfileManagementRequestModel createProfile(boolean isMale){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String birthYear = sdf.format(faker.date().birthday());
+        String firstName=faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String locationId = String.valueOf(1);
+        String cityId = String.valueOf(faker.number().numberBetween(1, 39));
+        String picturePrivacy = faker.avatar().image();
+        String gender = isMale ? "MALE" : "FEMALE";
+        ProfileManagementRequestModel profileManagementRequestModel = new ProfileManagementRequestModel();
+        profileManagementRequestModel.setBirthYear(birthYear);
+        profileManagementRequestModel.setFirstName(firstName);
+        profileManagementRequestModel.setLastName(lastName);
+        profileManagementRequestModel.setLocationId(locationId);
+        profileManagementRequestModel.setCityId(cityId);
+        profileManagementRequestModel.setPicture(picturePrivacy);
+        profileManagementRequestModel.setGender(gender);
+
+        return profileManagementRequestModel;
     }
     public EditPostRequestModel createEditPost(boolean isPublic) {
         String postContent = faker.lorem().characters(5,10);

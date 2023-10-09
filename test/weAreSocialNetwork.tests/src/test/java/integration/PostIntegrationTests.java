@@ -21,7 +21,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
 
     @Test
-    public void postSuccessfullyCreate() throws SQLException {
+    public void postSuccessfullyCreated_when_sendRequestWithValidBody() throws SQLException {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
@@ -36,7 +36,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    public void postSuccessfullyLiked() throws SQLException {
+    public void postSuccessfullyLiked_when_sendRequestWithValidBody() throws SQLException {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
@@ -49,12 +49,10 @@ public class PostIntegrationTests extends BaseIntegrationTest {
         Assertions.assertTrue(updatedPostModel.isLiked());
         postRequests.deletePost(postResponseModel.getId(), cookie);
         databaseService.deleteUserWithId(userResponseModel.getId());
-
-
     }
 
     @Test
-    public void postSuccessfullyDispliked() throws SQLException {
+    public void postSuccessfullyDisliked_when_sendRequestWithValidBody() throws SQLException {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
@@ -66,16 +64,11 @@ public class PostIntegrationTests extends BaseIntegrationTest {
         PostResponseModel updatedPostModel = postRequests.dislikePost(postId, cookie);
         Assertions.assertFalse(updatedPostModel.isLiked());
 
-        //лайкваме пост
-        //postRequests.LikeMyPost(postId,cookie);
-        //дислайк
-        // лайковете са нула
         postRequests.deletePost(postResponseModel.getId(), cookie);
-        //    databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test
-    public void postEditSuccessfully() {
+    public void postEditSuccessfully_when_sendRequestWithValidBody() {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
@@ -91,7 +84,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    public void postDeletedSuccessfully() {
+    public void postSuccessfullyDeleted_when_sendRequestWithValidBody() {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
@@ -103,7 +96,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    public void GetAllPost() {
+    public void statusCodeOk_when_sendAll() {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);

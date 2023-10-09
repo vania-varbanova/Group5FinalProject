@@ -26,18 +26,6 @@ public class PostRequests extends BaseRequest {
         PostResponseModel postResponseModel = jsonParser.fromJson(response.body().prettyPrint(), PostResponseModel.class);
         return postResponseModel;
     }
-
-    public ResponseOptions deletePost(String postId, String cookieValue) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
-        var response = RestAssured
-                .given()
-                .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
-                .delete("/post/auth/manager");
-       return  response;
-    }
-
     public PostResponseModel likePost(int postId, String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
@@ -66,7 +54,6 @@ public class PostRequests extends BaseRequest {
 
         return dislikePostModel;
     }
-
     public ResponseOptions editPost(int postId, String cookieValue, EditPostRequestModel editPostRequestModels) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
@@ -81,6 +68,17 @@ public class PostRequests extends BaseRequest {
                 .put("/post/auth/editor");
 
         return response;
+    }
+
+    public ResponseOptions deletePost(String postId, String cookieValue) {
+        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
+        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+        var response = RestAssured
+                .given()
+                .queryParam("postId", postId)
+                .cookie(String.valueOf(cookie))
+                .delete("/post/auth/manager");
+       return  response;
     }
 
     public ResponseOptions GetAllPost( String cookieValue) {

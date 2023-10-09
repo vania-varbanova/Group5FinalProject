@@ -13,5 +13,7 @@ public class CommentResponseModel {
     private String date;
     @SerializedName("liked")
     private boolean isLiked;
+    @SerializedName("likes")
+    private Object likes;
 
 }
