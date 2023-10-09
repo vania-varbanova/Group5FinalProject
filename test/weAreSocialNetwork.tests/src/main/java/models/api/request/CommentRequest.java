@@ -79,7 +79,7 @@ public class CommentRequest extends BaseRequest {
         return  response;
     }
 
-    public ResponseOptions GetAllComment( String cookieValue) {
+    public ResponseOptions getAllComment( String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
         var response = RestAssured

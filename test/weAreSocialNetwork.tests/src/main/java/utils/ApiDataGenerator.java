@@ -78,7 +78,7 @@ public class ApiDataGenerator {
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
-    private ProfileManagementRequestModel createProfile(boolean isMale){
+    private ProfileManagementRequestModel updateProfile(boolean isMale){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String birthYear = sdf.format(faker.date().birthday());
         String firstName=faker.name().firstName();

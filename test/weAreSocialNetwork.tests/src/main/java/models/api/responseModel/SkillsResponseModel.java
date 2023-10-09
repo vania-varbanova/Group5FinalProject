@@ -14,5 +14,4 @@ public class SkillsResponseModel {
     @SerializedName("categoryName")
     private String categoryName;
 
-
 }
