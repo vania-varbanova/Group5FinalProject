@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/api/request/SkillsRequests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/integration/SkillIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionSendRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/CommentRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/CommentRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ConnectionRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ConnectionSendRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ConnectionResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ConnectionSendResponseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/SkillsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/SkillsRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/SkillsRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/PostResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/SkillsResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/SkillsResponseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +182,7 @@
       <workItem from="1696686468062" duration="14944000" />
       <workItem from="1696745093063" duration="25802000" />
       <workItem from="1696784508804" duration="562000" />
-      <workItem from="1696827722700" duration="34168000" />
+      <workItem from="1696827722700" duration="34947000" />
     </task>
     <servers />
   </component>

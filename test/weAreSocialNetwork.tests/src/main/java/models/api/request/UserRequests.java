@@ -24,6 +24,7 @@ public class UserRequests extends BaseRequest {
                 .contentType("application/json")
                 .body(requestBody)
                 .post("/users/");
+
         Assertions.assertEquals(200, response.statusCode());
         String responseBody = response.body().print();
         var parsedResponseBody = Arrays.stream(responseBody.split(" ")).collect(Collectors.toList());

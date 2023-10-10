@@ -118,7 +118,7 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
         String cookie = authenticateRequests.authenticateUser(userRequestModel);
-        ResponseOptions responseOption = commentRequest.GetAllComment(cookie);
+        ResponseOptions responseOption = commentRequest.getAllComment(cookie);
 
         assertOkStatusCode(responseOption);
     }
