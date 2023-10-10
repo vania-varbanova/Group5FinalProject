@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 public class PostResponseModel {
     @SerializedName("postId")
-    private String  id;
+    private String id;
     @SerializedName("content")
     private String content;
     @SerializedName("picture")

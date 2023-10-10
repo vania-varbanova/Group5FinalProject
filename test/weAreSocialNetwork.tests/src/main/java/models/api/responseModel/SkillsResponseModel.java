@@ -2,17 +2,15 @@ package models.api.responseModel;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import models.api.helpers.Category;
 
 @Data
 public class SkillsResponseModel {
-    @SerializedName("skillId")
-    private String skillId;
+    @SerializedName("category")
+    private Category category;
     @SerializedName("skill")
     private String skill;
-    @SerializedName("categoryId")
-    private String categoryId;
-    @SerializedName("categoryName")
-    private String categoryName;
-
-
+    @SerializedName("skillId")
+    private int skillId;
 }
+

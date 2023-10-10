@@ -76,17 +76,31 @@ public class ApiDataGenerator {
         return postRequestModel;
     }
 
+
     public SkillsRequestModel creatSkill() {
         String professionId = String.valueOf(faker.number().numberBetween(101, 157));
         String skill = faker.job().keySkills();
         SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
-        skillsRequestModel.setProfessionID(professionId);
+//        skillsRequestModel.setProfessionID(professionId);
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
 
     public ProfileManagementRequestModel createProfile(boolean isMale) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
+        String skill = faker.job().keySkills();
+
+        String categoryId = String.valueOf(faker.number().numberBetween(101, 157));
+        Category category = new Category();
+        category.setName("CategoryName");
+        category.setCategoryId(Integer.parseInt(categoryId));
+
+        return null;
+    }
+    private ProfileManagementRequestModel updateProfile(boolean isMale){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
         String birthYear = sdf.format(faker.date().birthday());
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
