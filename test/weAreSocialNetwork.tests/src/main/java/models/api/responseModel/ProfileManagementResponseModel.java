@@ -2,6 +2,7 @@ package models.api.responseModel;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import models.api.helpers.Location;
 
 @Data
 public class ProfileManagementResponseModel {
@@ -13,10 +14,9 @@ public class ProfileManagementResponseModel {
     private String  lastName;
     @SerializedName("sex")
     private String  gender;
-    @SerializedName("locationId")
-    private String locationId ;
-    @SerializedName("cityId")
-    private String  cityId;
+    @SerializedName("location")
+    private Location location ;
+
     @SerializedName("birthYear")
     private String  birthYear;
     @SerializedName("personalReview")

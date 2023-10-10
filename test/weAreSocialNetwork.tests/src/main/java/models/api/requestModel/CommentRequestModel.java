@@ -11,6 +11,4 @@ public class CommentRequestModel {
     private String  postId;
     @SerializedName("userId")
     private String  userId;
-
-
 }

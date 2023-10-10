@@ -1,22 +1,23 @@
 package models.api.requestModel;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
 import lombok.Data;
+import models.api.helpers.Location;
 
 @Data
+//@Builder
 public class ProfileManagementRequestModel {
- @SerializedName("birthYear")
- private String birthYear;
+    @SerializedName("birthYear")
+    private String birthYear;
     @SerializedName("firstName")
     private String firstName;
     @SerializedName("lastName")
     private String lastName;
     @SerializedName("location")
-    private String locationId ;
-    @SerializedName("city")
-    private String cityId ;
+    private Location location;
     @SerializedName("picturePrivacy")
-    private String picture;
+    private boolean isPicturePrivate;
     @SerializedName("sex")
     private String gender;
 }

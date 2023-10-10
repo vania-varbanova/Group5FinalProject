@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../postman/reports/skills_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/../postman/reports/skills_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/CommentResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/CommentResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionSendRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/CommentRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/CommentRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ConnectionRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ConnectionSendRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ConnectionResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ConnectionSendResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +74,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommentsIntegrationTests.commentSuccessfullyDeleted_when_sendRequestWithValidBody">
+  <component name="RunManager" selected="JUnit.ConnectionIntegrationTests.connectionSend">
     <configuration name="CommentsIntegrationTests.commentEditSuccessfully_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
@@ -121,7 +123,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentsIntegrationTests.commentSuccessfullyLiked_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ConnectionIntegrationTests.connectionSend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -130,14 +132,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
-      <option name="METHOD_NAME" value="commentSuccessfullyLiked_when_sendRequestWithValidBody" />
+      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
+      <option name="METHOD_NAME" value="connectionSend" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentsIntegrationTests.createCommentUnderPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProfileManagementTests.userUpdateSuccessfullyCreated_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -146,8 +148,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.CommentsIntegrationTests" />
-      <option name="METHOD_NAME" value="createCommentUnderPost" />
+      <option name="MAIN_CLASS_NAME" value="integration.ProfileManagementTests" />
+      <option name="METHOD_NAME" value="userUpdateSuccessfullyCreated_when_sendRequestWithValidBody" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -155,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConnectionIntegrationTests.connectionSend" />
+        <item itemvalue="JUnit.ProfileManagementTests.userUpdateSuccessfullyCreated_when_sendRequestWithValidBody" />
         <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyDeleted_when_sendRequestWithValidBody" />
         <item itemvalue="JUnit.CommentsIntegrationTests.commentEditSuccessfully_when_sendRequestWithValidBody" />
         <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyDisliked_when_sendRequestWithValidBody" />
-        <item itemvalue="JUnit.CommentsIntegrationTests.commentSuccessfullyLiked_when_sendRequestWithValidBody" />
-        <item itemvalue="JUnit.CommentsIntegrationTests.createCommentUnderPost" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +180,7 @@
       <workItem from="1696686468062" duration="14944000" />
       <workItem from="1696745093063" duration="25802000" />
       <workItem from="1696784508804" duration="562000" />
-      <workItem from="1696827722700" duration="13833000" />
+      <workItem from="1696827722700" duration="34168000" />
     </task>
     <servers />
   </component>

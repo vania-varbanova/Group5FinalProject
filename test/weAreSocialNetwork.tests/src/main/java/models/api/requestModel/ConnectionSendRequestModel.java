@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class ConnectionRequestModel {
+public class ConnectionSendRequestModel {
     @SerializedName("id")
-    private String receivedId;
+    private String receiverId;
     @SerializedName("username")
-    private String receivedUsername;
+    private String receiverUsername;
 }
