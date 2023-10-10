@@ -70,11 +70,14 @@ public class ApiDataGenerator {
 
         return postRequestModel;
     }
-    private SkillsRequestModel creatSkill(){
-        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
+    public SkillsRequestModel createSkill(){
+        String categoryId = String.valueOf(faker.number().numberBetween(101, 157));
+        Category category = new Category();
+        category.setName("CategoryName");
+        category.setCategoryId(Integer.parseInt(categoryId));
         String skill = faker.job().keySkills();
         SkillsRequestModel skillsRequestModel=new SkillsRequestModel();
-        skillsRequestModel.setProfessionID(professionId);
+        skillsRequestModel.setCategory(category);
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
