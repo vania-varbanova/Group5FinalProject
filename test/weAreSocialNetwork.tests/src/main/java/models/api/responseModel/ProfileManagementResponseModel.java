@@ -16,7 +16,6 @@ public class ProfileManagementResponseModel {
     private String  gender;
     @SerializedName("location")
     private Location location ;
-
     @SerializedName("birthYear")
     private String  birthYear;
     @SerializedName("personalReview")

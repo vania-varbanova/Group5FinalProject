@@ -1,14 +1,12 @@
 package integration;
 
-import models.api.request.ConnectionSendRequest;
-import models.api.request.PostRequests;
+import models.api.helpers.GetUserRequest;
+import models.api.request.ConnectionRequests;
 import models.api.requestModel.ConnectionSendRequestModel;
-import models.api.requestModel.PostRequestModel;
-import models.api.requestModel.SenderUserRequestModel;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.ConnectionSendResponseModel;
-import models.api.responseModel.PostResponseModel;
 import models.api.responseModel.UserResponseModel;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ConnectionIntegrationTests extends BaseIntegrationTest {
@@ -18,34 +16,39 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     public void connectionSend() {
         UserRequestModel senderUser = apiDataGenerator.createUserWithRoleUser();
         UserRequestModel receiverUser = apiDataGenerator.createUserWithRoleUser();
-
         UserResponseModel senderResponseModel = userRequests.createUser(senderUser);
         UserResponseModel receiverResponseModel = userRequests.createUser(receiverUser);
         String senderCookie = authenticateRequests.authenticateUser(senderUser);
         System.out.println(senderUser);
-        ConnectionSendRequest connectionSendRequest = new ConnectionSendRequest();
-        ConnectionSendRequestModel receiver=new ConnectionSendRequestModel();
-        receiver.setReceiverId(receiverResponseModel.getId() );
+        ConnectionRequests connectionSendRequest = new ConnectionRequests();
+        ConnectionSendRequestModel receiver = new ConnectionSendRequestModel();
+        receiver.setReceiverId(receiverResponseModel.getId());
         receiver.setReceiverUsername(receiverResponseModel.getName());
         ConnectionSendResponseModel connectionSendResponseModel = connectionSendRequest.sendRequest(receiver, senderCookie);
-
-        //sender - ApiDataGenerator.createUser()
-        //receiver  - AppDataGenerator,.createUser()
-        //senderResponseModel = userRequest.createUser(sender)
-        //receiverResponseModel = userRequest.createUser(sender)
-        //String senderCookie =authenticate(sender)
-        //String message= sendConnection(cookie, receiverResponseModel)
+        Assertions.assertEquals(senderResponseModel.getName(), connectionSendResponseModel.getSenderUsername(), "sender user name");
+        Assertions.assertEquals(receiverResponseModel.getName(), connectionSendResponseModel.getReceiverUsername(), "receiver user name");
     }
 
+    @Test
     public void getUserRequestSend() {
-        //sender - ApiDataGenerator.createUser()
-        //receiver  - AppDataGenerator,.createUser()
-        //senderResponseModel = userRequest.createUser(sender)
-        //receiverResponseModel = userRequest.createUser(sender)
-        //String senderCookie =authenticate(sender)
-        //String message= sendConnection(cookie, receiverResponseModel)
+        UserRequestModel senderUser = apiDataGenerator.createUserWithRoleUser();
+        UserRequestModel receiverUser = apiDataGenerator.createUserWithRoleUser();
+        UserResponseModel senderResponseModel = userRequests.createUser(senderUser);
+        UserResponseModel receiverResponseModel = userRequests.createUser(receiverUser);
+        String senderCookie = authenticateRequests.authenticateUser(senderUser);
+        ConnectionRequests connectionSendRequest = new ConnectionRequests();
+        ConnectionSendRequestModel receiver = new ConnectionSendRequestModel();
+        receiver.setReceiverId(receiverResponseModel.getId());
+        receiver.setReceiverUsername(receiverResponseModel.getName());
+        connectionSendRequest.sendRequest(receiver, senderCookie);
+        String receiverCookie = authenticateRequests.authenticateUser(receiverUser);
+        ConnectionRequests connectionGetUserRequest = new ConnectionRequests();
+        GetUserRequest[] request = connectionGetUserRequest.getRequest(receiverResponseModel.getId(), receiverCookie);
+        GetUserRequest takeRequest = request[0];
+        //approve rqeust (takeRequest.id, receiverResponseModel.getId(), recieverCookie)
+        System.out.println();
+        connectionGetUserRequest.acceptRequest(receiverResponseModel.getId(), takeRequest.getRequestId(), receiverCookie);
 
-        //String reciverCookie =authenticate(receiver)
-        //
+
     }
 }
