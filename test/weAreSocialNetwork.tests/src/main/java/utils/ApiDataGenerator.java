@@ -77,11 +77,15 @@ public class ApiDataGenerator {
     }
 
 
-    public SkillsRequestModel creatSkill() {
-        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
+    public SkillsRequestModel createSkill() {
+        int categoryId = faker.number().numberBetween(101, 157);
         String skill = faker.job().keySkills();
+
+        Category category = new Category();
+        category.setCategoryId(categoryId);
+
         SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
-//        skillsRequestModel.setProfessionID(professionId);
+        skillsRequestModel.setCategory(category);
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
@@ -128,7 +132,7 @@ public class ApiDataGenerator {
         return profileManagementRequestModel;
     }
 
-    public EditPostRequestModel createEditPost(boolean isPublic) {
+    public EditPostRequestModel editPost(boolean isPublic) {
         String postContent = faker.lorem().characters(5, 10);
         String postPicture = faker.avatar().image();
         EditPostRequestModel editPostRequestModel = new EditPostRequestModel();

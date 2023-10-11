@@ -3,6 +3,7 @@ package integration;
 import models.api.request.AuthenticateRequests;
 import models.api.request.CommentRequest;
 import models.api.request.PostRequests;
+import models.api.request.UserRequests;
 import models.api.requestModel.CommentRequestModel;
 import models.api.requestModel.PostRequestModel;
 import models.api.requestModel.UserRequestModel;
@@ -14,27 +15,23 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;
 import annotations.IssueKey;
+import utils.ApiDataGenerator;
 
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RegistrationProcessTests extends BaseIntegrationTest {
-    private PostRequests postRequests;
+public class RegistrationProcessTests {
 
-    @Override
-    public void beforeEach() {
-        super.beforeEach();
-        postRequests = new PostRequests();
-    }
 
     @Test
     @Tag("Integration")
     @IssueKey(key = "WSFP-13")
     public void userSuccessfullyCreated_when_validInformation() throws SQLException {
-        //Arrange
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
+        UserRequests userRequests = new UserRequests();
         DatabaseService databaseService = new DatabaseService();
+        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         //Act
         UserResponseModel userResponseModel = userRequests.createUser(userRequestModel);
         //Assert
