@@ -1,4 +1,4 @@
-package integration;
+package RESTAssuredTests;
 
 import models.api.request.ProfileManagementRequest;
 import models.api.requestModel.ProfileManagementRequestModel;
@@ -7,6 +7,7 @@ import models.api.responseModel.ProfileManagementResponseModel;
 import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import services.DatabaseService;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ProfileManagementTests extends BaseIntegrationTest {
     private UserResponseModel userResponseModel;
-
+    private DatabaseService databaseService = new DatabaseService();
     @Test
     public void userUpdateSuccessfullyCreated_when_sendRequestWithValidBody() throws SQLException {
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();

@@ -1,11 +1,10 @@
-package integration;
+package RESTAssuredTests;
 
 import io.restassured.response.ResponseOptions;
 import models.api.request.AuthenticateRequests;
 import models.api.request.CommentRequest;
 import models.api.request.PostRequests;
 import models.api.requestModel.CommentRequestModel;
-import models.api.requestModel.EditPostRequestModel;
 import models.api.requestModel.PostRequestModel;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.CommentResponseModel;

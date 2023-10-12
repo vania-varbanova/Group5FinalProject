@@ -1,4 +1,4 @@
-package integration;
+package RESTAssuredTests;
 
 import models.api.helpers.GetUserRequest;
 import models.api.request.ConnectionRequests;

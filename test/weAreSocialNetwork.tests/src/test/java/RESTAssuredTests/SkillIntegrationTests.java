@@ -1,13 +1,10 @@
-package integration;
+package RESTAssuredTests;
 
 import models.api.request.SkillsRequests;
 import models.api.requestModel.SkillsRequestModel;
-import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.SkillsResponseModel;
-import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import services.DatabaseService;
 import utils.ApiDataGenerator;
 import utils.ConsoleLogger;
 

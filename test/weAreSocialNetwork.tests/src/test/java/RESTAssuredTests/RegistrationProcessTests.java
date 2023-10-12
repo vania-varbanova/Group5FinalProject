@@ -1,11 +1,10 @@
-package integration;
+package RESTAssuredTests;
 
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 
 
 import models.api.responseModel.UserResponseModel;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;

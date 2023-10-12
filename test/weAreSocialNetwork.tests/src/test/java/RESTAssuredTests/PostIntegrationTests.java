@@ -1,6 +1,5 @@
-package integration;
+package RESTAssuredTests;
 
-import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import models.api.request.PostRequests;
 import models.api.requestModel.EditPostRequestModel;

@@ -36,6 +36,5 @@ public class LoginTests {
         registrationPage.enterRegistrationCredentials(userUiModel);
         registrationPage.assertMessageByLinkTextIsVisible();
         registrationPage.assertButtonByLinkTextIsClickable();
-        System.out.println();
     }
 }

@@ -1,4 +1,4 @@
-package integration;
+package RESTAssuredTests;
 
 
 import io.restassured.response.ResponseOptions;
