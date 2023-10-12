@@ -1,14 +1,9 @@
 package integration;
 
-import models.api.request.AuthenticateRequests;
-import models.api.request.CommentRequest;
-import models.api.request.PostRequests;
 import models.api.request.UserRequests;
-import models.api.requestModel.CommentRequestModel;
-import models.api.requestModel.PostRequestModel;
 import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.CommentResponseModel;
-import models.api.responseModel.PostResponseModel;
+
+
 import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
@@ -39,9 +34,4 @@ public class RegistrationProcessTests {
         assertNotNull(userResponseModel.getId());
         databaseService.deleteUserWithId(userResponseModel.getId());
     }
-
-
-
-
-
 }
