@@ -34,7 +34,7 @@ public class UserRequests extends BaseRequest {
         userResponseModel.setId(id);
         userResponseModel.setName(name);
         ConsoleLogger.log(userResponseModel.toString());
-
         return userResponseModel;
     }
+
 }
