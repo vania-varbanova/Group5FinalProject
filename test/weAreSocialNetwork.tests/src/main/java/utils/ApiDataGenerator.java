@@ -28,7 +28,6 @@ public class ApiDataGenerator extends BaseDataGenerator {
         Authorities authority = isAdmin ? Authorities.ROLE_ADMIN : Authorities.ROLE_USER;
         String professionId = String.valueOf(faker.number().numberBetween(101, 157));
         Category category = new Category();
-        category.setName("CategoryName");
         category.setCategoryId(Integer.parseInt(professionId));
         String[] authorities = new String[]{authority.toString()};
         UserRequestModel userRequestModel = new UserRequestModel();
@@ -75,11 +74,23 @@ public class ApiDataGenerator extends BaseDataGenerator {
     }
 
 
-    public SkillsRequestModel creatSkill() {
-        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
+    public SkillsRequestModel createSkill() {
+        int categoryId = faker.number().numberBetween(101, 157);
         String skill = faker.job().keySkills();
+
+        Category category = new Category();
+        category.setCategoryId(categoryId);
+
         SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
-//        skillsRequestModel.setProfessionID(professionId);
+        skillsRequestModel.setCategory(category);
+        skillsRequestModel.setSkill(skill);
+        return skillsRequestModel;
+    }
+
+    public SkillsRequestModel editSkill() {
+        String skill = faker.job().keySkills();
+
+        SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
@@ -126,7 +137,7 @@ public class ApiDataGenerator extends BaseDataGenerator {
         return profileManagementRequestModel;
     }
 
-    public EditPostRequestModel createEditPost(boolean isPublic) {
+    public EditPostRequestModel editPost(boolean isPublic) {
         String postContent = faker.lorem().characters(5, 10);
         String postPicture = faker.avatar().image();
         EditPostRequestModel editPostRequestModel = new EditPostRequestModel();

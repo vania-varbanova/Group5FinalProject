@@ -36,7 +36,7 @@ public class CommentRequest extends BaseRequest {
                 .post("/post/auth/likesUp");
 
         CommentResponseModel updatedCommentModel = jsonParser.fromJson(response.prettyPrint(), CommentResponseModel.class);
-        System.out.println("Like post responsebody: " + response.prettyPrint());
+        System.out.println("Like post response body: " + response.prettyPrint());
 
         return updatedCommentModel;
     }
@@ -50,7 +50,7 @@ public class CommentRequest extends BaseRequest {
                 .post("/post/auth/likesUp");
 
         CommentResponseModel dislikeCommentModel = jsonParser.fromJson(response.prettyPrint(), CommentResponseModel.class);
-        System.out.println("Dislike post responsebody: " + response.prettyPrint());
+        System.out.println("Dislike post response body: " + response.prettyPrint());
 
         return dislikeCommentModel;
     }

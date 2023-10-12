@@ -76,7 +76,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
         PostRequests postRequests = new PostRequests();
         PostResponseModel postResponseModel = postRequests.createPost(postRequestModel, cookie);
         int postId = Integer.parseInt(postResponseModel.getId());
-        EditPostRequestModel editPostRequestModel = apiDataGenerator.createEditPost(true);
+        EditPostRequestModel editPostRequestModel = apiDataGenerator.editPost(true);
         ResponseOptions responseOptions = postRequests.editPost(postId, cookie, editPostRequestModel);
 
         assertOkStatusCode(responseOptions);
