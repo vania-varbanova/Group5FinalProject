@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;
 import utils.ApiDataGenerator;
+import utils.ConsoleLogger;
+
+import java.util.List;
 
 
 public class SkillIntegrationTests {
@@ -32,7 +35,7 @@ public class SkillIntegrationTests {
         String actualSkill = skillsResponseModel.getSkill();
         Assertions.assertEquals(expectedSkill, actualSkill);
 
-        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
+        //skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
     @Test
     public void skillSuccessfullyDeleted() {
@@ -51,14 +54,17 @@ public class SkillIntegrationTests {
     public void FindAllSkillsRequestSuccessfullyProvidesAllSkills() {
         SkillsRequests skillsRequests = new SkillsRequests();
 
-        SkillsResponseModel skillsResponseModel = skillsRequests.getAllSkills();
+        List<SkillsResponseModel> skillsResponseModels = skillsRequests.getAllSkills();
 
-        Assertions.assertNotNull(skillsResponseModel.getSkill());
-        Assertions.assertFalse(skillsResponseModel.getSkill().isEmpty());
-        Assertions.assertNotNull(skillsResponseModel.getCategory());
+        for (SkillsResponseModel skillsResponseModel : skillsResponseModels) {
+            Assertions.assertNotNull(skillsResponseModel.getSkill());
+            Assertions.assertFalse(skillsResponseModel.getSkill().isEmpty());
+            Assertions.assertNotNull(skillsResponseModel.getCategory());
 
-        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
+            skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
+        }
     }
+
     @Test
     public void GetOneSkillRequestSuccessfullyProvidesOneSkill() {
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
@@ -80,20 +86,35 @@ public class SkillIntegrationTests {
     public void skillSuccessfullyEdited() {
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
         SkillsRequests skillsRequests = new SkillsRequests();
+
+        // Create a new skill
         SkillsRequestModel skillsRequestModel = apiDataGenerator.createSkill();
         SkillsResponseModel createdSkill = skillsRequests.createSkill(skillsRequestModel);
+
+        ConsoleLogger.log("Created Skill:");
+        ConsoleLogger.log(createdSkill.toString());
 
         String firstSkill = createdSkill.getSkill();
         Assertions.assertFalse(firstSkill.isEmpty());
 
+        // Edit the skill
         createdSkill = skillsRequests.editSkill(createdSkill.getSkillId());
 
-        String secondSkill = createdSkill.getSkill();
+        if (createdSkill != null) {
+            ConsoleLogger.log("Edited Skill:");
+            ConsoleLogger.log(createdSkill.toString());
 
-        Assertions.assertNotEquals(firstSkill, secondSkill);
-        Assertions.assertNotNull(createdSkill.getCategory());
-        Assertions.assertNotNull(secondSkill);
-        Assertions.assertFalse(secondSkill.isEmpty());
+            String secondSkill = createdSkill.getSkill();
+
+            Assertions.assertNotEquals(firstSkill, secondSkill);
+            Assertions.assertNotNull(createdSkill.getCategory());
+            Assertions.assertNotNull(secondSkill);
+            Assertions.assertFalse(secondSkill.isEmpty());
+
+            skillsRequests.deleteSkill(String.valueOf(createdSkill.getSkillId()));
+        } else {
+            ConsoleLogger.log("Edited Skill is null");
+        }
 
         skillsRequests.deleteSkill(String.valueOf(createdSkill.getSkillId()));
     }

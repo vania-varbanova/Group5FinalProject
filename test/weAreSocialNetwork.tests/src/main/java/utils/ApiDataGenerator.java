@@ -51,7 +51,6 @@ public class ApiDataGenerator {
         Authorities authority = isAdmin ? Authorities.ROLE_ADMIN : Authorities.ROLE_USER;
         String professionId = String.valueOf(faker.number().numberBetween(101, 157));
         Category category = new Category();
-        category.setName("CategoryName");
         category.setCategoryId(Integer.parseInt(professionId));
         String[] authorities = new String[]{authority.toString()};
         UserRequestModel userRequestModel = new UserRequestModel();
@@ -86,6 +85,14 @@ public class ApiDataGenerator {
 
         SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
         skillsRequestModel.setCategory(category);
+        skillsRequestModel.setSkill(skill);
+        return skillsRequestModel;
+    }
+
+    public SkillsRequestModel editSkill() {
+        String skill = faker.job().keySkills();
+
+        SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;
     }
