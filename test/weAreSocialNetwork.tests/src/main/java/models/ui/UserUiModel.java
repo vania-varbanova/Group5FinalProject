@@ -1,11 +1,9 @@
 package models.ui;
 
 import lombok.Data;
+import models.BaseUser;
 
 @Data
-public class UserUiModel {
-    private String username;
-    private String email;
-    private String password;
+public class UserUiModel extends BaseUser {
     private String profession;
 }

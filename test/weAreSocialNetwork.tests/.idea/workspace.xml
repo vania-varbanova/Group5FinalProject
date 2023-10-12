@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/GetUserFriendsRequestResponseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ApproveSendRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionGetUserRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionSendRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ApproveSendResponseModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/GetRequestResponseModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/UserRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/UserRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/system/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/system/LoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in WeAreSocialQA">
+  <component name="RunManager" selected="JUnit.LoginTests.userSuccessfullyRegistration_when_enterValidCredentials">
     <configuration name="All in WeAreSocialQA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <option name="PACKAGE_NAME" value="" />
@@ -98,22 +102,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConnectionIntegrationTests.connectionSend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
-      <option name="METHOD_NAME" value="connectionSend" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ConnectionIntegrationTests.getUserRequestSend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
@@ -130,17 +118,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostIntegrationTests.postSuccessfullyCreated_when_sendRequestWithValidBody" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.userSuccessfullyRegistration_when_enterValidCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="integration.*" />
+          <option name="PATTERN" value="system.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.PostIntegrationTests" />
-      <option name="METHOD_NAME" value="postSuccessfullyCreated_when_sendRequestWithValidBody" />
+      <option name="PACKAGE_NAME" value="system" />
+      <option name="MAIN_CLASS_NAME" value="system.LoginTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyRegistration_when_enterValidCredentials" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTests.veryLongTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="system.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="system" />
+      <option name="MAIN_CLASS_NAME" value="system.LoginTests" />
+      <option name="METHOD_NAME" value="veryLongTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoginTests.userSuccessfullyRegistration_when_enterValidCredentials" />
+        <item itemvalue="JUnit.LoginTests.veryLongTest" />
+        <item itemvalue="JUnit.CommentsIntegrationTests.createCommentUnderPost" />
         <item itemvalue="JUnit.All in WeAreSocialQA" />
         <item itemvalue="JUnit.ConnectionIntegrationTests.getUserRequestSend" />
-        <item itemvalue="JUnit.ConnectionIntegrationTests.connectionSend" />
-        <item itemvalue="JUnit.PostIntegrationTests.postSuccessfullyCreated_when_sendRequestWithValidBody" />
-        <item itemvalue="JUnit.CommentsIntegrationTests.createCommentUnderPost" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +199,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java</url>
           <line>48</line>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

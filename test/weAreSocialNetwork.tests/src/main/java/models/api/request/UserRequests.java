@@ -7,6 +7,7 @@ import io.restassured.response.ResponseBody;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.Assertions;
+import utils.ConfigPropertiesReader;
 import utils.ConsoleLogger;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class UserRequests extends BaseRequest {
     private static final int USER_ID_INDEX = 6;
     public UserResponseModel createUser(UserRequestModel userRequestModel) {
         String requestBody = jsonParser.toJson(userRequestModel);
-
+        var x = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         ConsoleLogger.log(String.format("Request body: %s", requestBody));
         var response = RestAssured
                 .given()
