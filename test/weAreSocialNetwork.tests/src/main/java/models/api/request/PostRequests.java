@@ -1,5 +1,7 @@
 package models.api.request;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
 import io.restassured.response.ResponseOptions;
 import models.api.requestModel.EditPostRequestModel;
@@ -14,18 +16,22 @@ public class PostRequests extends BaseRequest {
     public PostResponseModel createPost(PostRequestModel postRequestModel, String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         String requestBody = jsonParser.toJson(postRequestModel);
-        ConsoleLogger.log(String.format("Request body: %s", requestBody));
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+        ConsoleLogger.log("========================================================================");
+        ConsoleLogger.log(String.format("Create post request body:\n%s", requestBody));
         var response = RestAssured
                 .given()
-                .cookie(String.valueOf(cookie))
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
                 .contentType("application/json")
                 .body(requestBody)
                 .post("/post/auth/creator");
+        ConsoleLogger.log("========================================================================");
 
-        PostResponseModel postResponseModel = jsonParser.fromJson(response.body().prettyPrint(), PostResponseModel.class);
+        var responseBody = response.body().asPrettyString();
+        ConsoleLogger.log(String.format("Create Post Response body: %s", responseBody));
+        PostResponseModel postResponseModel = jsonParser.fromJson(responseBody, PostResponseModel.class);
         return postResponseModel;
     }
+
     public PostResponseModel likePost(int postId, String cookieValue) {
         var x = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
@@ -41,6 +47,7 @@ public class PostRequests extends BaseRequest {
 
         return updatedPostModel;
     }
+
     public PostResponseModel dislikePost(int postId, String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
@@ -55,6 +62,7 @@ public class PostRequests extends BaseRequest {
 
         return dislikePostModel;
     }
+
     public ResponseOptions editPost(int postId, String cookieValue, EditPostRequestModel editPostRequestModels) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
@@ -73,16 +81,15 @@ public class PostRequests extends BaseRequest {
 
     public ResponseOptions deletePost(String postId, String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
         var response = RestAssured
                 .given()
                 .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
                 .delete("/post/auth/manager");
-       return  response;
+        return response;
     }
 
-    public ResponseOptions GetAllPost( String cookieValue) {
+    public ResponseOptions GetAllPost(String cookieValue) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
         var response = RestAssured

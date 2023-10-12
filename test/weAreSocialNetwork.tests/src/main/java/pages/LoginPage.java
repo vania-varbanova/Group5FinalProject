@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import testFramework.Driver;
 import utils.ConfigPropertiesReader;
 import utils.UiDataGenerator;
 import utils.UiPropertiesReader;
@@ -11,7 +12,7 @@ public class LoginPage extends BasePage{
 
     UiDataGenerator uiDataGenerator;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(Driver driver) {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.loginPage"));
     }
 

@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class CommentResponseModel {
     @SerializedName("commentId")
-    private String commentId;
+    private String id;
     @SerializedName("content")
     private String content;
     @SerializedName("date")

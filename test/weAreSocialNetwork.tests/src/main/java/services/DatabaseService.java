@@ -1,5 +1,6 @@
 package services;
 
+import lombok.SneakyThrows;
 import utils.ConsoleLogger;
 
 import java.sql.*;
@@ -9,7 +10,8 @@ public class DatabaseService {
     private static final String USERNAME = "sql11651605";
     private static final String PASSWORD = "SJ7l9YqCua";
 
-    public void deleteUserWithId(String id) throws SQLException {
+    @SneakyThrows
+    public void deleteUserWithId(String id) {
         Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
         Statement stopForeignKey = connection.createStatement();
         stopForeignKey.execute("SET FOREIGN_KEY_CHECKS=0");

@@ -3,12 +3,13 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import testFramework.Driver;
 import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
 public class MainPage extends BasePage {
 
-    public MainPage(WebDriver driver) {
+    public MainPage(Driver driver) {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.baseUrl"));
     }
 

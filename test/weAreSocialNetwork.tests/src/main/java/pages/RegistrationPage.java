@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import testFramework.Driver;
 import testFramework.Utils;
 import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
 public class RegistrationPage extends BasePage {
-    public RegistrationPage(WebDriver driver) {
+    public RegistrationPage(Driver driver) {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.registrationPage"));
     }
 
