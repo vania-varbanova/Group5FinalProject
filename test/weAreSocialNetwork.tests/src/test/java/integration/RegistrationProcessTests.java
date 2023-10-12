@@ -17,8 +17,6 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RegistrationProcessTests {
-
-
     @Test
     @Tag("Integration")
     @IssueKey(key = "WSFP-13")
