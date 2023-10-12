@@ -80,9 +80,9 @@ public class UserActions {
         waitForElementPresenceUntilTimeout(locator, arguments);
     }
 
-    public void assertElementPresent(String locator) {
-        Assertions.assertNotNull(driver.findElement(By.xpath(Utils.getUIMappingByKey(locator))),
-                format("Element with %s doesn't present.", locator));
+    public void assertElementPresent(WebElement webElement) {
+        Assertions.assertNotNull(webElement,
+                format("Element with %s doesn't present.", webElement));
     }
 
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {

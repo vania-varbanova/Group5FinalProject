@@ -48,7 +48,5 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
         //approve rqeust (takeRequest.id, receiverResponseModel.getId(), recieverCookie)
         System.out.println();
         connectionGetUserRequest.acceptRequest(receiverResponseModel.getId(), takeRequest.getRequestId(), receiverCookie);
-
-
     }
 }

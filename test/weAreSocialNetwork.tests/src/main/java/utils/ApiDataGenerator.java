@@ -10,41 +10,18 @@ import models.api.responseModel.ProfileManagementResponseModel;
 
 import java.text.SimpleDateFormat;
 
-public class ApiDataGenerator {
-
-    private Faker faker = new Faker();
+public class ApiDataGenerator extends BaseDataGenerator {
 
     public UserRequestModel createUserWithRoleAdmin() {
         UserRequestModel adminUser = createUser(true);
         return adminUser;
     }
-
-    public CommentRequestModel createComment(String userId, String postId) {
-        String commentContent = faker.lorem().characters(10, 15);
-        CommentRequestModel commentRequestModel = new CommentRequestModel();
-        commentRequestModel.setContentComment(commentContent);
-        commentRequestModel.setUserId(userId);
-        commentRequestModel.setPostId(postId);
-        return commentRequestModel;
-
-    }
-
     public UserRequestModel createUserWithRoleUser() {
         UserRequestModel user = createUser(false);
         return user;
     }
-
-    public PostRequestModel createPrivatePost() {
-        var result = createPost(false);
-        return result;
-    }
-
-    public PostRequestModel createPublicPost() {
-        var result = createPost(true);
-        return result;
-    }
-
     private UserRequestModel createUser(boolean isAdmin) {
+
         String username = faker.name().firstName();
         String password = faker.internet().password();
         String email = faker.internet().emailAddress(username);
@@ -63,6 +40,27 @@ public class ApiDataGenerator {
 
         return userRequestModel;
     }
+
+    public CommentRequestModel createComment(String userId, String postId) {
+        String commentContent = faker.lorem().characters(10, 15);
+        CommentRequestModel commentRequestModel = new CommentRequestModel();
+        commentRequestModel.setContentComment(commentContent);
+        commentRequestModel.setUserId(userId);
+        commentRequestModel.setPostId(postId);
+        return commentRequestModel;
+
+    }
+    public PostRequestModel createPrivatePost() {
+        var result = createPost(false);
+        return result;
+    }
+
+    public PostRequestModel createPublicPost() {
+        var result = createPost(true);
+        return result;
+    }
+
+
 
     private PostRequestModel createPost(boolean isPublic) {
         String postContent = faker.lorem().characters(10, 20);

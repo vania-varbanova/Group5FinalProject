@@ -10,7 +10,7 @@ public abstract class BasePage {
 
     protected String url;
     protected WebDriver driver;
-    public UserActions actions;
+    protected UserActions actions;
 
     public BasePage(WebDriver driver, String urlKey) {
         String pageUrl = getConfigPropertyByKey(urlKey);
@@ -19,12 +19,13 @@ public abstract class BasePage {
         actions = new UserActions();
     }
 
-    public String getUrl() {
-        return url;
-    }
+//    public String getUrl() {
+//        return url;
+//    }
 
     public void navigateToPage() {
         this.driver.get(url);
+        waitForPageToLoad();
     }
 
     public void assertPageNavigated() {

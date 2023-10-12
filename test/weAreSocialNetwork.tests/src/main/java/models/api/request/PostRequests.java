@@ -27,6 +27,7 @@ public class PostRequests extends BaseRequest {
         return postResponseModel;
     }
     public PostResponseModel likePost(int postId, String cookieValue) {
+        var x = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
         var response = RestAssured
