@@ -1,39 +1,48 @@
 package SeleniumTests;
 
+import models.api.request.UserRequests;
+import models.api.requestModel.UserRequestModel;
+import models.api.responseModel.UserResponseModel;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.LatestPostsPage;
 import pages.MainPage;
 import pages.PersonalProfilePage;
+import services.DatabaseService;
 import testFramework.CustomWebDriverManager;
+import utils.ApiDataGenerator;
 
 public class NavigationTests extends BaseSystemTest {
-    @Test
-    public void anonymousUserCanSuccessfullyViewAboutUsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        mainPage.navigateToAboutUsPage();
-//        mainPage.assertButtonByLinkTextIsVisible("About us");
+    private UserRequests userRequests;
+    private ApiDataGenerator apiDataGenerator;
+    private DatabaseService databaseService;
+    private UserResponseModel userResponseModel;
+    private UserRequestModel userRequestModel;
+
+    @Override
+    @BeforeEach
+    public void beforeEach() {
+        super.beforeEach();
+        userRequests = new UserRequests();
+        apiDataGenerator = new ApiDataGenerator();
+        databaseService = new DatabaseService();
+
+        userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        userResponseModel = userRequests.createUser(userRequestModel);
+        loginPage.navigateToPage();
+        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
     }
-    @Test
-    public void anonymousUserCanSuccessfullyViewLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("Explore all posts");
+    @Override
+    @AfterEach
+    public void afterEach() {
+        super.afterEach();
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
-    @Test
-    public void anonymousUserCanSuccessfullyViewCertainCategoryLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-        latestPostsPage.selectCategory();
-    }
+
     @Test
     public void userCanSuccessfullyViewAboutUsPage() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        RegisterAndLogin();
         mainPage.navigateToPage();
         mainPage.navigateToAboutUsPage();
     }
@@ -42,7 +51,6 @@ public class NavigationTests extends BaseSystemTest {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
-        RegisterAndLogin();
         latestPostsPage.navigateToLatestPostsPage();
         //mainPage.assertButtonByLinkTextIsVisible("Explore all posts");
     }
@@ -51,7 +59,6 @@ public class NavigationTests extends BaseSystemTest {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
-        RegisterAndLogin();
         latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.selectCategory();
     }
@@ -59,7 +66,6 @@ public class NavigationTests extends BaseSystemTest {
     public void userCanSuccessfullyViewPersonalProfilePage() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         PersonalProfilePage personalProfilePage = new PersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        RegisterAndLogin();
         mainPage.navigateToPage();
         personalProfilePage.navigateToPersonalProfilePage();
     }

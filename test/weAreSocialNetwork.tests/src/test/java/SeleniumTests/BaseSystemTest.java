@@ -4,6 +4,7 @@ import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
@@ -31,7 +32,7 @@ public class BaseSystemTest {
         driver.quit();
     }
 
-    public void RegisterAndLogin() {
+    public void registerAndLogin() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         UserRequests userRequests = new UserRequests();
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();

@@ -31,6 +31,7 @@ public class LoginTests extends BaseSystemTest {
 
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
+
     }
 
     @Override

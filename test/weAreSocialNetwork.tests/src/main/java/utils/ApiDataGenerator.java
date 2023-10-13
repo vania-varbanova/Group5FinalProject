@@ -87,7 +87,6 @@ public class ApiDataGenerator extends BaseDataGenerator {
 
     public SkillsRequestModel editSkill() {
         String skill = faker.job().keySkills();
-
         SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
         skillsRequestModel.setSkill(skill);
         return skillsRequestModel;

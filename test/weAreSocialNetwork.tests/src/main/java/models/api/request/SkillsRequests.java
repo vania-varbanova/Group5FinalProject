@@ -55,13 +55,13 @@ public class SkillsRequests extends BaseRequest{
 
         return skillsResponseModel;
     }
-    public SkillsResponseModel editSkill(Object skillId){
+    public SkillsResponseModel editSkill(Object skillId, String skill) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
 
         var response = RestAssured
                 .given()
                 .contentType("application/json")
-                .queryParam("skill", faker.job().keySkills())
+                .queryParam("skill", skill)
                 .queryParam("skillId", skillId)
                 .put("/skill/edit");
 
@@ -69,7 +69,7 @@ public class SkillsRequests extends BaseRequest{
 
         return skillsResponseModel;
     }
-    public void deleteSkill(String skillId) {
+    public boolean deleteSkill(String skillId) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
 
         var request = RestAssured
@@ -77,5 +77,6 @@ public class SkillsRequests extends BaseRequest{
                 .queryParam("skillId", skillId)
                 .put("/skill/delete");
 
+        return request.getStatusCode() == 200;
     }
 }
