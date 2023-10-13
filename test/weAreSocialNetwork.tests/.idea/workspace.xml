@@ -5,61 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pages/LatestPostsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSeleniumTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/NavigationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/AuthenticateRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/AuthenticateRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/BaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/BaseRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ConnectionRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/PostRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/SkillsRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/SkillsRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/requestModel/ProfileManagementRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/responseModel/ProfileManagementResponseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ConsoleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ConsoleLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/SkillIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/SkillIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/ProfileManagementRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/PostIntegrationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/ProfileManagementIntegrationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/RegistrationProcessIntegrationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/integration/SkillIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/system/BaseSystemTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/system/LoginTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/NavigationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/NavigationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,81 +82,82 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommentsIntegrationTests (1)">
-    <configuration name="CommentsIntegrationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.NavigationTests.userCanSuccessfullyViewPersonalProfilePage">
+    <configuration name="LoginTests.userSuccessfullyLogin_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="RESTAssuredTests.*" />
+          <option name="PATTERN" value="SeleniumTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="RESTAssuredTests" />
-      <option name="MAIN_CLASS_NAME" value="RESTAssuredTests.CommentsIntegrationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConnectionIntegrationTests.approveSendRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
-      <option name="METHOD_NAME" value="approveSendRequest" />
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyLogin_when_validCredentials" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConnectionIntegrationTests.connectionSend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.userSuccessfullyRegister_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="integration.*" />
+          <option name="PATTERN" value="SeleniumTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
-      <option name="METHOD_NAME" value="connectionSend" />
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyRegister_when_validCredentials" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConnectionIntegrationTests.connectionSuccessfullySend_when_serverReturnsStatusCode200" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NavigationTests.anonymousUserCanSuccessfullyViewAboutUsPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="integration.*" />
+          <option name="PATTERN" value="SeleniumTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
-      <option name="METHOD_NAME" value="connectionSuccessfullySend_when_serverReturnsStatusCode200" />
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
+      <option name="METHOD_NAME" value="anonymousUserCanSuccessfullyViewAboutUsPage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConnectionIntegrationTests.getUserRequestSend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NavigationTests.anonymousUserCanSuccessfullyViewLatestPostsPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="integration.*" />
+          <option name="PATTERN" value="SeleniumTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="integration" />
-      <option name="MAIN_CLASS_NAME" value="integration.ConnectionIntegrationTests" />
-      <option name="METHOD_NAME" value="getUserRequestSend" />
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
+      <option name="METHOD_NAME" value="anonymousUserCanSuccessfullyViewLatestPostsPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NavigationTests.userCanSuccessfullyViewPersonalProfilePage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
+      <option name="METHOD_NAME" value="userCanSuccessfullyViewPersonalProfilePage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -207,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommentsIntegrationTests (1)" />
-        <item itemvalue="JUnit.ConnectionIntegrationTests.approveSendRequest" />
-        <item itemvalue="JUnit.ConnectionIntegrationTests.getUserRequestSend" />
-        <item itemvalue="JUnit.ConnectionIntegrationTests.connectionSuccessfullySend_when_serverReturnsStatusCode200" />
-        <item itemvalue="JUnit.ConnectionIntegrationTests.connectionSend" />
+        <item itemvalue="JUnit.NavigationTests.userCanSuccessfullyViewPersonalProfilePage" />
+        <item itemvalue="JUnit.NavigationTests.anonymousUserCanSuccessfullyViewAboutUsPage" />
+        <item itemvalue="JUnit.NavigationTests.anonymousUserCanSuccessfullyViewLatestPostsPage" />
+        <item itemvalue="JUnit.LoginTests.userSuccessfullyLogin_when_validCredentials" />
+        <item itemvalue="JUnit.LoginTests.userSuccessfullyRegister_when_validCredentials" />
       </list>
     </recent_temporary>
   </component>
@@ -234,6 +192,7 @@
       <workItem from="1697086281153" duration="5643000" />
       <workItem from="1697091955193" duration="29163000" />
       <workItem from="1697172010219" duration="4332000" />
+      <workItem from="1697179174031" duration="11080000" />
     </task>
     <servers />
   </component>
@@ -249,9 +208,6 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/models/api/request/UserRequests.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="33" />
           <url>file://$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java</url>
           <line>48</line>
           <option name="timeStamp" value="30" />
@@ -272,9 +228,6 @@
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/integration/ConnectionIntegrationTests.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="76" />
           <url>file://$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java</url>
           <line>22</line>
           <option name="timeStamp" value="52" />

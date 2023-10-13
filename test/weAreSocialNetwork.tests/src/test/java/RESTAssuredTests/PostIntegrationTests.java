@@ -30,6 +30,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
+    @Tag("OperationsToPost")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-40")
     public void postSuccessfullyCreated_when_sendRequestWithValidBody() {
         assertNotNull(postResponseModel.getId());
@@ -39,6 +40,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
+    @Tag("OperationsToPost")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-67")
     public void postSuccessfullyLiked_when_sendRequestWithValidBody() {
         var updatedPostModel = postRequests.likePost(postResponseModel.getId(), cookieValue);
@@ -49,6 +51,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
+    @Tag("OperationsToPost")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-68")
     public void postSuccessfullyDisliked_when_sendRequestWithValidData() {
         postRequests.likePost(postResponseModel.getId(), cookieValue);
@@ -59,6 +62,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
+    @Tag("OperationsToPost")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-44")
     public void postEditSuccessfully_when_sendRequestWithValidData() {
         EditPostRequestModel editPostRequestModel = apiDataGenerator.editPost(true);
@@ -69,6 +73,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
+    @Tag("OperationsToPost")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-45")
     public void postSuccessfullyDeleted_when_sendRequestWithValidData() {
         var responseOptions = postRequests.deletePost(postResponseModel.getId(), cookieValue);

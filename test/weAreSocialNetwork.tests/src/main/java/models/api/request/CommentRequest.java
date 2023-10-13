@@ -69,7 +69,7 @@ public class CommentRequest extends BaseRequest {
                 .contentType(ContentType.JSON)
                 .put("/comment/auth/editor");
 
-        logger.logSuccessfullMessage(String.format("Comment with id: %s successfully edited", id));
+        logger.logSuccessfullMessage(String.format("Comment with id: %s successfully edited.", id));
         logger.logLineSeparator();
 
         return response;

@@ -12,7 +12,7 @@ public class NavigationTests extends BaseSeleniumTest {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         mainPage.navigateToAboutUsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("About us");
+//        mainPage.assertButtonByLinkTextIsVisible("About us");
     }
     @Test
     public void anonymousUserCanSuccessfullyViewLatestPostsPage() {

@@ -49,6 +49,9 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
+    @Tag("Integration")
+    @Tag("OperationsToConnectPeople")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
     public void getUserRequestSend() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);
@@ -57,6 +60,9 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
+    @Tag("Integration")
+    @Tag("OperationsToConnectPeople")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
     public void approveSendRequest() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
 

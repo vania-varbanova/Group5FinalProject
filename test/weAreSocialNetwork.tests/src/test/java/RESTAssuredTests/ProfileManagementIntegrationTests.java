@@ -22,7 +22,8 @@ public class ProfileManagementIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
-    @IssueLink(jiraLink = "")
+    @Tag("ProfileManagementAction")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-171")
     public void userUpdateSuccessfullyCreated_when_sendRequestWithValidData() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

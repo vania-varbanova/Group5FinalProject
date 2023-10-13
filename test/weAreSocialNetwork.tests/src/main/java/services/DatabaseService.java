@@ -27,7 +27,7 @@ public class DatabaseService {
         boolean isSuccessful = preparedStatement.execute();
 
         if (isSuccessful == false) {
-            logger.logSuccessfullMessage(String.format("User with %s id successfully deleted;", id));
+            logger.logSuccessfullMessage(String.format("User with %s id successfully deleted.", id));
             logger.logLineSeparator();
         }
 
