@@ -11,6 +11,7 @@ public class AuthenticateRequests extends BaseRequest {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.baseUrl");
         String username = userRequestModel.getUsername();
         String password = userRequestModel.getPassword();
+
         var response = RestAssured
                 .given()
                 .contentType(ContentType.MULTIPART)
@@ -18,8 +19,11 @@ public class AuthenticateRequests extends BaseRequest {
                 .multiPart("password", password)
                 .when()
                 .post("/authenticate");
-        ConsoleLogger.logSuccessfullMessage(String.format("User with username: %s successfully authenticated in the system.", username));
-        ConsoleLogger.logLineSeparator();
+
+        logger.logSuccessfullMessage(String.format("User with username: %s successfully authenticated in the system.", username));
+        logger.logLineSeparator();
+        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
+
         return response.cookies().get("JSESSIONID");
     }
 }

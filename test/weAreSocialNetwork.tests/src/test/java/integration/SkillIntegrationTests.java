@@ -16,6 +16,8 @@ import java.util.List;
 
 public class SkillIntegrationTests {
 
+    private ConsoleLogger logger = new ConsoleLogger();
+
     @Test
     public void skillSuccessfullyCreated() {
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
@@ -37,6 +39,7 @@ public class SkillIntegrationTests {
 
         //skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
+
     @Test
     public void skillSuccessfullyDeleted() {
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
@@ -50,6 +53,7 @@ public class SkillIntegrationTests {
 
         skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
+
     @Test
     public void FindAllSkillsRequestSuccessfullyProvidesAllSkills() {
         SkillsRequests skillsRequests = new SkillsRequests();
@@ -82,6 +86,7 @@ public class SkillIntegrationTests {
 
         skillsRequests.deleteSkill(String.valueOf(createdSkill.getSkillId()));
     }
+
     @Test
     public void skillSuccessfullyEdited() {
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
@@ -91,8 +96,8 @@ public class SkillIntegrationTests {
         SkillsRequestModel skillsRequestModel = apiDataGenerator.createSkill();
         SkillsResponseModel createdSkill = skillsRequests.createSkill(skillsRequestModel);
 
-        ConsoleLogger.log("Created Skill:");
-        ConsoleLogger.log(createdSkill.toString());
+        logger.log("Created Skill:");
+        logger.log(createdSkill.toString());
 
         String firstSkill = createdSkill.getSkill();
         Assertions.assertFalse(firstSkill.isEmpty());
@@ -101,8 +106,8 @@ public class SkillIntegrationTests {
         createdSkill = skillsRequests.editSkill(createdSkill.getSkillId());
 
         if (createdSkill != null) {
-            ConsoleLogger.log("Edited Skill:");
-            ConsoleLogger.log(createdSkill.toString());
+            logger.log("Edited Skill:");
+            logger.log(createdSkill.toString());
 
             String secondSkill = createdSkill.getSkill();
 
@@ -113,7 +118,7 @@ public class SkillIntegrationTests {
 
             skillsRequests.deleteSkill(String.valueOf(createdSkill.getSkillId()));
         } else {
-            ConsoleLogger.log("Edited Skill is null");
+            logger.log("Edited Skill is null");
         }
 
         skillsRequests.deleteSkill(String.valueOf(createdSkill.getSkillId()));

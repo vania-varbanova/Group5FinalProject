@@ -1,6 +1,7 @@
 package integration;
 
 import annotations.IssueLink;
+import io.restassured.response.ResponseOptions;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,81 +30,48 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
 
     @Test
     @Tag("Integration")
-    @IssueLink(jiraLink = "")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
     public void commentSuccessfullyCreated_when_serverReturnsStatusCode200() {
         assertNotNull(commentResponseModel.getId(), "");
         assertEquals(commentRequestModel.getContentComment(), commentResponseModel.getContent(), formatErrorMessage("comment content"));
         assertFalse(commentResponseModel.isLiked());
     }
 
-//    @Test
-//    public void commentSuccessfullyLiked_when_serverReturnsStatusCode200() {
-//        var updateCommentModel = commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
-//
-//        assertNotNull(commentResponseModel.getLikes());
-//        assertTrue(updateCommentModel.isLiked());
-//    }
+    @Test
+    @Tag("Integration")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
+    public void commentSuccessfullyLiked_when_serverReturnsStatusCode200() {
+        var updateCommentModel = commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
 
-//    @Test
-//    public void commentSuccessfullyDisliked_when_sendRequestWithValidBody() throws SQLException {
-//        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-//        userResponseModel = userRequests.createUser(userRequestModel);
-//        String cookie = authenticateRequests.authenticateUser(userRequestModel);
-//        PostRequestModel postRequestModel = apiDataGenerator.createPublicPost();
-//        PostRequests postRequests = new PostRequests();
-//        PostResponseModel postResponseModel = postRequests.createPost(postRequestModel, cookie);
-//        CommentRequestModel commentRequestModel = apiDataGenerator.createComment(userResponseModel.getId(), postResponseModel.getId());
-//        CommentRequest commentRequest = new CommentRequest();
-//        CommentResponseModel commentResponseModel = commentRequest.createComment(commentRequestModel, cookie);
-//        int commentId = Integer.parseInt(commentResponseModel.getId());
-//        commentRequest.likeComment(commentId, cookie);
-//        CommentResponseModel updatedCommentModel = commentRequest.dislikeComment(commentId, cookie);
-//        assertFalse(updatedCommentModel.isLiked());
-//        commentRequest.deleteComment(commentResponseModel.getId(), cookie);
-//        postRequests.deletePost(postResponseModel.getId(), cookie);
-//        postRequests.deletePost(postResponseModel.getId(), cookie);
-//    }
-//
-//    @Test
-//    public void commentEditSuccessfully_when_sendRequestWithValidBody() {
-//        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-//        userRequests.createUser(userRequestModel);
-//        String cookie = authenticateRequests.authenticateUser(userRequestModel);
-//        PostRequestModel postRequestModel = apiDataGenerator.createPublicPost();
-//        PostRequests postRequests = new PostRequests();
-//        PostResponseModel postResponseModel = postRequests.createPost(postRequestModel, cookie);
-//        CommentRequestModel commentRequestModel = apiDataGenerator.createComment(userResponseModel.getId(), postResponseModel.getId());
-//        CommentRequest commentRequest = new CommentRequest();
-//        CommentResponseModel commentResponseModel = commentRequest.createComment(commentRequestModel, cookie);
-//        int commentId = Integer.parseInt(commentResponseModel.getId());
-//        ResponseOptions responseOptions = commentRequest.editComment(commentId, cookie, commentRequestModel);
-//
-//        assertOkStatusCode(responseOptions);
-//    }
-//
-//    @Test
-//    public void commentSuccessfullyDeleted_when_sendRequestWithValidBody() {
-//        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-//        userRequests.createUser(userRequestModel);
-//        String cookie = authenticateRequests.authenticateUser(userRequestModel);
-//        PostRequestModel postRequestModel = apiDataGenerator.createPublicPost();
-//        PostRequests postRequests = new PostRequests();
-//        PostResponseModel postResponseModel = postRequests.createPost(postRequestModel, cookie);
-//        CommentRequestModel commentRequestModel = apiDataGenerator.createComment(userResponseModel.getId(), postResponseModel.getId());
-//        CommentRequest commentRequest = new CommentRequest();
-//        CommentResponseModel commentResponseModel = commentRequest.createComment(commentRequestModel, cookie);
-//        ResponseOptions responseOptions = commentRequest.deleteComment(commentResponseModel.getId(), cookie);
-//        assertOkStatusCode(responseOptions);
-//    }
-//
-//    @Test
-//    public void statusCodeOk_when_sendAll() {
-//        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-//        userRequests.createUser(userRequestModel);
-//        String cookie = authenticateRequests.authenticateUser(userRequestModel);
-//        ResponseOptions responseOption = commentRequest.getAllComment(cookie);
-//
-//        assertOkStatusCode(responseOption);
-//    }
+        assertNotNull(updateCommentModel.getLikes());
+        assertTrue(updateCommentModel.isLiked());
+    }
 
+    @Test
+    @Tag("Integration")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-64")
+    public void commentSuccessfullyDisliked_when_serverReturnsStatusCode200() {
+        commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
+        var updatedCommentModel = commentRequest.dislikeComment(commentResponseModel.getId(), cookieValue);
+
+        assertFalse(updatedCommentModel.isLiked());
+    }
+
+    @Test
+    @Tag("Integration")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
+    public void commentEditedSuccessfully_when_serverReturnsStatusCode200() {
+        var responseOptions = commentRequest.editComment(commentResponseModel.getId(), cookieValue, commentRequestModel);
+
+        assertOkStatusCode(responseOptions);
+    }
+
+    @Test
+    @Tag("Integration")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
+    public void commentSuccessfullyDeleted_when_sendRequestWithValidBody() {
+        ResponseOptions responseOptions = commentRequest.deleteComment(commentResponseModel.getId(), cookieValue);
+
+        assertOkStatusCode(responseOptions);
+    }
 }

@@ -1,14 +1,20 @@
 package services;
 
+import lombok.Data;
 import lombok.SneakyThrows;
 import utils.ConsoleLogger;
 
 import java.sql.*;
 
 public class DatabaseService {
-    private static final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11651605";
-    private static final String USERNAME = "sql11651605";
-    private static final String PASSWORD = "SJ7l9YqCua";
+    private final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11651605";
+    private final String USERNAME = "sql11651605";
+    private final String PASSWORD = "SJ7l9YqCua";
+    private final ConsoleLogger logger;
+
+    public DatabaseService() {
+        logger = new ConsoleLogger();
+    }
 
     @SneakyThrows
     public void deleteUserWithId(String id) {
@@ -18,12 +24,17 @@ public class DatabaseService {
         String deleteUserStatement = "DELETE FROM users WHERE user_id= ?;";
         PreparedStatement preparedStatement = connection.prepareStatement(deleteUserStatement);
         preparedStatement.setString(1, id);
-       boolean isSuccessful =  preparedStatement.execute();
-       if(isSuccessful == false){
-           ConsoleLogger.log(String.format("User with %s id successfully deleted;", id));
-       }
+        boolean isSuccessful = preparedStatement.execute();
+
+        if (isSuccessful == false) {
+            logger.logSuccessfullMessage(String.format("User with %s id successfully deleted;", id));
+            logger.logLineSeparator();
+        }
+
         Statement setForeignKeyValidation = connection.createStatement();
         setForeignKeyValidation.execute("SET FOREIGN_KEY_CHECKS=1");
         connection.close();
+
+        Thread.sleep(3000);
     }
 }

@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import models.api.helpers.Location;
 
+import java.time.LocalDate;
+
 @Data
 public class ProfileManagementResponseModel {
     @SerializedName("id")
@@ -17,7 +19,7 @@ public class ProfileManagementResponseModel {
     @SerializedName("location")
     private Location location ;
     @SerializedName("birthYear")
-    private String  birthYear;
+    private String birthYear;
     @SerializedName("personalReview")
     private String  personalReview;
     @SerializedName("memberSince")
