@@ -29,5 +29,4 @@ public class LatestPostsPage extends BasePage {
         actions.waitForElementClickable("weAreSocialNetwork.latestPostsPage.browseButton");
         actions.clickElement("weAreSocialNetwork.latestPostsPage.browseButton");
     }
-
 }

@@ -3,6 +3,7 @@ package SeleniumTests;
 import org.junit.jupiter.api.Test;
 import pages.LatestPostsPage;
 import pages.MainPage;
+import pages.PersonalProfilePage;
 import testFramework.CustomWebDriverManager;
 
 public class NavigationTests extends BaseSeleniumTest {
@@ -53,5 +54,13 @@ public class NavigationTests extends BaseSeleniumTest {
         RegisterAndLogin();
         latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.selectCategory();
+    }
+    @Test
+    public void userCanSuccessfullyViewPersonalProfilePage() {
+        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PersonalProfilePage personalProfilePage = new PersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        RegisterAndLogin();
+        mainPage.navigateToPage();
+        personalProfilePage.navigateToPersonalProfilePage();
     }
 }
