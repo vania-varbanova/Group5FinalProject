@@ -6,7 +6,7 @@ import pages.MainPage;
 import pages.PersonalProfilePage;
 import testFramework.CustomWebDriverManager;
 
-public class NavigationTests extends BaseSeleniumTest {
+public class NavigationTests extends BaseSystemTest {
     @Test
     public void anonymousUserCanSuccessfullyViewAboutUsPage() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
