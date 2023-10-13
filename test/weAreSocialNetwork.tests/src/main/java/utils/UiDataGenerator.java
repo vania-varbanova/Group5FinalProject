@@ -10,13 +10,13 @@ public class UiDataGenerator extends BaseDataGenerator {
         String username = faker.name().firstName();
         String password = faker.internet().password();
         String email = faker.internet().emailAddress(username);
-        String profesion = String.valueOf(faker.number().numberBetween(101, 157));;
+        String profession = String.valueOf(faker.number().numberBetween(101, 157));;
 
         UserUiModel userUiModel  = new UserUiModel();
         userUiModel.setUsername(username);
         userUiModel.setEmail(email);
         userUiModel.setPassword(password);
-        userUiModel.setProfession(profesion);
+        userUiModel.setProfession(profession);
         return  userUiModel;
     }
 }

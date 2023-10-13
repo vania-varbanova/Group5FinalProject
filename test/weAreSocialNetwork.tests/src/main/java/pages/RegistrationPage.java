@@ -11,7 +11,7 @@ import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
 public class RegistrationPage extends BasePage {
-    public RegistrationPage(Driver driver) {
+    public RegistrationPage(WebDriver driver) {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.registrationPage"));
     }
 
