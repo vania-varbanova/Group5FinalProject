@@ -1,4 +1,4 @@
-package system;
+package SeleniumTests;
 
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
@@ -13,22 +13,19 @@ import utils.UiDataGenerator;
 
 public class LoginTests {
     @Test
-    public void userSuccessfullyLogin_when_enterValidCredentials() throws InterruptedException {
+    public void userSuccessfullyLogin_when_validCredentials() throws InterruptedException {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         UserRequests userRequests = new UserRequests();
         ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userRequests.createUser(userRequestModel);
-       LoginPage loginPage = new LoginPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-       loginPage.navigateToPage();
-       loginPage.enterLoginCredentials(userRequestModel.getUsername(),userRequestModel.getPassword());
+        LoginPage loginPage = new LoginPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        loginPage.navigateToPage();
+        loginPage.enterLoginCredentials(userRequestModel.getUsername(),userRequestModel.getPassword());
         mainPage.assertButtonByLinkTextIsVisible("LOGOUT");
-//       mainPage.assertButtonByLinkTextIsVisible("Personal Profile");
-//       mainPage.assertButtonByLinkTextIsVisible("Add New post");
-//
     }
     @Test
-    public void userSuccessfullyRegistration_when_enterValidCredentials(){
+    public void userSuccessfullyRegister_when_validCredentials() {
         RegistrationPage registrationPage = new RegistrationPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         UiDataGenerator uiDataGenerator = new UiDataGenerator();
         UserUiModel userUiModel = uiDataGenerator.createUser();

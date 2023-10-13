@@ -28,9 +28,6 @@ public class ProfileManagementRequest extends BaseRequest{
                 .post(String.format("/users/auth/%s/personal",userId));
         Assertions.assertEquals(200, response.statusCode());
         String responseBody = response.body().print();
-//        var parsedResponseBody = Arrays.stream(responseBody.split(" ")).collect(Collectors.toList());
-//        String name= parsedResponseBody.get(USERNAME_INDEX);
-//        String id = parsedResponseBody.get(USER_ID_INDEX);
 
         ProfileManagementResponseModel profileManagementResponseModel = jsonParser.fromJson(response.body().prettyPrint(), ProfileManagementResponseModel.class);
         return profileManagementResponseModel;

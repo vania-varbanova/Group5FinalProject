@@ -16,13 +16,23 @@ public class MainPage extends BasePage {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionLinks"), text);
         return driver.findElement(By.xpath(xpath));
     }
-    public void assertButtonByLinkTextIsVisible(String text){
+
+    public void assertButtonByLinkTextIsVisible(String text) {
         WebElement webElement = buttonByLinkText(text);
         actions.assertElementPresent(webElement);
     }
-    @Override
 
+    public void assertTitleIsVisible(String title) {
+    }
+
+    @Override
     public void waitForPageToLoad() {
-    actions.waitForJavascript();
+        actions.waitForJavascript();
+    }
+
+    public void navigateToAboutUsPage() {
+        waitForPageToLoad();
+        actions.waitForElementVisible("weAreSocialNetwork.homePage.aboutUsButton");
+        actions.clickElement("weAreSocialNetwork.homePage.aboutUsButton");
     }
 }

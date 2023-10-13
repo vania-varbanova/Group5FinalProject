@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.String.format;
@@ -44,6 +45,7 @@ public class UserActions {
         WebElement element = driver.findElement(By.xpath(locator));
         element.sendKeys(value);
     }
+
 
     public void dragAndDropElement(String fromElementLocator, String toElementLocator) {
         String fromLocator = getLocatorValueByKey(fromElementLocator);
@@ -136,7 +138,6 @@ public class UserActions {
         var element = findElementByXpath(key);
         Utils.LOGGER.info("Hovering element with locator");
         driverActions.moveToElement(element).perform();
-
     }
 
     public void switchToIFrame(String iframe) {
@@ -147,20 +148,26 @@ public class UserActions {
 
     public boolean isElementPresent(String locator, Object... arguments) {
         // TODO: Implement the method
-        // 1. Get default timeout from properties
-        // 2. Initialize Wait utility
-        // 3. Try to wait for element present
-        // 4. return true/false if the element is/not present
-        return true;
+        String xpath = getLocatorValueByKey(locator, arguments);
+        WebDriverWait wait = new WebDriverWait(driver, timeoutSettings.elementToBePresent());
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
     public boolean isElementVisible(String locator, Object... arguments) {
         // TODO: Implement the method
-        // 1. Get default timeout from properties
-        // 2. Initialize Wait utility
-        // 3. Try to wait for element visible
-        // 4. return true/false if the element is/not visible
-        return true;
+        String xpath = getLocatorValueByKey(locator, arguments);
+        WebDriverWait wait = new WebDriverWait(driver, timeoutSettings.elementToBeVisible());
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
     public void waitFor(long timeOutMilliseconds) {
@@ -197,5 +204,12 @@ public class UserActions {
         String value = Utils.getUIMappingByKey(locatorKey);
 
         return driver.findElement(By.xpath(value));
+    }
+    public void selectOptionFromDropdown(String locator, String optionText, Object... locatorArguments) {
+        String xpath = getLocatorValueByKey(locator, locatorArguments);
+        WebElement dropdownElement = driver.findElement(By.xpath(xpath));
+
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByVisibleText(optionText);
     }
 }
