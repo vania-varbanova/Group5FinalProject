@@ -17,7 +17,7 @@ public class SkillsRequests extends BaseRequest{
     public SkillsResponseModel createSkill(SkillsRequestModel skillsRequestModel) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         String requestBody = jsonParser.toJson(skillsRequestModel);
-        ConsoleLogger.log(String.format("Request body: %s", requestBody));
+        logger.log(String.format("Request body: %s", requestBody));
         var response = RestAssured
                 .given()
                 .contentType("application/json")

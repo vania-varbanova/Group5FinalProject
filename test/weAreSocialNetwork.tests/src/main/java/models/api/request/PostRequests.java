@@ -1,94 +1,96 @@
 package models.api.request;
 
+
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.ResponseOptions;
 import models.api.requestModel.EditPostRequestModel;
 import models.api.requestModel.PostRequestModel;
 import models.api.responseModel.PostResponseModel;
-import org.openqa.selenium.Cookie;
-import utils.ConfigPropertiesReader;
-import utils.ConsoleLogger;
+import utils.LoggerApiMessages;
 
 public class PostRequests extends BaseRequest {
-
     public PostResponseModel createPost(PostRequestModel postRequestModel, String cookieValue) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
         String requestBody = jsonParser.toJson(postRequestModel);
-        ConsoleLogger.log(String.format("Request body: %s", requestBody));
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+        logger.log(String.format(LoggerApiMessages.REQUEST_BODY, "Create post", requestBody));
+
         var response = RestAssured
                 .given()
-                .cookie(String.valueOf(cookie))
-                .contentType("application/json")
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
+                .contentType(ContentType.JSON)
                 .body(requestBody)
                 .post("/post/auth/creator");
 
-        PostResponseModel postResponseModel = jsonParser.fromJson(response.body().prettyPrint(), PostResponseModel.class);
+        var responseBody = response.body().asPrettyString();
+        PostResponseModel postResponseModel = jsonParser.fromJson(responseBody, PostResponseModel.class);
+
+        logger.log(String.format(LoggerApiMessages.RESPONSE_BODY, "Create post", responseBody));
+        logger.logLineSeparator();
+
         return postResponseModel;
     }
-    public PostResponseModel likePost(int postId, String cookieValue) {
-        var x = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+
+    public PostResponseModel likePost(String id, String cookieValue) {
+        logger.logSuccessfullMessage(String.format("Sending like request for post with id: %s \n", id));
+
         var response = RestAssured
                 .given()
-                .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
+                .queryParam("postId", id)
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
                 .post("/post/auth/likesUp");
+        assertSuccessStatusCode(response);
 
-        PostResponseModel updatedPostModel = jsonParser.fromJson(response.prettyPrint(), PostResponseModel.class);
-        System.out.println("Like post responsebody: " + response.prettyPrint());
+        var responseBody = response.body().asPrettyString();
+        PostResponseModel updatedPostModel = jsonParser.fromJson(responseBody, PostResponseModel.class);
+        logger.log(String.format(LoggerApiMessages.RESPONSE_BODY, "Like post", responseBody));
+        logger.logLineSeparator();
 
         return updatedPostModel;
     }
-    public PostResponseModel dislikePost(int postId, String cookieValue) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+
+    public PostResponseModel dislikePost(String id, String cookieValue) {
+        logger.logSuccessfullMessage(String.format("Sending dislike request for post with id: %s \n", id));
         var response = RestAssured
                 .given()
-                .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
+                .queryParam("postId", id)
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
                 .post("/post/auth/likesUp");
-
-        PostResponseModel dislikePostModel = jsonParser.fromJson(response.prettyPrint(), PostResponseModel.class);
-        System.out.println("Dislike post responsebody: " + response.prettyPrint());
+        assertSuccessStatusCode(response);
+        String responseBody = response.asPrettyString();
+        PostResponseModel dislikePostModel = jsonParser.fromJson(responseBody, PostResponseModel.class);
+        logger.log(String.format(LoggerApiMessages.RESPONSE_BODY, "Dislike post", responseBody));
+        logger.logLineSeparator();
 
         return dislikePostModel;
     }
-    public ResponseOptions editPost(int postId, String cookieValue, EditPostRequestModel editPostRequestModels) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+
+    public ResponseOptions editPost(String id, String cookieValue, EditPostRequestModel editPostRequestModels) {
+        logger.logLineSeparator();
         String requestBodyEdit = jsonParser.toJson(editPostRequestModels);
-        ConsoleLogger.log(String.format("Request bodyEdit: %s", requestBodyEdit));
+        logger.logSuccessfullMessage(String.format("Request bodyEdit: %s", requestBodyEdit));
+
         var response = RestAssured
                 .given()
-                .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
-                .contentType("application/json")
+                .queryParam("postId", id)
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
+                .contentType(ContentType.JSON)
                 .body(requestBodyEdit)
                 .put("/post/auth/editor");
 
         return response;
     }
 
-    public ResponseOptions deletePost(String postId, String cookieValue) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
+    public ResponseOptions deletePost(String id, String cookieValue) {
         var response = RestAssured
                 .given()
-                .queryParam("postId", postId)
-                .cookie(String.valueOf(cookie))
+                .queryParam("postId", id)
+                .cookie(generateAuthenticationCookieWithValue(cookieValue))
                 .delete("/post/auth/manager");
-       return  response;
-    }
-
-    public ResponseOptions GetAllPost( String cookieValue) {
-        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
-        Cookie cookie = new Cookie("JSESSIONID", cookieValue, "/");
-        var response = RestAssured
-                .given()
-                .cookie(String.valueOf(cookie))
-                .get("/post/");
+        if (response.statusCode() != 200) {
+            return response;
+        }
+        logger.logSuccessfullMessage(String.format(LoggerApiMessages.ENTITY_SUCCESSFULLY_DELETED, "Post", id));
+        logger.logLineSeparator();
         return response;
     }
 }

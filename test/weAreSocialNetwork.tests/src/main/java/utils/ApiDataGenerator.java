@@ -11,17 +11,17 @@ import models.api.responseModel.ProfileManagementResponseModel;
 import java.text.SimpleDateFormat;
 
 public class ApiDataGenerator extends BaseDataGenerator {
-
     public UserRequestModel createUserWithRoleAdmin() {
         UserRequestModel adminUser = createUser(true);
         return adminUser;
     }
+
     public UserRequestModel createUserWithRoleUser() {
         UserRequestModel user = createUser(false);
         return user;
     }
-    private UserRequestModel createUser(boolean isAdmin) {
 
+    private UserRequestModel createUser(boolean isAdmin) {
         String username = faker.name().firstName();
         String password = faker.internet().password();
         String email = faker.internet().emailAddress(username);
@@ -50,6 +50,7 @@ public class ApiDataGenerator extends BaseDataGenerator {
         return commentRequestModel;
 
     }
+
     public PostRequestModel createPrivatePost() {
         var result = createPost(false);
         return result;
@@ -59,8 +60,6 @@ public class ApiDataGenerator extends BaseDataGenerator {
         var result = createPost(true);
         return result;
     }
-
-
 
     private PostRequestModel createPost(boolean isPublic) {
         String postContent = faker.lorem().characters(10, 20);
@@ -72,7 +71,6 @@ public class ApiDataGenerator extends BaseDataGenerator {
 
         return postRequestModel;
     }
-
 
     public SkillsRequestModel createSkill() {
         int categoryId = faker.number().numberBetween(101, 157);
@@ -95,21 +93,8 @@ public class ApiDataGenerator extends BaseDataGenerator {
         return skillsRequestModel;
     }
 
-    public ProfileManagementRequestModel createProfile(boolean isMale) {
+    public ProfileManagementRequestModel updateProfile(boolean isMale) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String professionId = String.valueOf(faker.number().numberBetween(101, 157));
-        String skill = faker.job().keySkills();
-
-        String categoryId = String.valueOf(faker.number().numberBetween(101, 157));
-        Category category = new Category();
-        category.setName("CategoryName");
-        category.setCategoryId(Integer.parseInt(categoryId));
-
-        return null;
-    }
-    private ProfileManagementRequestModel updateProfile(boolean isMale){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-
         String birthYear = sdf.format(faker.date().birthday());
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
@@ -122,14 +107,9 @@ public class ApiDataGenerator extends BaseDataGenerator {
         boolean picturePrivacy = false;
         String gender = isMale ? "MALE" : "FEMALE";
         ProfileManagementRequestModel profileManagementRequestModel = new ProfileManagementRequestModel();
-//        ProfileManagementRequestModel profileManagementRequestModel1 = ProfileManagementRequestModel.builder()
-//                .firstName(firstName)
-//                .birthYear(birthYear)
-//                .build();
         profileManagementRequestModel.setBirthYear(birthYear);
         profileManagementRequestModel.setFirstName(firstName);
         profileManagementRequestModel.setLastName(lastName);
-
         profileManagementRequestModel.setPicturePrivate(picturePrivacy);
         profileManagementRequestModel.setGender(gender);
         profileManagementRequestModel.setLocation(location);
@@ -146,5 +126,20 @@ public class ApiDataGenerator extends BaseDataGenerator {
         editPostRequestModel.setPublic(isPublic ? true : false);
 
         return editPostRequestModel;
+    }
+
+    public ConnectionSendRequestModel createConnection(String receiverId, String receiverUsername) {
+        ConnectionSendRequestModel receiver = new ConnectionSendRequestModel();
+        receiver.setReceiverId(receiverId);
+        receiver.setReceiverUsername(receiverUsername);
+
+        return receiver;
+    }
+
+    public FriendRequestAcceptRequestModel createAcceptFriendRequest(String receiverId, String requestId) {
+        FriendRequestAcceptRequestModel friendRequestAcceptRequestModel = new FriendRequestAcceptRequestModel();
+        friendRequestAcceptRequestModel.setRequestId(requestId);
+        friendRequestAcceptRequestModel.setReceiverId(receiverId);
+        return friendRequestAcceptRequestModel;
     }
 }

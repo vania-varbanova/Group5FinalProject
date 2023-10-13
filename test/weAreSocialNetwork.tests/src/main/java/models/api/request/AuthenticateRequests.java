@@ -1,21 +1,29 @@
 package models.api.request;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import models.api.requestModel.UserRequestModel;
 import utils.ConfigPropertiesReader;
+import utils.ConsoleLogger;
 
 public class AuthenticateRequests extends BaseRequest {
-
     public String authenticateUser(UserRequestModel userRequestModel) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.baseUrl");
+        String username = userRequestModel.getUsername();
+        String password = userRequestModel.getPassword();
+
         var response = RestAssured
                 .given()
-                .contentType("multipart/form-data")
-                .multiPart("username", userRequestModel.getUsername())
-                .multiPart("password", userRequestModel.getPassword())
+                .contentType(ContentType.MULTIPART)
+                .multiPart("username", username)
+                .multiPart("password", password)
                 .when()
                 .post("/authenticate");
-        var result = response.cookies().get("JSESSIONID");
-        return result;
+
+        logger.logSuccessfullMessage(String.format("User with username: %s successfully authenticated in the system.", username));
+        logger.logLineSeparator();
+        RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
+
+        return response.cookies().get("JSESSIONID");
     }
 }
