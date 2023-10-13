@@ -1,4 +1,4 @@
-package integration;
+package RESTAssuredTests;
 
 import annotations.IssueLink;
 import models.api.helpers.GetUserRequest;

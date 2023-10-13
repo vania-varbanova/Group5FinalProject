@@ -1,4 +1,4 @@
-package system;
+package SeleniumTests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,6 @@ public class BaseSystemTest {
     protected LoginPage loginPage;
     protected MainPage mainPage;
 
-    @BeforeEach
     public void beforeEach() {
         webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
         driver = new Driver(webDriver);

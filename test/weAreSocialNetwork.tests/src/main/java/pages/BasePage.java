@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import testFramework.Driver;
 import testFramework.UserActions;
 
@@ -8,10 +9,10 @@ import static testFramework.Utils.getConfigPropertyByKey;
 public abstract class BasePage {
 
     protected String url;
-    protected Driver driver;
+    protected WebDriver  driver;
     protected UserActions actions;
 
-    public BasePage(Driver driver, String urlKey) {
+    public BasePage(WebDriver driver, String urlKey) {
         String pageUrl = getConfigPropertyByKey(urlKey);
         this.driver = driver;
         this.url = pageUrl;

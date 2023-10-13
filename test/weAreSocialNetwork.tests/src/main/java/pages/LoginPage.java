@@ -12,7 +12,7 @@ public class LoginPage extends BasePage{
 
     UiDataGenerator uiDataGenerator;
 
-    public LoginPage(Driver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.loginPage"));
     }
 
