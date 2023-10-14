@@ -1,5 +1,6 @@
 package testFramework;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +14,7 @@ public class UserActions {
     final WebDriver driver;
     final TimeoutSettings timeoutSettings;
     final Actions driverActions;
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -82,8 +84,8 @@ public class UserActions {
     }
 
     public void assertElementPresent(WebElement webElement) {
-     //   Assertions.assertNotNull(webElement,
-           //     format("Element with %s doesn't present.", webElement));
+        Assertions.assertNotNull(webElement,
+                format("Element with %s doesn't present.", webElement));
     }
 
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {
@@ -107,7 +109,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-      //      Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            //      Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -117,7 +119,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         } catch (Exception exception) {
-           // Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            // Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -127,7 +129,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-         //   Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            //   Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -183,7 +185,7 @@ public class UserActions {
         String expectedUrl = Utils.getConfigPropertyByKey(urlKey);
         String actualUrl = driver.getCurrentUrl();
 
-      //  Assertions.assertEquals(expectedUrl, actualUrl, String.format("Expected url is: %s, but actual url is %s", expectedUrl, actualUrl));
+        //  Assertions.assertEquals(expectedUrl, actualUrl, String.format("Expected url is: %s, but actual url is %s", expectedUrl, actualUrl));
     }
 
     public void pressKey(Keys key) {
@@ -204,6 +206,7 @@ public class UserActions {
 
         return driver.findElement(By.xpath(value));
     }
+
     public void selectOptionFromDropdown(String locator, String optionText, Object... locatorArguments) {
         String xpath = getLocatorValueByKey(locator, locatorArguments);
         WebElement dropdownElement = driver.findElement(By.xpath(xpath));
@@ -211,6 +214,7 @@ public class UserActions {
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByVisibleText(optionText);
     }
+
     public void scrollUntilElementVisible(String locator) {
         String xpath = getLocatorValueByKey(locator);
         WebElement element = driver.findElement(By.xpath(xpath));

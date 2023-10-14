@@ -48,8 +48,8 @@ public class RegistrationPage extends BasePage {
 
     }
 
-    public WebElement errorMessage() {
-        String xpath = "";
+    public WebElement errorMessageTextField() {
+        String xpath = UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.errorMessageTextField");
         return driver.findElement(By.xpath(xpath));
     }
 
@@ -73,11 +73,12 @@ public class RegistrationPage extends BasePage {
         actions.assertElementPresent(webElement);
     }
 
-    public void assertErrorMessage(String expectedErrorMessage) {
-        String actualErrorMessage = errorMessage().getText();
+    public void assertErrorMessageEquals(String expectedErrorMessage) {
+        String actualErrorMessage = errorMessageTextField().getText();
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
+
 
     @Override
     public void waitForPageToLoad() {

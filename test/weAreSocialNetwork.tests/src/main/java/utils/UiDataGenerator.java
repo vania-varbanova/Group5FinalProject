@@ -1,12 +1,6 @@
 package utils;
 
-import com.github.javafaker.Faker;
-import models.api.helpers.City;
-import models.api.helpers.Location;
-import models.api.requestModel.PostRequestModel;
-import models.api.requestModel.ProfileManagementRequestModel;
-import models.api.requestModel.UserRequestModel;
-import models.ui.UpdateUserUiModel;
+import models.ui.PersonalProfileUiModel;
 import models.ui.UserUiModel;
 
 import java.text.SimpleDateFormat;
@@ -27,18 +21,26 @@ public class UiDataGenerator extends BaseDataGenerator {
         return userUiModel;
     }
 
-    public UpdateUserUiModel updateUser(boolean isMale) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public PersonalProfileUiModel createPersonalProfile(boolean isMale) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String birthYear = sdf.format(faker.date().birthday());
         String gender = isMale ? "MALE" : "FEMALE";
-        String city = "Sofia";
+        String email = faker.internet().emailAddress(firstName);
+        String city = String.valueOf(faker.number().numberBetween(1, 39));
 
-        UpdateUserUiModel updateUserUiModel = new UpdateUserUiModel();
+
+        PersonalProfileUiModel personalProfileUiModel = new PersonalProfileUiModel();
+        personalProfileUiModel.setFirstName(firstName);
+        personalProfileUiModel.setLastName(lastName);
+        personalProfileUiModel.setBirthYear(birthYear);
+        personalProfileUiModel.setGender(gender);
+        personalProfileUiModel.setEmail(email);
+        personalProfileUiModel.setCity(city);
 
 
-        return null;
+        return personalProfileUiModel;
     }
 
 

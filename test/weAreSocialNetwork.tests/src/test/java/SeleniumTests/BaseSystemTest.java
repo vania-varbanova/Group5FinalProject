@@ -15,19 +15,19 @@ import utils.ApiDataGenerator;
 
 public class BaseSystemTest {
     private WebDriver webDriver;
-    private Driver driver;
+    ;
     protected LoginPage loginPage;
     protected MainPage mainPage;
 
     public void beforeEach() {
+        UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
         webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
-        driver = new Driver(webDriver);
-        loginPage = new LoginPage(driver);
-        mainPage = new MainPage(driver);
-        //UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
+        loginPage = new LoginPage(webDriver);
+        mainPage = new MainPage(webDriver);
+        UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
     }
 
     public void afterEach() {
-        driver.quit();
+        UserActions.quitDriver();
     }
 }

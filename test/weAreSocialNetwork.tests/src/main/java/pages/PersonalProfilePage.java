@@ -1,6 +1,7 @@
 package pages;
 
 import models.ui.UserUiModel;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,45 +10,24 @@ import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
 public class PersonalProfilePage extends BasePage {
+
+
     public PersonalProfilePage(WebDriver driver) {
-        super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.baseUrl"));
+        super(driver,"");
     }
+    public WebElement editProfileButton(){
+        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.editProfileButton")));
 
-    public WebElement firstNameInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.fieldFirstName")));
     }
-
-    public WebElement lastNameInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.fieldLastName")));
+    private WebElement textFieldByColumnLabel(String columnLabel){
+        String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.informationTextField"),columnLabel);
+        return driver.findElement(By.xpath(xpath));
     }
+    public void assertColumnValueEquals(String columnName , String expectedResult){
+        String actualResult = textFieldByColumnLabel(columnName).getText();
+        Assertions.assertEquals(expectedResult,actualResult);
 
-    public WebElement birthdayInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.fieldBirthday")));
     }
-
-    public WebElement genderInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.fieldGender")));
-    }
-
-    public Select cityDropDownMenuField() {
-        return new Select(driver.findElement(By.id(UiPropertiesReader.getValueByKey(""))));
-    }
-
-    public WebElement updateMyProfileButton() {
-        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("")));
-    }
-
-    //todo: implement
-//    public void updatePersonalProfile(UserUiModel userUiModel) {
-//        usernameInputField().sendKeys(userUiModel.getUsername());
-//        emailInputField().sendKeys(userUiModel.getEmail());
-//        passwordInputField().sendKeys(userUiModel.getPassword());
-//        confirmInputField().sendKeys(userUiModel.getPassword());
-//        categoryDropDown().selectByValue(userUiModel.getProfession());
-//        registerButton().click();
-//
-//    }
-
     @Override
     public void waitForPageToLoad() {
         actions.waitForJavascript();

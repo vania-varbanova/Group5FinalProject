@@ -54,9 +54,10 @@ public class RegistrationTests extends BaseSystemTest {
     public void errorMessageDisplayed_when_invalidEmail() {
         String newEmail = userUiModel.getEmail().replace("@", "");
         userUiModel.setEmail(newEmail);
+
         registrationPage.enterRegistrationCredentials(userUiModel);
-        //validate same email error message
-        System.out.println();
+
+        registrationPage.assertErrorMessageEquals("this doesn't look like valid email");
     }
 
     @Test
@@ -66,8 +67,10 @@ public class RegistrationTests extends BaseSystemTest {
     public void errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword() {
         String newConfirmPassword = userUiModel.getConfirmationPassword().concat("ABC");
         userUiModel.setConfirmationPassword(newConfirmPassword);
+
         registrationPage.enterRegistrationCredentials(userUiModel);
-        //validate error messagge
+
+        registrationPage.assertErrorMessageEquals("Your password is not confirmed");
     }
 
     @Test
@@ -79,10 +82,10 @@ public class RegistrationTests extends BaseSystemTest {
         userResponseModel = userRequests.createUser(userRequestModel);
         String newUsername = userResponseModel.getName();
         userUiModel.setUsername(newUsername);
+
         registrationPage.enterRegistrationCredentials(userUiModel);
-        registrationPage.assertErrorMessage("User with this username already exist");
-        //validateErrorMessageExisiting usernmam,e
-        System.out.println();
+
+        registrationPage.assertErrorMessageEquals("User with this username already exist");
     }
 
 }

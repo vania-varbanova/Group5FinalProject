@@ -18,6 +18,10 @@ public class MainPage extends BasePage {
         return driver.findElement(By.xpath(xpath));
     }
 
+    public void clickButtonByLinkText(String text) {
+        buttonByLinkText(text).click();
+    }
+
     public void assertButtonByLinkTextIsVisible(String text) {
         WebElement webElement = buttonByLinkText(text);
         actions.assertElementPresent(webElement);
