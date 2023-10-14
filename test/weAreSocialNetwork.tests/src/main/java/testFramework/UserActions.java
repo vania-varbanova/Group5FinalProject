@@ -211,4 +211,11 @@ public class UserActions {
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByVisibleText(optionText);
     }
+    public void scrollUntilElementVisible(String locator) {
+        String xpath = getLocatorValueByKey(locator);
+        WebElement element = driver.findElement(By.xpath(xpath));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        waitForElementVisibleUntilTimeout(locator);
+    }
+
 }
