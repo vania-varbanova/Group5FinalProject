@@ -1,29 +1,31 @@
 package SeleniumTests;
 
-import models.api.request.UserRequests;
-import models.api.requestModel.UserRequestModel;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.RegistrationPage;
 import testFramework.CustomWebDriverManager;
-import testFramework.Driver;
 import testFramework.UserActions;
 import utils.ApiDataGenerator;
+import utils.UiDataGenerator;
 
 public class BaseSystemTest {
     private WebDriver webDriver;
-    ;
     protected LoginPage loginPage;
     protected MainPage mainPage;
+    protected RegistrationPage registrationPage;
+    protected UiDataGenerator uiDataGenerator;
+    protected ApiDataGenerator apiDataGenerator;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
         webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
         loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
+        registrationPage = new RegistrationPage(webDriver);
+
+        uiDataGenerator = new UiDataGenerator();
+        apiDataGenerator = new ApiDataGenerator();
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
     }
 

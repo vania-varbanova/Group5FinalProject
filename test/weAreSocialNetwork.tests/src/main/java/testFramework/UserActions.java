@@ -109,7 +109,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-            //      Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+                 Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -119,7 +119,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         } catch (Exception exception) {
-            // Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+             Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -129,7 +129,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-            //   Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+               Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 

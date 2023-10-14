@@ -5,6 +5,7 @@ import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
 import models.ui.PersonalProfileUiModel;
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -82,39 +83,49 @@ public class ProfileManagementTests extends BaseSystemTest {
     @Tag("System")
     @Tag("ProfileManagementActions")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-19")
-    public void userSuccessfullyEditFirstAndLastNames(){
+    public void userSuccessfullyEditFirstAndLastNames() {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
-        String expectedResult = String.format("%s %s",personalProfileUiModel.getFirstName(),personalProfileUiModel.getLastName());
-        personalProfilePage.assertColumnValueEquals("Name",expectedResult);
+        String expectedResult = String.format("%s %s", personalProfileUiModel.getFirstName(), personalProfileUiModel.getLastName());
+        personalProfilePage.assertColumnValueEquals("Name", expectedResult);
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-22")
-    public void userSuccessfullyEditEmail(){
+    public void userSuccessfullyEditEmail() {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
         String expectedResult = personalProfileUiModel.getEmail();
-        personalProfilePage.assertColumnValueEquals("Email",expectedResult);
+        personalProfilePage.assertColumnValueEquals("Email", expectedResult);
 
     }
+
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-23")
-    public void userSuccessfullyEditBirthday () throws ParseException {
+    public void userSuccessfullyEditBirthday() throws ParseException {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
-        DateTimeFormatter sdf =  DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         String expectedResult = personalProfileUiModel.getBirthYear();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         LocalDate date = LocalDate.parse(expectedResult, formatter);
         String formattedString = date.format(sdf);
 
-        personalProfilePage.assertColumnValueEquals("birthday",formattedString);
+        personalProfilePage.assertColumnValueEquals("birthday", formattedString);
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("ProfileManagementActions")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-95")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-157")
+    public void popupDisplayed_when_enterDateInFuture() {
+
     }
 
 

@@ -2,34 +2,27 @@ package SeleniumTests;
 
 import annotations.IssueLink;
 import models.api.request.UserRequests;
-import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.UserResponseModel;
 import models.ui.UserUiModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import testFramework.CustomWebDriverManager;
-import utils.ApiDataGenerator;
 import utils.UiDataGenerator;
 
 public class RegistrationTests extends BaseSystemTest {
+    private static final String INVALID_PASSWORD_ERROR_MESSAGE = "Your password is not confirmed";
+    private static final String INVALID_EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
+    private static final String EXISTING_USER_ERROR_MESSAGE = "User with this username already exist";
+    private static final String PAGE_HEADING = "Welcome to our community.";
     private UserUiModel userUiModel;
-    private UiDataGenerator uiDataGenerator;
-    private RegistrationPage registrationPage;
-    private UserRequestModel userRequestModel = new UserRequestModel();
-    private ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
-    private UserResponseModel userResponseModel = new UserResponseModel();
-    private UserRequests userRequests = new UserRequests();
 
     @Override
     @BeforeEach
     public void beforeEach() {
         super.beforeEach();
+
         uiDataGenerator = new UiDataGenerator();
         userUiModel = uiDataGenerator.createUser();
-        registrationPage = new RegistrationPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         registrationPage.navigateToPage();
     }
 
@@ -40,11 +33,13 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    public void userSuccessfullyRegister_when_validCredentials() {
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
+    public void userSuccessfullyRegister_when_validCredentials() throws InterruptedException {
         registrationPage.enterRegistrationCredentials(userUiModel);
-
-        registrationPage.assertMessageByLinkTextIsVisible();
-        registrationPage.assertButtonByLinkTextIsClickable();
+        Thread.sleep(3000);
+        mainPage.assertPageHeadingEquals(PAGE_HEADING);
     }
 
     @Test
@@ -57,7 +52,7 @@ public class RegistrationTests extends BaseSystemTest {
 
         registrationPage.enterRegistrationCredentials(userUiModel);
 
-        registrationPage.assertErrorMessageEquals("this doesn't look like valid email");
+        registrationPage.assertErrorMessageEquals(INVALID_EMAIL_ERROR_MESSAGE);
     }
 
     @Test
@@ -70,7 +65,19 @@ public class RegistrationTests extends BaseSystemTest {
 
         registrationPage.enterRegistrationCredentials(userUiModel);
 
-        registrationPage.assertErrorMessageEquals("Your password is not confirmed");
+        registrationPage.assertErrorMessageEquals(INVALID_PASSWORD_ERROR_MESSAGE);
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-86")
+    public void errorMessageDisplayed_when_enterEmptyConfirmPassword() {
+        userUiModel.setConfirmationPassword("");
+
+        registrationPage.enterRegistrationCredentials(userUiModel);
+
+        registrationPage.assertErrorMessageEquals(INVALID_PASSWORD_ERROR_MESSAGE);
     }
 
     @Test
@@ -78,14 +85,14 @@ public class RegistrationTests extends BaseSystemTest {
     @Tag("RegistrationProcess")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-35")
     public void errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername() {
-        userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        userResponseModel = userRequests.createUser(userRequestModel);
+        UserRequests userRequests = new UserRequests();
+        var userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        var userResponseModel = userRequests.createUser(userRequestModel);
         String newUsername = userResponseModel.getName();
         userUiModel.setUsername(newUsername);
 
         registrationPage.enterRegistrationCredentials(userUiModel);
 
-        registrationPage.assertErrorMessageEquals("User with this username already exist");
+        registrationPage.assertErrorMessageEquals(EXISTING_USER_ERROR_MESSAGE);
     }
-
 }
