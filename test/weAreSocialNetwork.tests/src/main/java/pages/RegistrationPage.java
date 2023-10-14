@@ -53,24 +53,9 @@ public class RegistrationPage extends BasePage {
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement messageByLinkText() {
-        String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionText"));
-        return driver.findElement(By.xpath(xpath));
-    }
-
-    public void assertMessageByLinkTextIsVisible() {
-        WebElement webElement = messageByLinkText();
-        actions.assertElementPresent(webElement);
-    }
-
     public WebElement buttonByLinkText() {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionButton"));
         return driver.findElement(By.xpath(xpath));
-    }
-
-    public void assertButtonByLinkTextIsClickable() {
-        WebElement webElement = buttonByLinkText();
-        actions.assertElementPresent(webElement);
     }
 
     public void assertErrorMessageEquals(String expectedErrorMessage) {

@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/UpdateUserUiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ui/PersonalProfileUiModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testFramework/UserActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
@@ -83,23 +80,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoginTests.userSuccessfullyLogout_when_clickLogoutButton">
-    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyUnLogin_when_validCredentials" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.RegistrationTests">
     <configuration name="LoginTests.userSuccessfullyLogout_when_clickLogoutButton" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
@@ -116,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests.userSuccessfullyUnLogin_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -125,14 +106,30 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyUnLogin_when_validCredentials" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errorMessageDisplayed_when_invalidEmail" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationTests.errorMessageDisplayed_when_invalidEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errorMessageDisplayed_when_invalidEmail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProfileManagementTests.userSuccessfullyEditBirthday" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationTests.errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -141,14 +138,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.ProfileManagementTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyEditBirthday" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProfileManagementTests.userSuccessfullyEditEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationTests.userSuccessfullyRegister_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -157,8 +154,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.ProfileManagementTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyEditEmail" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyRegister_when_validCredentials" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RegistrationTests" />
+        <item itemvalue="JUnit.RegistrationTests.errorMessageDisplayed_when_invalidEmail" />
+        <item itemvalue="JUnit.RegistrationTests.userSuccessfullyRegister_when_validCredentials" />
         <item itemvalue="JUnit.LoginTests.userSuccessfullyLogout_when_clickLogoutButton" />
-        <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.LoginTests.userSuccessfullyUnLogin_when_validCredentials" />
-        <item itemvalue="JUnit.ProfileManagementTests.userSuccessfullyEditBirthday" />
-        <item itemvalue="JUnit.ProfileManagementTests.userSuccessfullyEditEmail" />
+        <item itemvalue="JUnit.RegistrationTests.errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +190,7 @@
       <workItem from="1697086281153" duration="5643000" />
       <workItem from="1697091955193" duration="29163000" />
       <workItem from="1697172010219" duration="4332000" />
-      <workItem from="1697179174031" duration="44972000" />
+      <workItem from="1697179174031" duration="51613000" />
     </task>
     <task id="LOCAL-00001" summary="added jira key and tag">
       <option name="closed" value="true" />
@@ -252,31 +249,26 @@
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/RegistrationTests.java</url>
-          <line>87</line>
+          <line>96</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/ProfileManagementTests.java</url>
-          <line>116</line>
+          <line>118</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pages/LoginPage.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="90" />
+          <line>38</line>
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/weAreSocialNetwork_tests$LoginTests_userSuccessfullyLogin_when_enterValidCredentials.ic" NAME="LoginTests.userSuccessfullyLogin_when_enterValidCredentials Coverage Results" MODIFIED="1697297783477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>SeleniumTests.*</FILTER>
+    </SUITE>
   </component>
 </project>

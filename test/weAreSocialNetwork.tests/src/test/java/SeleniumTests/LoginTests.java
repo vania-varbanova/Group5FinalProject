@@ -18,6 +18,7 @@ import utils.ApiDataGenerator;
 import utils.UiDataGenerator;
 
 public class LoginTests extends BaseSystemTest {
+    private static final String INVALID_DETAILS_ERROR_MESSAGE = "Wrong username or password.";
     private UserRequests userRequests;
     private ApiDataGenerator apiDataGenerator;
     private DatabaseService databaseService;
@@ -32,9 +33,11 @@ public class LoginTests extends BaseSystemTest {
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        var userRequestModel1 = apiDataGenerator.createUserWithRoleUser();
+        userRequests.createUser(userRequestModel1);
         userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+
     }
 
     @Override
@@ -49,6 +52,8 @@ public class LoginTests extends BaseSystemTest {
     @Tag("Authentication process")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-17")
     public void userSuccessfullyLogin_when_enterValidCredentials() {
+        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+
         mainPage.assertButtonByLinkTextIsVisible("LOGOUT");
     }
 
@@ -57,8 +62,22 @@ public class LoginTests extends BaseSystemTest {
     @Tag("Authentication process")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-18")
     public void userSuccessfullyLogout_when_clickLogoutButton() throws InterruptedException {
+        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+
         mainPage.clickButtonByLinkText("LOGOUT");
         Thread.sleep(3000);
-        loginPage.assertMainHeadingIsVisible();
+        loginPage.assertPageHeadingEquals("Login Page");
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("Authentication process")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-34")
+    public void errorMessageDisplayed_when_enterInvalidPassword() {
+        userRequestModel.setPassword(userRequestModel.getPassword() + "qwe");
+
+        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+
+        loginPage.assertErrorMessageEquals(INVALID_DETAILS_ERROR_MESSAGE);
     }
 }
