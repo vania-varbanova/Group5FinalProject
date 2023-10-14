@@ -26,7 +26,6 @@ public class BaseSystemTest {
         //UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
     }
 
-    @AfterEach
     public void afterEach() {
         driver.quit();
     }

@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="">
+    <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/api/request/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/NavigationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/NavigationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NavigationTests.userCanSuccessfullyViewPersonalProfilePage">
+  <component name="RunManager" selected="JUnit.RegistrationTests.errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername">
     <configuration name="LoginTests.userSuccessfullyLogin_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
@@ -94,54 +92,6 @@
       <option name="PACKAGE_NAME" value="SeleniumTests" />
       <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
       <option name="METHOD_NAME" value="userSuccessfullyLogin_when_validCredentials" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests.userSuccessfullyRegister_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.LoginTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyRegister_when_validCredentials" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NavigationTests.anonymousUserCanSuccessfullyViewAboutUsPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
-      <option name="METHOD_NAME" value="anonymousUserCanSuccessfullyViewAboutUsPage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NavigationTests.anonymousUserCanSuccessfullyViewLatestPostsPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
-      <option name="METHOD_NAME" value="anonymousUserCanSuccessfullyViewLatestPostsPage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,13 +113,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RegistrationTests.errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationTests.errroreMessageDisplayed_when_ivalidEmal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errroreMessageDisplayed_when_ivalidEmal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationTests.userSuccessfullyRegister_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyRegister_when_validCredentials" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NavigationTests.userCanSuccessfullyViewPersonalProfilePage" />
-        <item itemvalue="JUnit.NavigationTests.anonymousUserCanSuccessfullyViewAboutUsPage" />
-        <item itemvalue="JUnit.NavigationTests.anonymousUserCanSuccessfullyViewLatestPostsPage" />
+        <item itemvalue="JUnit.RegistrationTests.errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername" />
+        <item itemvalue="JUnit.RegistrationTests.userSuccessfullyRegister_when_validCredentials" />
+        <item itemvalue="JUnit.RegistrationTests.errroreMessageDisplayed_when_ivalidEmal" />
         <item itemvalue="JUnit.LoginTests.userSuccessfullyLogin_when_validCredentials" />
-        <item itemvalue="JUnit.LoginTests.userSuccessfullyRegister_when_validCredentials" />
+        <item itemvalue="JUnit.NavigationTests.userCanSuccessfullyViewPersonalProfilePage" />
       </list>
     </recent_temporary>
   </component>
@@ -192,12 +190,25 @@
       <workItem from="1697086281153" duration="5643000" />
       <workItem from="1697091955193" duration="29163000" />
       <workItem from="1697172010219" duration="4332000" />
-      <workItem from="1697179174031" duration="11080000" />
+      <workItem from="1697179174031" duration="24297000" />
     </task>
+    <task id="LOCAL-00001" summary="added jira key and tag">
+      <option name="closed" value="true" />
+      <created>1697199560339</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697199560339</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added jira key and tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="added jira key and tag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -236,6 +247,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/integration/CommentsIntegrationTests.java</url>
           <line>14</line>
           <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

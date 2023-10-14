@@ -1,6 +1,7 @@
 package pages;
 
 import models.ui.UserUiModel;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,26 +42,41 @@ public class RegistrationPage extends BasePage {
         usernameInputField().sendKeys(userUiModel.getUsername());
         emailInputField().sendKeys(userUiModel.getEmail());
         passwordInputField().sendKeys(userUiModel.getPassword());
-        confirmInputField().sendKeys(userUiModel.getPassword());
+        confirmInputField().sendKeys(userUiModel.getConfirmationPassword());
         categoryDropDown().selectByValue(userUiModel.getProfession());
         registerButton().click();
 
     }
+
+    public WebElement errorMessage() {
+        String xpath = "";
+        return driver.findElement(By.xpath(xpath));
+    }
+
     public WebElement messageByLinkText() {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionText"));
         return driver.findElement(By.xpath(xpath));
     }
-    public void assertMessageByLinkTextIsVisible(){
+
+    public void assertMessageByLinkTextIsVisible() {
         WebElement webElement = messageByLinkText();
         actions.assertElementPresent(webElement);
     }
+
     public WebElement buttonByLinkText() {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionButton"));
         return driver.findElement(By.xpath(xpath));
     }
-    public void assertButtonByLinkTextIsClickable(){
+
+    public void assertButtonByLinkTextIsClickable() {
         WebElement webElement = buttonByLinkText();
         actions.assertElementPresent(webElement);
+    }
+
+    public void assertErrorMessage(String expectedErrorMessage) {
+        String actualErrorMessage = errorMessage().getText();
+
+        Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
 
     @Override

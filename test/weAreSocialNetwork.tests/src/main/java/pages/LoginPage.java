@@ -32,7 +32,6 @@ public class LoginPage extends BasePage{
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Login.loginButton")));
     }
 
-
     @Override
     public void waitForPageToLoad() {
         actions.waitForJavascript();

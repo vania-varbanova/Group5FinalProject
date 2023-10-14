@@ -9,7 +9,7 @@ import static testFramework.Utils.getConfigPropertyByKey;
 public abstract class BasePage {
 
     protected String url;
-    protected WebDriver  driver;
+    protected WebDriver driver;
     protected UserActions actions;
 
     public BasePage(WebDriver driver, String urlKey) {
@@ -18,10 +18,6 @@ public abstract class BasePage {
         this.url = pageUrl;
         actions = new UserActions();
     }
-
-//    public String getUrl() {
-//        return url;
-//    }
 
     public void navigateToPage() {
         this.driver.get(url);
