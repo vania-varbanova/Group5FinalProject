@@ -4,14 +4,8 @@ package RESTAssuredTests;
 import io.restassured.response.ResponseOptions;
 import lombok.SneakyThrows;
 import models.api.request.*;
-import models.api.requestModel.CommentRequestModel;
-import models.api.requestModel.PostRequestModel;
-import models.api.requestModel.ProfileManagementRequestModel;
-import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.CommentResponseModel;
-import models.api.responseModel.PostResponseModel;
-import models.api.responseModel.ProfileManagementResponseModel;
-import models.api.responseModel.UserResponseModel;
+import models.api.requestModel.*;
+import models.api.responseModel.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +23,7 @@ public class BaseIntegrationTest {
     protected PostRequests postRequests;
     protected CommentRequest commentRequest;
     protected ConnectionRequests connectionRequests;
+    protected SkillsRequests skillsRequests;
     //End of Requests
 
 
@@ -37,6 +32,7 @@ public class BaseIntegrationTest {
     protected ProfileManagementRequestModel profileManagementRequestModel;
     protected PostRequestModel postRequestModel;
     protected CommentRequestModel commentRequestModel;
+    protected SkillsRequestModel skillsRequestModel;
 
     // End of request models
 
@@ -45,6 +41,7 @@ public class BaseIntegrationTest {
     protected ProfileManagementResponseModel profileManagementResponseModel;
     protected PostResponseModel postResponseModel;
     protected CommentResponseModel commentResponseModel;
+    protected SkillsResponseModel skillsResponseModel;
 
     //End of response models
 
@@ -59,6 +56,7 @@ public class BaseIntegrationTest {
         commentRequest = new CommentRequest();
         profileManagementRequest = new ProfileManagementRequest();
         connectionRequests = new ConnectionRequests();
+        skillsRequests = new SkillsRequests();
     }
 
     @SneakyThrows

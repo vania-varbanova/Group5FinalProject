@@ -4,6 +4,7 @@ import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
@@ -28,17 +29,5 @@ public class BaseSystemTest {
 
     public void afterEach() {
         driver.quit();
-    }
-
-    public void RegisterAndLogin() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        UserRequests userRequests = new UserRequests();
-        ApiDataGenerator apiDataGenerator = new ApiDataGenerator();
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        userRequests.createUser(userRequestModel);
-        LoginPage loginPage = new LoginPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(),userRequestModel.getPassword());
-        mainPage.assertButtonByLinkTextIsVisible("LOGOUT");
     }
 }

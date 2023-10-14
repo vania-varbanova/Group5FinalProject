@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.LatestPostsPage;
 import pages.MainPage;
-import pages.PersonalProfilePage;
+import pages.PostsPage;
 import services.DatabaseService;
 import testFramework.CustomWebDriverManager;
 import utils.ApiDataGenerator;
 
-public class NavigationTests extends BaseSystemTest {
+public class PostsTests extends BaseSystemTest {
     private UserRequests userRequests;
     private ApiDataGenerator apiDataGenerator;
     private DatabaseService databaseService;
@@ -39,34 +39,37 @@ public class NavigationTests extends BaseSystemTest {
         super.afterEach();
         databaseService.deleteUserWithId(userResponseModel.getId());
     }
-
     @Test
-    public void userCanSuccessfullyViewAboutUsPage() {
+    public void userCanViewCreatePostPageSuccessfully() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
-        mainPage.navigateToAboutUsPage();
+        postsPage.navigateToCretePostsPage();
     }
     @Test
-    public void userCanSuccessfullyViewLatestPostsPage() {
+    public void userCanCreatePrivatePostSuccessfully() {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePrivatePost();
+    }
+    @Test
+    public void userCanCreatePublicPostSuccessfully() {
+        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+    }
+    @Test
+    public void userCanLikePostSuccessfully() {
+        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("Explore all posts");
-    }
-    @Test
-    public void userCanSuccessfullyViewCertainCategoryLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-        latestPostsPage.selectCategory();
-    }
-    @Test
-    public void userCanSuccessfullyViewPersonalProfilePage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PersonalProfilePage personalProfilePage = new PersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        personalProfilePage.navigateToPersonalProfilePage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.likePost();
     }
 }

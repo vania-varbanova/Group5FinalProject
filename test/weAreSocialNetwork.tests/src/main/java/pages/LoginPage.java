@@ -7,7 +7,7 @@ import utils.ConfigPropertiesReader;
 import utils.UiDataGenerator;
 import utils.UiPropertiesReader;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     UiDataGenerator uiDataGenerator;
 

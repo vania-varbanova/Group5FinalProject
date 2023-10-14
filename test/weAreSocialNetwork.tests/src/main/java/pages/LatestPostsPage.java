@@ -20,10 +20,20 @@ public class LatestPostsPage extends BasePage {
     public void selectCategory() {
         waitForPageToLoad();
 
-        actions.waitForElementVisible("//select[@id=\"name\"]");
-        actions.selectOptionFromDropdown("//select[@id=\"name\"]", "All");
+        actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.categorySelection");
+        actions.selectOptionFromDropdown("weAreSocialNetwork.latestPostsPage.categorySelection", "All");
 
         actions.waitForElementClickable("weAreSocialNetwork.latestPostsPage.browseButton");
         actions.clickElement("weAreSocialNetwork.latestPostsPage.browseButton");
+    }
+    public void likePost() {
+        waitForPageToLoad();
+        actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.browseButton");
+        actions.clickElement("weAreSocialNetwork.latestPostsPage.browseButton");
+
+        waitForPageToLoad();
+        actions.scrollUntilElementVisible("weAreSocialNetwork.latestPostsPage.likeButton");
+        actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.likeButton");
+        actions.clickElement("weAreSocialNetwork.latestPostsPage.likeButton");
     }
 }
