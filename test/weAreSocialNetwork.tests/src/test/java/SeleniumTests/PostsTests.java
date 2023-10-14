@@ -45,6 +45,8 @@ public class PostsTests extends BaseSystemTest {
         PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
+
+        actions.isElementVisible("");
     }
     @Test
     public void userCanCreatePrivatePostSuccessfully() {
@@ -53,6 +55,7 @@ public class PostsTests extends BaseSystemTest {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePrivatePost();
+
     }
     @Test
     public void userCanCreatePublicPostSuccessfully() {
@@ -71,5 +74,14 @@ public class PostsTests extends BaseSystemTest {
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.likePost();
+    }
+    @Test
+    public void userCanDeletePostSuccessfully() {
+        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
     }
 }

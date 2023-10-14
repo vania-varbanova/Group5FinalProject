@@ -18,6 +18,7 @@ public class BaseSystemTest {
     ;
     protected LoginPage loginPage;
     protected MainPage mainPage;
+    protected UserActions actions;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");

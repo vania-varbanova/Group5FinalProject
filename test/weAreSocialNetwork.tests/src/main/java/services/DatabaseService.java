@@ -7,9 +7,9 @@ import utils.ConsoleLogger;
 import java.sql.*;
 
 public class DatabaseService {
-    private final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11651605";
-    private final String USERNAME = "sql11651605";
-    private final String PASSWORD = "SJ7l9YqCua";
+    private final String DATABASE_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11650015";
+    private final String USERNAME = "sql11650015";
+    private final String PASSWORD = "AhM5MavKdT";
     private final ConsoleLogger logger;
 
     public DatabaseService() {

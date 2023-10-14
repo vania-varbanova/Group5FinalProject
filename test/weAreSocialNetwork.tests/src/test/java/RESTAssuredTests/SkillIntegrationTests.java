@@ -1,6 +1,8 @@
 package RESTAssuredTests;
 
+import io.restassured.response.Response;
 import models.api.request.SkillsRequests;
+import models.api.requestModel.EditSkillRequestModel;
 import models.api.requestModel.SkillsRequestModel;
 import models.api.responseModel.SkillsResponseModel;
 import org.junit.jupiter.api.AfterEach;
@@ -22,11 +24,10 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
         super.beforeEach();
         skillsRequestModel = apiDataGenerator.createSkill();
         skillsResponseModel = skillsRequests.createSkill(skillsRequestModel);
+        Assertions.assertNotNull(skillsResponseModel.getCategory());
+        Assertions.assertNotNull(skillsResponseModel.getSkill());
     }
-    @AfterEach
-    public void afterEach() {
-        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
-    }
+
     @Test
     public void skillSuccessfullyCreated() {
         String expectedProfessionId = String.valueOf(skillsRequestModel.getCategory());
@@ -34,20 +35,21 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
         String expectedSkill = skillsRequestModel.getSkill();
         String actualSkill = skillsResponseModel.getSkill();
 
-        Assertions.assertNotNull(skillsResponseModel.getCategory());
-        Assertions.assertNotNull(skillsResponseModel.getSkill());
         Assertions.assertEquals(expectedProfessionId, actualProfessionId);
         Assertions.assertEquals(expectedSkill, actualSkill);
 
+        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
 
     @Test
     public void skillSuccessfullyDeleted() {
-        Assertions.assertNotNull(skillsResponseModel.getCategory());
-        Assertions.assertNotNull(skillsResponseModel.getSkill());
+        String skillIdToDelete = String.valueOf(skillsResponseModel.getSkillId());
 
-        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
-    }
+        Response deleteResponse = skillsRequests.deleteSkill(skillIdToDelete);
+
+        Assertions.assertEquals(200, deleteResponse.getStatusCode(), "Skill deletion was not successful. Status code: " + deleteResponse.getStatusCode());
+        }
+
 
     @Test
     public void FindAllSkillsRequestSuccessfullyProvidesAllSkills() {
@@ -74,34 +76,15 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
 
     @Test
     public void skillSuccessfullyEdited() {
-        // Log the initial skill details
-        logger.log(skillsResponseModel.toString());
+        EditSkillRequestModel editSkillRequestModel = apiDataGenerator.editSkill();
+        String skillId = String.valueOf(skillsResponseModel.getSkillId());
+        Response editResponse = skillsRequests.editSkill(skillId, editSkillRequestModel.getSkill());
 
-        // Store the initial skill name for comparison later
-        String firstSkill = skillsResponseModel.getSkill();
-        Assertions.assertFalse(firstSkill.isEmpty());
+        SkillsResponseModel updatedSkill = skillsRequests.getOneSkill(skillId);
 
-        skillsRequestModel = apiDataGenerator.editSkill();
-        skillsResponseModel = skillsRequests.editSkill(skillsResponseModel.getSkillId(), String.valueOf(skillsRequestModel));
+        Assertions.assertEquals(200, editResponse.getStatusCode(), "Skill edit was not successful. Status code: " + editResponse.getStatusCode());
+        Assertions.assertEquals(editSkillRequestModel.getSkill(), updatedSkill.getSkill(), "Edited skill value does not match expected value.");
 
-        // Check if the skill was successfully edited
-        if (skillsResponseModel != null) {
-            // Retrieve the edited skill name
-            String secondSkill = skillsResponseModel.getSkill();
-
-            // Assert that the skill names are not equal after editing
-            Assertions.assertNotEquals(firstSkill, secondSkill);
-
-            // Additional checks
-            Assertions.assertNotNull(skillsResponseModel.getCategory());
-            Assertions.assertNotNull(secondSkill);
-            Assertions.assertFalse(secondSkill.isEmpty());
-
-            // Clean up: delete the edited skill
-            skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
-        } else {
-            // Log a message if the edited skill is null
-            logger.log("Edited Skill is null");
-        }
+        skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
 }

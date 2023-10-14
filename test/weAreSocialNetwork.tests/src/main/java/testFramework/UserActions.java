@@ -109,7 +109,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-            //      Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+      //      Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -119,7 +119,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         } catch (Exception exception) {
-            // Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+           // Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -129,7 +129,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-            //   Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+         //   Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -185,7 +185,7 @@ public class UserActions {
         String expectedUrl = Utils.getConfigPropertyByKey(urlKey);
         String actualUrl = driver.getCurrentUrl();
 
-        //  Assertions.assertEquals(expectedUrl, actualUrl, String.format("Expected url is: %s, but actual url is %s", expectedUrl, actualUrl));
+        Assertions.assertEquals(expectedUrl, actualUrl, String.format("Expected url is: %s, but actual url is %s", expectedUrl, actualUrl));
     }
 
     public void pressKey(Keys key) {

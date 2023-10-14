@@ -3,10 +3,10 @@ import com.github.javafaker.Faker;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import models.api.requestModel.EditSkillRequestModel;
 import models.api.requestModel.SkillsRequestModel;
 import models.api.responseModel.SkillsResponseModel;
 import utils.ConfigPropertiesReader;
-import utils.ConsoleLogger;
 
 
 import java.util.Arrays;
@@ -55,7 +55,7 @@ public class SkillsRequests extends BaseRequest{
 
         return skillsResponseModel;
     }
-    public SkillsResponseModel editSkill(Object skillId, String skill) {
+    public Response editSkill(Object skillId, String skill) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
 
         var response = RestAssured
@@ -65,18 +65,17 @@ public class SkillsRequests extends BaseRequest{
                 .queryParam("skillId", skillId)
                 .put("/skill/edit");
 
-        SkillsResponseModel skillsResponseModel = jsonParser.fromJson(response.body().prettyPrint(), SkillsResponseModel.class);
-
-        return skillsResponseModel;
+        return response;
     }
-    public boolean deleteSkill(String skillId) {
+
+    public Response deleteSkill(String skillId) {
         RestAssured.baseURI = ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.api.baseUrl");
 
-        var request = RestAssured
+        Response response = RestAssured
                 .given()
                 .queryParam("skillId", skillId)
                 .put("/skill/delete");
 
-        return request.getStatusCode() == 200;
+        return response;
     }
 }

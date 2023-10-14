@@ -85,11 +85,11 @@ public class ApiDataGenerator extends BaseDataGenerator {
         return skillsRequestModel;
     }
 
-    public SkillsRequestModel editSkill() {
+    public EditSkillRequestModel editSkill() {
         String skill = faker.job().keySkills();
-        SkillsRequestModel skillsRequestModel = new SkillsRequestModel();
-        skillsRequestModel.setSkill(skill);
-        return skillsRequestModel;
+        EditSkillRequestModel editSkillRequestModel = new EditSkillRequestModel();
+        editSkillRequestModel.setSkill(skill);
+        return editSkillRequestModel;
     }
 
     public ProfileManagementRequestModel updateProfile(boolean isMale) {
