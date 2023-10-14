@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ui/UserUiModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +182,7 @@
       <workItem from="1697086281153" duration="5643000" />
       <workItem from="1697091955193" duration="29163000" />
       <workItem from="1697172010219" duration="4332000" />
-      <workItem from="1697179174031" duration="24297000" />
+      <workItem from="1697179174031" duration="24498000" />
     </task>
     <task id="LOCAL-00001" summary="added jira key and tag">
       <option name="closed" value="true" />

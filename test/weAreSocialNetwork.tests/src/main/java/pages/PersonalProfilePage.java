@@ -37,20 +37,22 @@ public class PersonalProfilePage extends BasePage {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("")));
     }
 
-    public void enterRegistrationCredentials(UserUiModel userUiModel) {
-        usernameInputField().sendKeys(userUiModel.getUsername());
-        emailInputField().sendKeys(userUiModel.getEmail());
-        passwordInputField().sendKeys(userUiModel.getPassword());
-        confirmInputField().sendKeys(userUiModel.getPassword());
-        categoryDropDown().selectByValue(userUiModel.getProfession());
-        registerButton().click();
-
-    }
+    //todo: implement
+//    public void updatePersonalProfile(UserUiModel userUiModel) {
+//        usernameInputField().sendKeys(userUiModel.getUsername());
+//        emailInputField().sendKeys(userUiModel.getEmail());
+//        passwordInputField().sendKeys(userUiModel.getPassword());
+//        confirmInputField().sendKeys(userUiModel.getPassword());
+//        categoryDropDown().selectByValue(userUiModel.getProfession());
+//        registerButton().click();
+//
+//    }
 
     @Override
     public void waitForPageToLoad() {
         actions.waitForJavascript();
     }
+
     public void navigateToPersonalProfilePage() {
         waitForPageToLoad();
         actions.waitForElementVisible("weAreSocialNetwork.homePage.personalProfileButton");
