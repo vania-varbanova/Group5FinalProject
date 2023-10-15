@@ -1,9 +1,7 @@
 package SeleniumTests;
 
 import org.openqa.selenium.WebDriver;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.RegistrationPage;
+import pages.*;
 import testFramework.CustomWebDriverManager;
 import testFramework.UserActions;
 import utils.ApiDataGenerator;
@@ -14,6 +12,8 @@ public class BaseSystemTest {
     ;
     protected LoginPage loginPage;
     protected MainPage mainPage;
+    protected LatestPostsPage latestPostsPage;
+    protected PostsPage postsPage;
     protected UserActions actions;
     protected RegistrationPage registrationPage;
     protected UiDataGenerator uiDataGenerator;
@@ -25,10 +25,11 @@ public class BaseSystemTest {
         loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
         registrationPage = new RegistrationPage(webDriver);
+        postsPage = new PostsPage(webDriver);
+        latestPostsPage = new LatestPostsPage(webDriver);
 
         uiDataGenerator = new UiDataGenerator();
         apiDataGenerator = new ApiDataGenerator();
-        UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
     }
 
     public void afterEach() {

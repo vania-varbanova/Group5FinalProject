@@ -6,12 +6,14 @@ import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pages.ExplorePostsPage;
 import pages.LatestPostsPage;
 import pages.MainPage;
 import pages.PostsPage;
 import services.DatabaseService;
 import testFramework.CustomWebDriverManager;
 import utils.ApiDataGenerator;
+import models.api.responseModel.PostResponseModel;
 
 public class PostsTests extends BaseSystemTest {
     private UserRequests userRequests;
@@ -41,12 +43,10 @@ public class PostsTests extends BaseSystemTest {
     }
     @Test
     public void userCanViewCreatePostPageSuccessfully() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
 
-        actions.isElementVisible("");
+        //actions.isElementVisible("");
     }
     @Test
     public void userCanCreatePrivatePostSuccessfully() {
@@ -73,6 +73,7 @@ public class PostsTests extends BaseSystemTest {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
+        latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.likePost();
     }
     @Test
@@ -80,8 +81,12 @@ public class PostsTests extends BaseSystemTest {
         MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+        ExplorePostsPage explorePostsPage = new ExplorePostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
+
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.deletePost();
     }
 }

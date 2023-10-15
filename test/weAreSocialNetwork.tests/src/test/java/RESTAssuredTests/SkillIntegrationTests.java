@@ -1,15 +1,11 @@
 package RESTAssuredTests;
 
 import io.restassured.response.Response;
-import models.api.request.SkillsRequests;
 import models.api.requestModel.EditSkillRequestModel;
-import models.api.requestModel.SkillsRequestModel;
 import models.api.responseModel.SkillsResponseModel;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.ApiDataGenerator;
 import utils.ConsoleLogger;
 
 import java.util.List;
@@ -18,14 +14,23 @@ import java.util.List;
 public class SkillIntegrationTests extends BaseIntegrationTest {
 
     private ConsoleLogger logger = new ConsoleLogger();
+    private static final String DELETION_MESSAGE = "Skill deletion was not successful. Status code: ";
+    private static final String EDIT_SKILL_MESSAGE = "Skill edit was not successful. Status code: ";
+    private static final String EDITED_SKILL_VALUE_MESSAGE = "Edited skill value does not match expected value.";
+    private static final String CATEGORY_IS_NULL = "Category is null";
+    private static final String SKILL_IS_NULL = "Skill value is null";
+    private static final String RETRIEVED_SKILL_VALUE_MESSAGE = "Retrieved skill value does not match expected value.";
+    private static final String RETRIEVED_SKILL_ID_MESSAGE = "Retrieved skill id does not match expected value.";
+
+
     @Override
     @BeforeEach
     public void beforeEach(){
         super.beforeEach();
         skillsRequestModel = apiDataGenerator.createSkill();
         skillsResponseModel = skillsRequests.createSkill(skillsRequestModel);
-        Assertions.assertNotNull(skillsResponseModel.getCategory());
-        Assertions.assertNotNull(skillsResponseModel.getSkill());
+        Assertions.assertNotNull(skillsResponseModel.getCategory(), CATEGORY_IS_NULL);
+        Assertions.assertNotNull(skillsResponseModel.getSkill(), SKILL_IS_NULL);
     }
 
     @Test
@@ -47,7 +52,7 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
 
         Response deleteResponse = skillsRequests.deleteSkill(skillIdToDelete);
 
-        Assertions.assertEquals(200, deleteResponse.getStatusCode(), "Skill deletion was not successful. Status code: " + deleteResponse.getStatusCode());
+        Assertions.assertEquals(200, deleteResponse.getStatusCode(), DELETION_MESSAGE + deleteResponse.getStatusCode());
         }
 
 
@@ -56,8 +61,8 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
         List<SkillsResponseModel> skillsResponseModels = skillsRequests.getAllSkills();
 
         for (SkillsResponseModel skillsResponseModel : skillsResponseModels) {
-            Assertions.assertNotNull(skillsResponseModel.getSkill());
-            Assertions.assertNotNull(skillsResponseModel.getCategory());
+            Assertions.assertNotNull(skillsResponseModel.getSkill(), SKILL_IS_NULL);
+            Assertions.assertNotNull(skillsResponseModel.getCategory(), CATEGORY_IS_NULL);
 
             skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
         }
@@ -68,8 +73,8 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
         SkillsResponseModel retrievedSkill = skillsRequests.getOneSkill(skillsResponseModel.getSkillId());
 
         Assertions.assertNotNull(retrievedSkill);
-        Assertions.assertEquals(skillsResponseModel.getSkill(), retrievedSkill.getSkill());
-        Assertions.assertEquals(skillsResponseModel.getSkillId(), retrievedSkill.getSkillId());
+        Assertions.assertEquals(skillsResponseModel.getSkill(), retrievedSkill.getSkill(), RETRIEVED_SKILL_VALUE_MESSAGE);
+        Assertions.assertEquals(skillsResponseModel.getSkillId(), retrievedSkill.getSkillId(), RETRIEVED_SKILL_ID_MESSAGE);
 
         skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
@@ -82,8 +87,8 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
 
         SkillsResponseModel updatedSkill = skillsRequests.getOneSkill(skillId);
 
-        Assertions.assertEquals(200, editResponse.getStatusCode(), "Skill edit was not successful. Status code: " + editResponse.getStatusCode());
-        Assertions.assertEquals(editSkillRequestModel.getSkill(), updatedSkill.getSkill(), "Edited skill value does not match expected value.");
+        Assertions.assertEquals(200, editResponse.getStatusCode(), EDIT_SKILL_MESSAGE + editResponse.getStatusCode());
+        Assertions.assertEquals(editSkillRequestModel.getSkill(), updatedSkill.getSkill(), EDITED_SKILL_VALUE_MESSAGE);
 
         skillsRequests.deleteSkill(String.valueOf(skillsResponseModel.getSkillId()));
     }
