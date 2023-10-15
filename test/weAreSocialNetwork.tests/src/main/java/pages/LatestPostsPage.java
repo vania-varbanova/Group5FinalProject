@@ -28,10 +28,6 @@ public class LatestPostsPage extends BasePage {
     }
     public void likePost() {
         waitForPageToLoad();
-        actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.browseButton");
-        actions.clickElement("weAreSocialNetwork.latestPostsPage.browseButton");
-
-        waitForPageToLoad();
         actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.likeButton");
         actions.clickElement("weAreSocialNetwork.latestPostsPage.likeButton");
     }

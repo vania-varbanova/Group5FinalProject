@@ -18,6 +18,8 @@ public class BaseSystemTest {
     protected RegistrationPage registrationPage;
     protected UiDataGenerator uiDataGenerator;
     protected ApiDataGenerator apiDataGenerator;
+    protected ExplorePostsPage explorePostsPage;
+    protected PersonalProfilePage personalProfilePage;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
@@ -27,7 +29,8 @@ public class BaseSystemTest {
         registrationPage = new RegistrationPage(webDriver);
         postsPage = new PostsPage(webDriver);
         latestPostsPage = new LatestPostsPage(webDriver);
-
+        explorePostsPage = new ExplorePostsPage(webDriver);
+        personalProfilePage = new PersonalProfilePage(webDriver);
         uiDataGenerator = new UiDataGenerator();
         apiDataGenerator = new ApiDataGenerator();
     }

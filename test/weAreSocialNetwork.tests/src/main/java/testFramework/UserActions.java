@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.UiPropertiesReader;
 
 import static java.lang.String.format;
 
@@ -221,5 +222,18 @@ public class UserActions {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         waitForElementVisibleUntilTimeout(locator);
     }
-
+    public void clickElementWithJavaScript(String locator, Object... locatorArguments) {
+        String xpath = getLocatorValueByKey(locator, locatorArguments);
+        WebElement element = driver.findElement(By.xpath(xpath));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", element);
+    }
+    public void assertElementPresentByXpath(String xpath) {
+        try {
+            WebElement element = driver.findElement(By.xpath(xpath));
+            Assertions.assertNotNull(element, "Element with XPath: '" + xpath + "' was not found.");
+        } catch (NoSuchElementException e) {
+            Assertions.fail("Element with XPath: '" + xpath + "' was not found.");
+        }
+    }
 }

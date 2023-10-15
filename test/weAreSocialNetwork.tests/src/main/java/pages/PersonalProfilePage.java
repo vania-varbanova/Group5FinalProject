@@ -1,12 +1,10 @@
 package pages;
 
-import models.ui.UserUiModel;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
 public class PersonalProfilePage extends BasePage {

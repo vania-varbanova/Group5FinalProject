@@ -6,12 +6,10 @@ import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.LatestPostsPage;
-import pages.MainPage;
-import pages.PersonalProfilePage;
 import services.DatabaseService;
-import testFramework.CustomWebDriverManager;
+import testFramework.UserActions;
 import utils.ApiDataGenerator;
+import utils.UiPropertiesReader;
 
 public class NavigationTests extends BaseSystemTest {
     private UserRequests userRequests;
@@ -19,6 +17,7 @@ public class NavigationTests extends BaseSystemTest {
     private DatabaseService databaseService;
     private UserResponseModel userResponseModel;
     private UserRequestModel userRequestModel;
+    private UserActions actions;
 
     @Override
     @BeforeEach
@@ -27,7 +26,7 @@ public class NavigationTests extends BaseSystemTest {
         userRequests = new UserRequests();
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
-
+        actions = new UserActions();
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
@@ -42,31 +41,31 @@ public class NavigationTests extends BaseSystemTest {
 
     @Test
     public void userCanSuccessfullyViewAboutUsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         mainPage.navigateToAboutUsPage();
+
+        mainPage.assertPageHeadingEquals(UiPropertiesReader.getValueByKey("About us"));
     }
     @Test
     public void userCanSuccessfullyViewLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("Explore all posts");
+
+        mainPage.assertPageHeadingEquals("Explore all posts");
     }
     @Test
     public void userCanSuccessfullyViewCertainCategoryLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.selectCategory();
+
+        mainPage.assertPageHeadingEquals("Explore all posts");
     }
     @Test
     public void userCanSuccessfullyViewPersonalProfilePage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PersonalProfilePage personalProfilePage = new PersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         personalProfilePage.navigateToPersonalProfilePage();
+
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.personalProfileButton"));
     }
 }

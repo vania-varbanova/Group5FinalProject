@@ -14,12 +14,13 @@ public class AnonymousUserTests {
     private Driver driver;
     protected LoginPage loginPage;
     protected MainPage mainPage;
+    protected LatestPostsPage latestPostsPage;
     @BeforeEach
     public void beforeEach() {
         WebDriver webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
         driver = new Driver(webDriver);
-        loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
+        latestPostsPage = new LatestPostsPage(driver);
     }
     @AfterEach
     public void afterEach() {
@@ -27,25 +28,24 @@ public class AnonymousUserTests {
     }
     @Test
     public void anonymousUserCanSuccessfullyViewAboutUsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         mainPage.navigateToAboutUsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("About us");
+
+        mainPage.assertPageHeadingEquals("About us");
     }
     @Test
     public void anonymousUserCanSuccessfullyViewLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
-        //mainPage.assertButtonByLinkTextIsVisible("Explore all posts");
+
+        mainPage.assertPageHeadingEquals("Explore all posts");
     }
     @Test
     public void anonymousUserCanSuccessfullyViewCertainCategoryLatestPostsPage() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.selectCategory();
+
+        mainPage.assertPageHeadingEquals("Explore all posts");
     }
 }

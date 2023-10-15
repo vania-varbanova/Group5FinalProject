@@ -39,5 +39,6 @@ public class MainPage extends BasePage {
         waitForPageToLoad();
         actions.waitForElementVisible("weAreSocialNetwork.homePage.aboutUsButton");
         actions.clickElement("weAreSocialNetwork.homePage.aboutUsButton");
+        actions.waitForElementVisible("weAreSocialNetwork.aboutUsPage.title");
     }
 }

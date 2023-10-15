@@ -1,12 +1,11 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import utils.ConfigPropertiesReader;
 
 public class ExplorePostsPage extends BasePage {
+    private Faker faker = new Faker();
     @Override
     public void waitForPageToLoad() {
         actions.waitForJavascript();
@@ -24,8 +23,22 @@ public class ExplorePostsPage extends BasePage {
         actions.selectOptionFromDropdown("weAreSocialNetwork.deletePostPage.deletePostSelection", "Delete post");
 
         actions.waitForElementVisible("weAreSocialNetwork.deletePostPage.submitPostButton");
-        actions.waitForElementClickable("weAreSocialNetwork.deletePostPage.submitPostButton");
-        WebElement submitButton = driver.findElement(By.xpath("//input[@type='submit' and @value='Submit']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitButton);
+        actions.clickElementWithJavaScript("weAreSocialNetwork.deletePostPage.submitPostButton");
+    }
+    public void editPost() {
+        String content = (faker.lorem().characters(10, 20));
+        waitForPageToLoad();
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.editPostButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.editPostButton");
+
+        waitForPageToLoad();
+        actions.scrollUntilElementVisible("weAreSocialNetwork.createPostPage.postContentField");
+        actions.selectOptionFromDropdown("weAreSocialNetwork.createPostPage.postVisibilityButton", "Public post");
+
+        actions.waitForElementVisible("weAreSocialNetwork.createPostPage.postContentField");
+        actions.typeValueInField(content, "weAreSocialNetwork.createPostPage.postContentField");
+
+        actions.waitForElementVisible("weAreSocialNetwork.createPostPage.savePostButton");
+        actions.clickElement("weAreSocialNetwork.createPostPage.savePostButton");
     }
 }

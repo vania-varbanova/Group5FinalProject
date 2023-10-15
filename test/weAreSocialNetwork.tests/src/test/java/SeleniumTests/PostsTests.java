@@ -45,48 +45,40 @@ public class PostsTests extends BaseSystemTest {
     public void userCanViewCreatePostPageSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
-
-        //actions.isElementVisible("");
     }
     @Test
     public void userCanCreatePrivatePostSuccessfully() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePrivatePost();
-
     }
     @Test
     public void userCanCreatePublicPostSuccessfully() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
     }
     @Test
     public void userCanLikePostSuccessfully() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
-        latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.likePost();
     }
     @Test
     public void userCanDeletePostSuccessfully() {
-        MainPage mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        PostsPage postsPage = new PostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        LatestPostsPage latestPostsPage = new LatestPostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        ExplorePostsPage explorePostsPage = new ExplorePostsPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.navigateToExplorePostPage();
         explorePostsPage.deletePost();
+    }
+    @Test
+    public void userCanEditPostSuccessfully() {
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.editPost();
     }
 }
