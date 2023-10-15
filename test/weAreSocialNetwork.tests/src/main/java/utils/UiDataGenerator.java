@@ -1,9 +1,13 @@
 package utils;
 
+import models.api.requestModel.SkillsRequestModel;
+import models.ui.AdminUserUiModel;
 import models.ui.PersonalProfileUiModel;
+import models.ui.SkillUserUiModel;
 import models.ui.UserUiModel;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class UiDataGenerator extends BaseDataGenerator {
     public UserUiModel createUser() {
@@ -19,6 +23,21 @@ public class UiDataGenerator extends BaseDataGenerator {
         userUiModel.setConfirmationPassword(password);
         userUiModel.setProfession(profession);
         return userUiModel;
+    }
+
+    public AdminUserUiModel createAdminUser() {
+        String username = "admin" + faker.name().firstName();
+        String password = faker.internet().password();
+        String email = faker.internet().emailAddress(username);
+        String profession = String.valueOf(faker.number().numberBetween(101, 157));
+
+        AdminUserUiModel adminUserUiModel = new AdminUserUiModel();
+        adminUserUiModel.setUsername(username);
+        adminUserUiModel.setPassword(password);
+        adminUserUiModel.setEmail(email);
+        adminUserUiModel.setConfirmationPassword(password);
+        adminUserUiModel.setProfession(profession);
+        return adminUserUiModel;
     }
 
     public PersonalProfileUiModel createPersonalProfile(boolean isMale) {
@@ -43,5 +62,13 @@ public class UiDataGenerator extends BaseDataGenerator {
         return personalProfileUiModel;
     }
 
+    public SkillUserUiModel createSkills() {
+        String firstSkill = faker.job().keySkills() + LocalDate.now().toString();
+        String weeklyAvailability = String.valueOf(faker.number().numberBetween(1, 10));
+        SkillUserUiModel skillUserUiModel = new SkillUserUiModel();
+        skillUserUiModel.setFirstSkill(firstSkill);
+        skillUserUiModel.setWeeklyAvailability(weeklyAvailability);
+        return skillUserUiModel;
+    }
 
 }

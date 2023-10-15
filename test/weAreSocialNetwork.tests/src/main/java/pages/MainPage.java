@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,16 @@ public class MainPage extends BasePage {
     public WebElement buttonByLinkText(String text) {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionLinks"), text);
         return driver.findElement(By.xpath(xpath));
+    }
+    public void assertAdminZoneButtonIsVisible(){
+        Assertions.assertTrue(adminZoneButton().isDisplayed());
+    }
+
+    public WebElement adminZoneButton(){
+        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.adminZoneButton"))));
+    }
+    public WebElement viewUserButton(){
+        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.viewUsersButton"))));
     }
 
     public void clickButtonByLinkText(String text) {

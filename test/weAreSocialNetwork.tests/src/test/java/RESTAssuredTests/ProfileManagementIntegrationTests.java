@@ -36,4 +36,12 @@ public class ProfileManagementIntegrationTests extends BaseIntegrationTest {
         Assertions.assertEquals(formattedString, profileManagementResponseModel.getMemberSince(), "date since");
         Assertions.assertNotNull(profileManagementResponseModel.getLocation().getLocationId());
     }
+    @Test
+    @Tag("Integration")
+    @Tag("ProfileManagementAction")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
+    public void userSuccessfullyCreatedSkills_when_sendRequestWithValidData() {
+
+
+    }
 }

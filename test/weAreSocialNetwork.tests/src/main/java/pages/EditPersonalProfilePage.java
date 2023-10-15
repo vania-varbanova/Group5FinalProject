@@ -1,6 +1,7 @@
 package pages;
 
 import models.ui.PersonalProfileUiModel;
+import models.ui.SkillUserUiModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,7 @@ public class EditPersonalProfilePage extends BasePage {
     public Select genderDropDownMenu() {
         return new Select(driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldGender"))));
     }
+
     public WebElement emailInputField() {
         return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldEmail")));
     }
@@ -38,6 +40,27 @@ public class EditPersonalProfilePage extends BasePage {
 
     private WebElement updateMyProfileButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.updateMyProfileButton")));
+    }
+
+    private WebElement firstSkillInputField() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldFirstSkills")));
+    }
+
+    private WebElement availabilityDropDownMenu() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldsAvailability")));
+    }
+
+    private WebElement updateSkillsButton() {
+        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.updateSkillButton")));
+    }
+
+    public void updateSkillsInformation(SkillUserUiModel skillUserUiModel) {
+        actions.scrollUntilElementVisible("weAreSocialNetwork.EditPersonalProfile.serviceForm");
+        firstSkillInputField().sendKeys(skillUserUiModel.getFirstSkill());
+        availabilityDropDownMenu().click();
+        availabilityDropDownMenu().clear();
+        availabilityDropDownMenu().sendKeys(skillUserUiModel.getWeeklyAvailability());
+        updateSkillsButton().click();
     }
 
     //todo: implement
