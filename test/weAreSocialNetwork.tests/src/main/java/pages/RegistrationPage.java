@@ -1,5 +1,6 @@
 package pages;
 
+import models.ui.AdminUserUiModel;
 import models.ui.UserUiModel;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
@@ -46,6 +47,14 @@ public class RegistrationPage extends BasePage {
         categoryDropDown().selectByValue(userUiModel.getProfession());
         registerButton().click();
 
+    }
+    public void enterAdminRegistrationCredentials(AdminUserUiModel adminUserUiModel){
+        usernameInputField().sendKeys(adminUserUiModel.getUsername());
+        emailInputField().sendKeys(adminUserUiModel.getEmail());
+        passwordInputField().sendKeys(adminUserUiModel.getPassword());
+        confirmInputField().sendKeys(adminUserUiModel.getConfirmationPassword());
+        categoryDropDown().selectByValue(adminUserUiModel.getProfession());
+        registerButton().click();
     }
 
     public WebElement errorMessageTextField() {

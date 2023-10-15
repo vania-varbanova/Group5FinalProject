@@ -15,9 +15,13 @@ public class BaseSystemTest {
     protected LatestPostsPage latestPostsPage;
     protected PostsPage postsPage;
     protected UserActions actions;
+    protected AdminViewAllUsersPage adminViewAllUsersPage;
     protected RegistrationPage registrationPage;
     protected UiDataGenerator uiDataGenerator;
     protected ApiDataGenerator apiDataGenerator;
+    protected PersonalProfilePage personalProfilePage;
+    protected EditPersonalProfilePage editPersonalProfilePage;
+    protected ConnectionPage connectionPage;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
@@ -27,9 +31,14 @@ public class BaseSystemTest {
         registrationPage = new RegistrationPage(webDriver);
         postsPage = new PostsPage(webDriver);
         latestPostsPage = new LatestPostsPage(webDriver);
+        adminViewAllUsersPage=new AdminViewAllUsersPage(webDriver);
+        personalProfilePage = new PersonalProfilePage(webDriver);
+        editPersonalProfilePage = new EditPersonalProfilePage(webDriver);
+        connectionPage=new ConnectionPage(webDriver);
 
         uiDataGenerator = new UiDataGenerator();
         apiDataGenerator = new ApiDataGenerator();
+
     }
 
     public void afterEach() {

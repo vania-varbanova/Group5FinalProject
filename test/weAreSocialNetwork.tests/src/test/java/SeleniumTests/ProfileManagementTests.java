@@ -5,6 +5,7 @@ import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
 import models.ui.PersonalProfileUiModel;
+import models.ui.SkillUserUiModel;
 import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,6 +39,7 @@ public class ProfileManagementTests extends BaseSystemTest {
     private PersonalProfilePage personalProfilePage;
     private EditPersonalProfilePage editPersonalProfilePage;
     private PersonalProfileUiModel personalProfileUiModel;
+    private SkillUserUiModel skillUserUiModel;
 
     @Override
     @BeforeEach
@@ -59,6 +61,8 @@ public class ProfileManagementTests extends BaseSystemTest {
         personalProfilePage.editProfileButton().click();
         editPersonalProfilePage = new EditPersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
         editPersonalProfilePage.waitForPageToLoad();
+        skillUserUiModel = uiDataGenerator.createSkills();
+
     }
 
     @Override
@@ -119,6 +123,7 @@ public class ProfileManagementTests extends BaseSystemTest {
         personalProfilePage.assertColumnValueEquals("birthday", formattedString);
     }
 
+
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
@@ -127,6 +132,23 @@ public class ProfileManagementTests extends BaseSystemTest {
     public void popupDisplayed_when_enterDateInFuture() {
 
     }
+    @Test
+    @Tag("System")
+    @Tag("ProfileManagementActions")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
+    public void userSuccessfullyUpdateSkills() {
+        editPersonalProfilePage.updateSkillsInformation(skillUserUiModel);
+        personalProfilePage.assertSkillIsVisible(skillUserUiModel.getFirstSkill());
+        personalProfilePage.assertWeeklyAvailability(skillUserUiModel.getWeeklyAvailability());
+    }
 
+    @Test
+    @Tag("System")
+    @Tag("ProfileManagementActions")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-147")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-158")
+    public void userSuccessfullyUpdateAvailability() {
+
+    }
 
 }

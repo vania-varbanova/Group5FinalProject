@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 public class ApiDataGenerator extends BaseDataGenerator {
     public UserRequestModel createUserWithRoleAdmin() {
         UserRequestModel adminUser = createUser(true);
+        String adminName = "admin"+adminUser.getUsername();
+        adminUser.setUsername(adminName);
         return adminUser;
     }
 

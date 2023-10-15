@@ -40,6 +40,7 @@ public class RegistrationTests extends BaseSystemTest {
         registrationPage.enterRegistrationCredentials(userUiModel);
         Thread.sleep(3000);
         mainPage.assertPageHeadingEquals(PAGE_HEADING);
+        System.out.println();
     }
 
     @Test
@@ -95,4 +96,5 @@ public class RegistrationTests extends BaseSystemTest {
 
         registrationPage.assertErrorMessageEquals(EXISTING_USER_ERROR_MESSAGE);
     }
+
 }
