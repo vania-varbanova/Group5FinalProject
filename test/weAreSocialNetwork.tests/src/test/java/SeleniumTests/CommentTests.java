@@ -7,18 +7,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;
-import testFramework.UserActions;
 import utils.ApiDataGenerator;
-import utils.UiPropertiesReader;
 
-public class NavigationTests extends BaseSystemTest {
+public class CommentTests extends BaseSystemTest {
     private UserRequests userRequests;
     private ApiDataGenerator apiDataGenerator;
     private DatabaseService databaseService;
     private UserResponseModel userResponseModel;
     private UserRequestModel userRequestModel;
-    private UserActions actions;
-
     @Override
     @BeforeEach
     public void beforeEach() {
@@ -26,7 +22,7 @@ public class NavigationTests extends BaseSystemTest {
         userRequests = new UserRequests();
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
-        actions = new UserActions();
+
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
@@ -36,36 +32,41 @@ public class NavigationTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
-        databaseService.deleteUserWithId(userResponseModel.getId());
-    }
-
-    @Test
-    public void userCanSuccessfullyViewAboutUsPage() {
-        mainPage.navigateToPage();
-        mainPage.navigateToAboutUsPage();
-
-        mainPage.assertPageHeadingEquals("About us");
+        //databaseService.deleteUserWithId(userResponseModel.getId());
     }
     @Test
-    public void userCanSuccessfullyViewLatestPostsPage() {
+    public void userCanCreateCommentUnderPostSuccessfully() {
         mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-
-        mainPage.assertPageHeadingEquals("Explore all posts");
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.createComment();
     }
     @Test
-    public void userCanSuccessfullyViewCertainCategoryLatestPostsPage() {
+    public void userCanEditCommentSuccessfully() {
         mainPage.navigateToPage();
-        latestPostsPage.navigateToLatestPostsPage();
-        latestPostsPage.selectCategory();
-
-        mainPage.assertPageHeadingEquals("Explore all posts");
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.createComment();
+        explorePostsPage.editComment();
     }
     @Test
-    public void userCanSuccessfullyViewPersonalProfilePage() {
+    public void userCanLikeCommentSuccessfully() {
         mainPage.navigateToPage();
-        personalProfilePage.navigateToPersonalProfilePage();
-
-        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.personalProfileButton"));
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.createComment();
+        explorePostsPage.likeComment();
+    }
+    @Test
+    public void userCanDeleteCommentSuccessfully() {
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.createComment();
+        explorePostsPage.deleteComment();
     }
 }

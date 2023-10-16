@@ -23,8 +23,8 @@ public class LatestPostsPage extends BasePage {
         actions.waitForElementVisible("weAreSocialNetwork.latestPostsPage.categorySelection");
         actions.selectOptionFromDropdown("weAreSocialNetwork.latestPostsPage.categorySelection", "All");
 
-        actions.waitForElementClickable("weAreSocialNetwork.latestPostsPage.browseButton");
-        actions.clickElement("weAreSocialNetwork.latestPostsPage.browseButton");
+        actions.waitForElementClickable("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
+        actions.clickElement("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
     }
     public void likePost() {
         waitForPageToLoad();

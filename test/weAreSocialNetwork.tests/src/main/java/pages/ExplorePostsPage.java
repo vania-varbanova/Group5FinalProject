@@ -41,4 +41,51 @@ public class ExplorePostsPage extends BasePage {
         actions.waitForElementVisible("weAreSocialNetwork.createPostPage.savePostButton");
         actions.clickElement("weAreSocialNetwork.createPostPage.savePostButton");
     }
+    public void createComment() {
+        String content = (faker.lorem().characters(10, 20));
+
+        waitForPageToLoad();
+        actions.scrollUntilElementVisible("weAreSocialNetwork.explorePostsPage.createCommentField");
+        actions.typeValueInField(content, "weAreSocialNetwork.explorePostsPage.createCommentField");
+
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.createCommentButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.createCommentButton");
+    }
+    private void showComments() {
+        waitForPageToLoad();
+        actions.scrollUntilElementVisible("weAreSocialNetwork.explorePostsPage.showCommentsButton");
+        actions.clickElementWithJavaScript("weAreSocialNetwork.explorePostsPage.showCommentsButton");
+    }
+    public void editComment() {
+        String content = (faker.lorem().characters(10, 20));
+
+        showComments();
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.editCommentButton");
+        actions.waitForElementClickable("weAreSocialNetwork.explorePostsPage.editCommentButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.editCommentButton");
+
+        actions.scrollUntilElementVisible("weAreSocialNetwork.editCommentPage.editCommentField");
+        actions.typeValueInField(content, "weAreSocialNetwork.editCommentPage.editCommentField");
+
+        actions.waitForElementVisible("weAreSocialNetwork.editCommentPage.editCommentButton");
+        actions.clickElement("weAreSocialNetwork.editCommentPage.editCommentButton");
+    }
+    public void deleteComment() {
+        showComments();
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.deleteCommentButton");
+        actions.waitForElementClickable("weAreSocialNetwork.explorePostsPage.deleteCommentButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.deleteCommentButton");
+
+        actions.scrollUntilElementVisible("weAreSocialNetwork.deleteCommentPage.deleteCommentSelection");
+        actions.selectOptionFromDropdown("weAreSocialNetwork.deleteCommentPage.deleteCommentSelection", "Delete comment");
+
+        actions.waitForElementVisible("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
+        actions.clickElementWithJavaScript("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
+    }
+    public void likeComment() {
+        showComments();
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.likeCommentButton");
+        actions.waitForElementClickable("weAreSocialNetwork.explorePostsPage.likeCommentButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.likeCommentButton");
+    }
 }

@@ -6,14 +6,10 @@ import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.ExplorePostsPage;
-import pages.LatestPostsPage;
-import pages.MainPage;
-import pages.PostsPage;
 import services.DatabaseService;
-import testFramework.CustomWebDriverManager;
+
 import utils.ApiDataGenerator;
-import models.api.responseModel.PostResponseModel;
+
 
 public class PostsTests extends BaseSystemTest {
     private UserRequests userRequests;
@@ -39,7 +35,7 @@ public class PostsTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
-        databaseService.deleteUserWithId(userResponseModel.getId());
+        //databaseService.deleteUserWithId(userResponseModel.getId());
     }
     @Test
     public void userCanViewCreatePostPageSuccessfully() {
