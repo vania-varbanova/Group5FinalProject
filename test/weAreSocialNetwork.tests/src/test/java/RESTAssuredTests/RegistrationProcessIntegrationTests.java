@@ -27,7 +27,7 @@ public class RegistrationProcessIntegrationTests extends BaseIntegrationTest {
     @Tag("Integration")
     @Tag("RegistrationProcess")
     @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
-    public void userSuccessfullyCreated_when_validInformation() {
+    public void userSuccessfullyCreated_when_validCredentials() {
         assertEquals(userRequestModel.getUsername(), userResponseModel.getName(), formatErrorMessage("username"));
         assertNotNull(userResponseModel.getId());
     }

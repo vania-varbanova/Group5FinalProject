@@ -32,7 +32,7 @@ public class CommentTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
-        //databaseService.deleteUserWithId(userResponseModel.getId());
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
     @Test
     public void userCanCreateCommentUnderPostSuccessfully() {
