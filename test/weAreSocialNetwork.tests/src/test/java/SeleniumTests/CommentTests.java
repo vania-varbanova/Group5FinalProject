@@ -44,7 +44,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
+    @Issue(key = "WSFP-58")
     public void userCanCreateCommentUnderPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -58,7 +58,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
+    @Issue(key = "WSFP-62")
     public void userCanEditCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -73,7 +73,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
+    @Issue(key = "WSFP-63")
     public void userCanLikeCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -86,6 +86,9 @@ public class CommentTests extends BaseSystemTest {
     }
 
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedComment")
+    @Issue(key = "WSFP-64")
     public void userCanDislikeCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -101,7 +104,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
+    @Issue(key = "WSFP-61")
     public void userCanDeleteCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();

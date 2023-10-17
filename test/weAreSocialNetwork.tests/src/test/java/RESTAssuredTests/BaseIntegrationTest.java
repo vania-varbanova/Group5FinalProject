@@ -24,10 +24,9 @@ public class BaseIntegrationTest {
     protected CommentRequest commentRequest;
     protected ConnectionRequests connectionRequests;
     protected SkillsRequests skillsRequests;
-    //End of Requests
 
 
-    //Request model
+
     protected UserRequestModel userRequestModel;
     protected ProfileManagementRequestModel profileManagementRequestModel;
     protected PostRequestModel postRequestModel;

@@ -41,7 +41,7 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToCommentPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
+    @Issue(key = "WSFP-63")
     public void commentSuccessfullyLiked_when_serverReturnsStatusCode200() {
         var updateCommentModel = commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
 
@@ -52,7 +52,7 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToCommentPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-64")
+    @Issue(key = "WSFP-64")
     public void commentSuccessfullyDisliked_when_serverReturnsStatusCode200() {
         commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
         var updatedCommentModel = commentRequest.dislikeComment(commentResponseModel.getId(), cookieValue);
@@ -63,7 +63,7 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToCommentPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
+    @Issue(key = "WSFP-62")
     public void commentEditedSuccessfully_when_serverReturnsStatusCode200() {
         var responseOptions = commentRequest.editComment(commentResponseModel.getId(), cookieValue, commentRequestModel);
 
@@ -73,7 +73,7 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToCommentPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
+    @Issue(key = "WSFP-61")
     public void commentSuccessfullyDeleted_when_sendRequestWithValidBody() {
         ResponseOptions responseOptions = commentRequest.deleteComment(commentResponseModel.getId(), cookieValue);
 

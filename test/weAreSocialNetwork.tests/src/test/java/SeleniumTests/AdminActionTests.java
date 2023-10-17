@@ -14,6 +14,7 @@ public class AdminActionTests extends BaseSystemTest {
     private PersonalProfileUiModel personalProfileInformation;
 
 
+
     @Override
     @BeforeEach
     public void beforeEach() {
@@ -38,7 +39,7 @@ public class AdminActionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("AdminActionProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-80")
+    @Issue(key = "WSFP-80")
     public void adminSuccessfullyDisableUser() throws InterruptedException {
         personalProfilePage.clickDisableButton();
 
@@ -48,7 +49,7 @@ public class AdminActionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("AdminActionProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-81")
+    @Issue(key = "WSFP-81")
     public void adminSuccessfullyEnableUser() {
         personalProfilePage.clickDisableButton();
 
@@ -60,33 +61,13 @@ public class AdminActionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("AdminActionProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-70")
+    @Issue(key = "WSFP-70")
     public void adminSuccessfullyEditNameUser() throws InterruptedException {
         personalProfileInformation = uiDataGenerator.createPersonalProfile(true);
         String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
         personalProfilePage.clickEditProfileButton();
 
         editPersonalProfilePage.updateProfessionalInformation(personalProfileInformation);
-        personalProfilePage.navigateToPersonalProfilePage();
-
-        personalProfilePage.assertColumnValueEquals("Name", expectedName);
-    }
-
-    @Test
-    @Tag("System")
-    @Tag("AdminActionProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-75")
-    public void adminSuccessfullyEditProfessionUser() throws InterruptedException {
-        personalProfileInformation = uiDataGenerator.createPersonalProfile(true);
-        String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
-        personalProfilePage.clickEditProfileButton();
-        var skillInformation = uiDataGenerator.createSkills();
-
-
-        editPersonalProfilePage.updateProfessionalInformation(personalProfileInformation);
-        personalProfilePage.navigateToPersonalProfilePage();
-        personalProfilePage.clickEditProfileButton();
-        editPersonalProfilePage.updateSkillsInformation(skillInformation);
         personalProfilePage.navigateToPersonalProfilePage();
 
         personalProfilePage.assertColumnValueEquals("Name", expectedName);

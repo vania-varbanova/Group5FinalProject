@@ -42,7 +42,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
+    @Issue(key = "WSFP-50")
     public void connectionSuccessfullySend_when_serverReturnsStatusCode200() {
         Assertions.assertEquals(senderResponseModel.getName(), connectionSendResponseModel.getSenderUsername(), "sender user name");
         Assertions.assertEquals(receiverResponseModel.getName(), connectionSendResponseModel.getReceiverUsername(), "receiver user name");
@@ -51,7 +51,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    @Issue(key = "WSFP-52")
     public void getUserRequestSend() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);
@@ -62,7 +62,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    @Issue(key = "WSFP-52")
     public void approveSendRequest() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
 

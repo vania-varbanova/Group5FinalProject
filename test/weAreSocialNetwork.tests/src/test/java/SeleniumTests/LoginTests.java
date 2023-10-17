@@ -32,7 +32,7 @@ public class LoginTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("Authentication process")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-17")
+    @Issue(key = "WSFP-17")
     public void userSuccessfullyLogin_when_enterValidCredentials() {
         loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
 
@@ -42,7 +42,7 @@ public class LoginTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("Authentication process")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-18")
+    @Issue(key = "WSFP-18")
     public void userSuccessfullyLogout_when_clickLogoutButton() throws InterruptedException {
         loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
 
@@ -54,7 +54,7 @@ public class LoginTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("Authentication process")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-34")
+    @Issue(key = "WSFP-34")
     public void errorMessageDisplayed_when_enterInvalidPassword() {
         user.setPassword(user.getPassword() + "qwe");
 

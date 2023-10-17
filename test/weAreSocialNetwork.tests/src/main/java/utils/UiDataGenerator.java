@@ -60,14 +60,6 @@ public class UiDataGenerator extends BaseDataGenerator {
 
         return personalProfileUiModel;
     }
-    public ProfessionalCategoryUiModel updateCategory(){
-        String profession = String.valueOf(faker.number().numberBetween(101, 157));
-        ProfessionalCategoryUiModel professionalCategoryUiModel=new ProfessionalCategoryUiModel();
-        professionalCategoryUiModel.setProfession(profession);
-
-        return professionalCategoryUiModel;
-
-    }
 
     public SkillUserUiModel createSkills() {
         String firstSkill = faker.job().keySkills() + LocalDate.now().toString();
@@ -75,6 +67,7 @@ public class UiDataGenerator extends BaseDataGenerator {
         SkillUserUiModel skillUserUiModel = new SkillUserUiModel();
         skillUserUiModel.setFirstSkill(firstSkill);
         skillUserUiModel.setWeeklyAvailability(weeklyAvailability);
+
         return skillUserUiModel;
     }
 

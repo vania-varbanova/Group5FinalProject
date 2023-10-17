@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/annotations/IssueLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/annotations/Issue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/AdminUserUiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ui/AdminUserUiModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/AdminViewAllUsersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/AdminViewAllUsersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/ConnectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/ConnectionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/ProfessionalCategoryUiModel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/SearchPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/BaseIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" afterDir="false" />
@@ -26,7 +20,6 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/AdminActionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/AdminActionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/CommentTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/CommentTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
@@ -210,7 +203,7 @@
       <workItem from="1697091955193" duration="29163000" />
       <workItem from="1697172010219" duration="4332000" />
       <workItem from="1697179174031" duration="51613000" />
-      <workItem from="1697350174757" duration="61942000" />
+      <workItem from="1697350174757" duration="70733000" />
     </task>
     <task id="LOCAL-00001" summary="added jira key and tag">
       <option name="closed" value="true" />
@@ -275,28 +268,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java</url>
-          <line>68</line>
+          <line>67</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java</url>
           <line>50</line>
           <option name="timeStamp" value="127" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/SeleniumTests/AdminActionTests.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

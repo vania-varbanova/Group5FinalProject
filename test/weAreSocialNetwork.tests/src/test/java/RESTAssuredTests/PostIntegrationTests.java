@@ -29,7 +29,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-40")
+    @Issue(key = "WSFP-40")
     public void postSuccessfullyCreated_when_sendRequestWithValidBody() {
         assertNotNull(postResponseModel.getId());
         assertEquals(postRequestModel.getContent(), postResponseModel.getContent(), formatErrorMessage("post content"));
@@ -39,7 +39,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-67")
+    @Issue(key = "WSFP-67")
     public void postSuccessfullyLiked_when_sendRequestWithValidBody() {
         var updatedPostModel = postRequests.likePost(postResponseModel.getId(), cookieValue);
 
@@ -50,7 +50,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-68")
+    @Issue(key = "WSFP-68")
     public void postSuccessfullyDisliked_when_sendRequestWithValidData() {
         postRequests.likePost(postResponseModel.getId(), cookieValue);
         var updatedPostModel = postRequests.dislikePost(postResponseModel.getId(), cookieValue);
@@ -61,7 +61,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-44")
+    @Issue(key = "WSFP-44")
     public void postEditSuccessfully_when_sendRequestWithValidData() {
         EditPostRequestModel editPostRequestModel = apiDataGenerator.editPost(true);
         ResponseOptions responseOptions = postRequests.editPost(postResponseModel.getId(), cookieValue, editPostRequestModel);
@@ -72,7 +72,7 @@ public class PostIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-45")
+    @Issue(key = "WSFP-45")
     public void postSuccessfullyDeleted_when_sendRequestWithValidData() {
         var responseOptions = postRequests.deletePost(postResponseModel.getId(), cookieValue);
 

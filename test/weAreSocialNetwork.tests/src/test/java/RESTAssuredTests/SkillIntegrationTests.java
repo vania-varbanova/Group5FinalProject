@@ -38,7 +38,7 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("ProfileManagementAction")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
+    @Issue(key = "WSFP-146")
     public void skillSuccessfullyCreated() {
         String expectedProfessionId = String.valueOf(skillsRequestModel.getCategory());
         String actualProfessionId = String.valueOf(skillsResponseModel.getCategory());

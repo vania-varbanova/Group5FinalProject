@@ -38,7 +38,7 @@ public class AnonymousUserTests {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-39")
+    @Issue(key = "WSFP-39")
     public void anonymousUserCanSuccessfullyViewLatestPostsPage() {
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();

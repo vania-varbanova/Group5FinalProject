@@ -13,7 +13,6 @@ public class EditPersonalProfilePage extends BasePage {
         super(driver, "");
     }
 
-
     public WebElement firstNameInputField() {
         return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldFirstName")));
     }

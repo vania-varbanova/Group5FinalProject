@@ -54,7 +54,7 @@ public class PostsTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-42")
+    @Issue(key = "WSFP-42")
     public void userCanCreatePrivatePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -67,7 +67,7 @@ public class PostsTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-40")
+    @Issue(key = "WSFP-40")
     public void userCanCreatePublicPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -80,7 +80,7 @@ public class PostsTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-67")
+    @Issue(key = "WSFP-67")
     public void userCanLikePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -92,6 +92,9 @@ public class PostsTests extends BaseSystemTest {
     }
 
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @Issue(key = "WSFP-68")
     public void userCanDislikePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -108,7 +111,7 @@ public class PostsTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-45")
+    @Issue(key = "WSFP-45")
     public void userCanDeletePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -122,7 +125,7 @@ public class PostsTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-44")
+    @Issue(key = "WSFP-44")
     public void userCanEditPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();

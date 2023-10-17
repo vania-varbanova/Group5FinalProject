@@ -27,7 +27,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
+    @Issue(key = "WSFP-13")
     public void userSuccessfullyRegister_when_validCredentials() {
         registrationPage.enterRegistrationCredentials(user);
 
@@ -37,7 +37,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-33")
+    @Issue(key = "WSFP-33")
     public void errorMessageDisplayed_when_invalidEmail() {
         String newEmail = user.getEmail().replace("@", "");
         user.setEmail(newEmail);
@@ -50,7 +50,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-87")
+    @Issue(key = "WSFP-87")
     public void errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword() {
         String newConfirmPassword = user.getConfirmationPassword().concat("ABC");
         user.setConfirmationPassword(newConfirmPassword);
@@ -63,7 +63,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-86")
+    @Issue(key = "WSFP-86")
     public void errorMessageDisplayed_when_enterEmptyConfirmPassword() {
         user.setConfirmationPassword("");
 
@@ -75,7 +75,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-35")
+    @Issue(key = "WSFP-35")
     public void errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername() {
         UserResponseModel existingUser = userRequests.createUser(apiDataGenerator.createUserWithRoleUser());
         String newUsername = existingUser.getName();
@@ -89,7 +89,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-151")
+    @Issue(key = "WSFP-151")
     public void userAdminSuccessfullyRegister_when_validCredentials() {
         AdminUserUiModel adminUserInformation = uiDataGenerator.createAdminUser();
         registrationPage.enterRegistrationCredentials(adminUserInformation);
@@ -103,32 +103,34 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-27")
-    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-96")
+    @Issue(key = "WSFP-27")
+    @Bug(key = "WSFP-96")
+    @Disabled
     public void errorMessageDisplayed_when_passwordLengthBelowMinimalRequiredLength() {
     }
 
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-28")
-    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-97")
+    @Issue(key = "WSFP-28")
+    @Bug(key = "WSFP-97")
+    @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainDigit() {
     }
 
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-29")
-    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-98")
-
+    @Issue(key = "WSFP-29")
+    @Bug(key = "WSFP-98" )
+    @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainCapitalLetter() {
     }
 
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-30")
+    @Issue(key = "WSFP-30")
     @Bug(key = "WSFP-100")
     @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainSpecialSymbols() {
@@ -137,8 +139,9 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-31")
-    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-99")
+    @Issue(key = "WSFP-31")
+    @Bug(key = "WSFP-99")
+    @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainLowerCaseLetter() {
 
     }
@@ -146,8 +149,9 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-32")
-    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-101")
+    @Issue(key = "WSFP-32")
+    @Bug(key = "WSFP-101")
+    @Disabled
     public void errorMessageDisplayed_when_userTryToRegisterWithExisitingEmail() {
     }
 }

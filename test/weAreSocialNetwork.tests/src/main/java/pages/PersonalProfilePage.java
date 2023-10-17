@@ -16,7 +16,7 @@ public class PersonalProfilePage extends BasePage {
         super(driver, "");
     }
 
-    public WebElement editProfileButton() {
+    private WebElement editProfileButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.editProfileButton")));
 
     }
@@ -31,6 +31,7 @@ public class PersonalProfilePage extends BasePage {
     }
 
     public void clickEditProfileButton() {
+        actions.waitForElementVisible("weAreSocialNetwork.PersonalProfile.editProfileButton");
         editProfileButton().click();
     }
 
@@ -110,6 +111,9 @@ public class PersonalProfilePage extends BasePage {
     public void assertWeeklyAvailability(String expectedWeeklyAvailability) {
         Assertions.assertTrue(weeklyAvailabilityTextField().getText().contains(expectedWeeklyAvailability));
     }
+    public void assertProfession(String expectedProfession) {
+        Assertions.assertTrue(professionTextField().getText().contains(expectedProfession));
+    }
 
     private WebElement skillTextFieldByText(String skill) {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.skillTextField"), skill);
@@ -118,6 +122,9 @@ public class PersonalProfilePage extends BasePage {
 
     private WebElement weeklyAvailabilityTextField() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.skillWeeklyAvailability")));
+    }
+    private WebElement professionTextField() {
+        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.professionTextField")));
     }
 
     @Override

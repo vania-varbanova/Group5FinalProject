@@ -41,7 +41,7 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
+    @Issue(key = "WSFP-50")
     public void connectionSuccessfullySend_when_clickConnectButton() {
         personalProfilePage.assertConnectMessageIsVisible();
 
@@ -50,7 +50,7 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    @Issue(key = "WSFP-52")
     public void requestSuccessfullyApproved_when_clickApproveButton() {
         mainPage.logOut();
         loginPage.navigateToPage();
@@ -66,7 +66,7 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-51")
+    @Issue(key = "WSFP-51")
     public void userSuccessfullyDisconnect_when_clickDisconnectButton() {
         mainPage.logOut();
         loginPage.navigateToPage();
@@ -85,7 +85,7 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-53")
+    @Issue(key = "WSFP-53")
     public void userFriendListUpdated_when_approveFriendRequest() {
         mainPage.logOut();
         loginPage.navigateToPage();
