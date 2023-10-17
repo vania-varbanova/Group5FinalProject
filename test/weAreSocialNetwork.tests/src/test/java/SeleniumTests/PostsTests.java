@@ -3,7 +3,6 @@ package SeleniumTests;
 import annotations.Issue;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -16,11 +15,6 @@ import utils.UiPropertiesReader;
 
 
 public class PostsTests extends BaseSystemTest {
-    private UserRequests userRequests;
-    private ApiDataGenerator apiDataGenerator;
-    private DatabaseService databaseService;
-    private UserResponseModel userResponseModel;
-    private UserRequestModel userRequestModel;
 
     @Override
     @BeforeEach
@@ -30,10 +24,12 @@ public class PostsTests extends BaseSystemTest {
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
         actions = new UserActions();
-        userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
     }
 
     @Override
@@ -41,13 +37,11 @@ public class PostsTests extends BaseSystemTest {
     public void afterEach() {
         super.afterEach();
         databaseService.deleteUserWithId(userResponseModel.getId());
+        actions.waitFor(500);
     }
 
     @Test
     public void userCanViewCreatePostPageSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-
         mainPage.assertPageHeadingEquals(CREATE_POST_PAGE_HEADING);
     }
 
@@ -56,8 +50,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-42")
     public void userCanCreatePrivatePostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePrivatePost();
 
         mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
@@ -69,8 +61,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-40")
     public void userCanCreatePublicPostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
 
         mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
@@ -82,8 +72,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-67")
     public void userCanLikePostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.likePost();
 
@@ -96,8 +84,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-68")
     public void userCanDislikePostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.likePost();
 
@@ -113,8 +99,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-45")
     public void userCanDeletePostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.navigateToExplorePostPage();
         explorePostsPage.deletePost();
@@ -127,8 +111,6 @@ public class PostsTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-44")
     public void userCanEditPostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.navigateToExplorePostPage();
         explorePostsPage.editPost();

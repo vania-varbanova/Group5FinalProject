@@ -3,7 +3,6 @@ package SeleniumTests;
 import annotations.Issue;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -14,11 +13,6 @@ import utils.ApiDataGenerator;
 import utils.UiPropertiesReader;
 
 public class CommentTests extends BaseSystemTest {
-    private UserRequests userRequests;
-    private ApiDataGenerator apiDataGenerator;
-    private DatabaseService databaseService;
-    private UserResponseModel userResponseModel;
-    private UserRequestModel userRequestModel;
 
     @Override
     @BeforeEach
@@ -28,10 +22,15 @@ public class CommentTests extends BaseSystemTest {
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
         actions = new UserActions();
-        userRequestModel = apiDataGenerator.createUserWithRoleUser();
+        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.navigateToExplorePostPage();
+        explorePostsPage.createComment();
     }
 
     @Override
@@ -46,12 +45,6 @@ public class CommentTests extends BaseSystemTest {
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-58")
     public void userCanCreateCommentUnderPostSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-        postsPage.cretePublicPost();
-        latestPostsPage.navigateToExplorePostPage();
-        explorePostsPage.createComment();
-
         actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentCreated"));
     }
 
@@ -60,11 +53,6 @@ public class CommentTests extends BaseSystemTest {
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-62")
     public void userCanEditCommentSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-        postsPage.cretePublicPost();
-        latestPostsPage.navigateToExplorePostPage();
-        explorePostsPage.createComment();
         explorePostsPage.editComment();
 
         mainPage.assertPageHeadingEquals(EXPLORE_POST_PAGE_HEADING);
@@ -75,11 +63,6 @@ public class CommentTests extends BaseSystemTest {
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-63")
     public void userCanLikeCommentSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-        postsPage.cretePublicPost();
-        latestPostsPage.navigateToExplorePostPage();
-        explorePostsPage.createComment();
         explorePostsPage.likeComment();
 
         actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentLiked"));
@@ -90,14 +73,10 @@ public class CommentTests extends BaseSystemTest {
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-64")
     public void userCanDislikeCommentSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-        postsPage.cretePublicPost();
-        latestPostsPage.navigateToExplorePostPage();
-        explorePostsPage.createComment();
         explorePostsPage.likeComment();
-        explorePostsPage.dislikeComment();
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentLiked"));
 
+        explorePostsPage.dislikeComment();
         actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentDisliked"));
     }
 
@@ -106,11 +85,6 @@ public class CommentTests extends BaseSystemTest {
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-61")
     public void userCanDeleteCommentSuccessfully() {
-        mainPage.navigateToPage();
-        postsPage.navigateToCretePostsPage();
-        postsPage.cretePublicPost();
-        latestPostsPage.navigateToExplorePostPage();
-        explorePostsPage.createComment();
         explorePostsPage.deleteComment();
 
         mainPage.assertPageHeadingEquals(DELETE_COMMENT_PAGE_HEADING);

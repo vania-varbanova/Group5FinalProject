@@ -1,8 +1,10 @@
 package SeleniumTests;
 
 import models.api.request.UserRequests;
+import models.api.responseModel.UserResponseModel;
 import org.openqa.selenium.WebDriver;
 import pages.*;
+import services.DatabaseService;
 import testFramework.CustomWebDriverManager;
 import testFramework.UserActions;
 import utils.ApiDataGenerator;
@@ -38,6 +40,8 @@ public class BaseSystemTest {
     protected PersonalProfilePage personalProfilePage;
     protected EditPersonalProfilePage editPersonalProfilePage;
     protected ConnectionPage connectionPage;
+    protected DatabaseService databaseService;
+    protected UserResponseModel userResponseModel;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
@@ -53,10 +57,10 @@ public class BaseSystemTest {
         editPersonalProfilePage = new EditPersonalProfilePage(webDriver);
         connectionPage = new ConnectionPage(webDriver);
         explorePostsPage = new ExplorePostsPage(webDriver);
-
+        databaseService = new DatabaseService();
         uiDataGenerator = new UiDataGenerator();
         apiDataGenerator = new ApiDataGenerator();
-
+        userResponseModel = new UserResponseModel();
         userRequests = new UserRequests();
     }
 

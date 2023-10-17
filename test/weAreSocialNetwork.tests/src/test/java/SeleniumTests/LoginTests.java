@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+
 public class LoginTests extends BaseSystemTest {
     private static final String INVALID_DETAILS_ERROR_MESSAGE = "Wrong username or password.";
 
@@ -26,12 +27,12 @@ public class LoginTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
-//        databaseService.deleteUserWithId(userResponseModel.getId());
+       //databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test
     @Tag("System")
-    @Tag("Authentication process")
+    @Tag("AuthenticationProcess")
     @Issue(key = "WSFP-17")
     public void userSuccessfullyLogin_when_enterValidCredentials() {
         loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
@@ -41,7 +42,7 @@ public class LoginTests extends BaseSystemTest {
 
     @Test
     @Tag("System")
-    @Tag("Authentication process")
+    @Tag("AuthenticationProcess")
     @Issue(key = "WSFP-18")
     public void userSuccessfullyLogout_when_clickLogoutButton() throws InterruptedException {
         loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
@@ -53,7 +54,7 @@ public class LoginTests extends BaseSystemTest {
 
     @Test
     @Tag("System")
-    @Tag("Authentication process")
+    @Tag("AuthenticationProcess")
     @Issue(key = "WSFP-34")
     public void errorMessageDisplayed_when_enterInvalidPassword() {
         user.setPassword(user.getPassword() + "qwe");
