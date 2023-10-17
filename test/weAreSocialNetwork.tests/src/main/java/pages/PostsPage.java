@@ -20,6 +20,7 @@ public class PostsPage extends BasePage {
         waitForPageToLoad();
         actions.waitForElementVisible("weAreSocialNetwork.createPostPage.createPostButton");
         actions.clickElement("weAreSocialNetwork.createPostPage.createPostButton");
+        actions.waitFor(1000);
     }
     public void cretePrivatePost() {
         String content = (faker.lorem().characters(10, 20));
@@ -29,6 +30,7 @@ public class PostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.createPostPage.savePostButton");
         actions.clickElement("weAreSocialNetwork.createPostPage.savePostButton");
+        actions.waitFor(1000);
     }
     public void cretePublicPost() {
         String content = (faker.lorem().characters(10, 20));
@@ -41,5 +43,6 @@ public class PostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.createPostPage.savePostButton");
         actions.clickElement("weAreSocialNetwork.createPostPage.savePostButton");
+        actions.waitFor(1000);
     }
 }

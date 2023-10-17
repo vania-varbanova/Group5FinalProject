@@ -66,6 +66,7 @@ public class EditPersonalProfilePage extends BasePage {
         availabilityDropDownMenu().clear();
         availabilityDropDownMenu().sendKeys(skillUserUiModel.getWeeklyAvailability());
         updateSkillsButton().click();
+        actions.waitFor(1000);
     }
 
     //todo: implement
@@ -78,7 +79,7 @@ public class EditPersonalProfilePage extends BasePage {
         emailInputField().sendKeys(personalProfileUiModel.getEmail());
         cityDropDownMenu().selectByIndex(4);
         updateMyProfileButton().click();
-
+        actions.waitFor(1000);
     }
 
     @Override
