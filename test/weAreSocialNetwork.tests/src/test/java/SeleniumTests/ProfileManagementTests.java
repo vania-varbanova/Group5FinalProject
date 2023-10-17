@@ -1,9 +1,7 @@
 package SeleniumTests;
 
-import annotations.IssueLink;
-import models.api.request.UserRequests;
+import annotations.Issue;
 import models.api.requestModel.UserRequestModel;
-import models.api.responseModel.UserResponseModel;
 import models.ui.PersonalProfileUiModel;
 import models.ui.SkillUserUiModel;
 import org.junit.Ignore;
@@ -12,57 +10,29 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.EditPersonalProfilePage;
-import pages.MainPage;
-import pages.PersonalProfilePage;
-import services.DatabaseService;
-import testFramework.CustomWebDriverManager;
-import utils.ApiDataGenerator;
-import utils.UiDataGenerator;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class ProfileManagementTests extends BaseSystemTest {
-
-    private UserRequests userRequests;
-    private ApiDataGenerator apiDataGenerator;
-    private UiDataGenerator uiDataGenerator;
-    private DatabaseService databaseService;
-    private UserResponseModel userResponseModel;
-    private UserRequestModel userRequestModel;
-    private MainPage mainPage;
-    private PersonalProfilePage personalProfilePage;
-    private EditPersonalProfilePage editPersonalProfilePage;
-    private PersonalProfileUiModel personalProfileUiModel;
-    private SkillUserUiModel skillUserUiModel;
+    private UserRequestModel user;
+    private PersonalProfileUiModel personalProfileInformation;
+    private SkillUserUiModel skillInformation;
 
     @Override
     @BeforeEach
     public void beforeEach() {
         super.beforeEach();
-        userRequests = new UserRequests();
-        apiDataGenerator = new ApiDataGenerator();
-        uiDataGenerator = new UiDataGenerator();
-        personalProfileUiModel = uiDataGenerator.createPersonalProfile(true);
-        databaseService = new DatabaseService();
-        userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        userResponseModel = userRequests.createUser(userRequestModel);
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
-        mainPage = new MainPage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        mainPage.navigateToPage();
-        personalProfilePage = new PersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        personalProfilePage.navigateToPersonalProfilePage();
-        personalProfilePage.editProfileButton().click();
-        editPersonalProfilePage = new EditPersonalProfilePage(CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver());
-        editPersonalProfilePage.waitForPageToLoad();
-        skillUserUiModel = uiDataGenerator.createSkills();
+        personalProfileInformation = uiDataGenerator.createPersonalProfile(true);
+        user = apiDataGenerator.createUserWithRoleUser();
+        userRequests.createUser(user);
 
+        loginPage.navigateToPage();
+        loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
+        personalProfilePage.navigateToPersonalProfilePage();
+        personalProfilePage.clickEditProfileButton();
+        editPersonalProfilePage.updateProfessionalInformation(personalProfileInformation);
+        personalProfilePage.navigateToPersonalProfilePage();
     }
 
     @Override
@@ -74,88 +44,79 @@ public class ProfileManagementTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-171")
-    public void userSuccessfullyEditPersonalData_when_validCredentials() {
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-171")
+    public void userSuccessfullyEditPersonalData_when_fillFieldsWithValidInformation() {
+        String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
+        String expectedEmail = personalProfileInformation.getEmail();
 
-        editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
-        personalProfilePage.navigateToPersonalProfilePage();
-
-        String expectedResultName = String.format("%s %s", personalProfileUiModel.getFirstName(), personalProfileUiModel.getLastName());
-        personalProfilePage.assertColumnValueEquals("Name", expectedResultName);
-        String expectedResultEmail = personalProfileUiModel.getEmail();
-        personalProfilePage.assertColumnValueEquals("Email", expectedResultEmail);
+        personalProfilePage.assertColumnValueEquals("Name", expectedName);
+        personalProfilePage.assertColumnValueEquals("Email", expectedEmail);
 
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-19")
-    public void userSuccessfullyEditFirstAndLastNames() {
-        editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
-        personalProfilePage.navigateToPersonalProfilePage();
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-19")
+    public void userSuccessfullyUpdateFirstAndLastName_when_fillFirstNameAndLastNameFields() {
+        String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
 
-        String expectedResult = String.format("%s %s", personalProfileUiModel.getFirstName(), personalProfileUiModel.getLastName());
-        personalProfilePage.assertColumnValueEquals("Name", expectedResult);
+        personalProfilePage.assertColumnValueEquals("Name", expectedName);
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-22")
-    public void userSuccessfullyEditEmail() {
-        editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
-        personalProfilePage.navigateToPersonalProfilePage();
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-22")
+    public void userSuccessfullyUpdateEmail_when_fillEmailField() {
+        String expectedEmail = personalProfileInformation.getEmail();
 
-        String expectedResult = personalProfileUiModel.getEmail();
-        personalProfilePage.assertColumnValueEquals("Email", expectedResult);
+        personalProfilePage.assertColumnValueEquals("Email", expectedEmail);
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-23")
-    public void userSuccessfullyEditBirthday() throws ParseException {
-        editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
-        personalProfilePage.navigateToPersonalProfilePage();
-        DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-23")
+    public void userSuccessfullyUpdateBirthDate_when_fillBirthDateField() {
+        DateTimeFormatter birthDayFieldFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter birthDayUiFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        String birthDate = personalProfileInformation.getBirthYear();
+        LocalDate date = LocalDate.parse(birthDate, birthDayUiFormat);
+        String expectedBirthDate = date.format(birthDayFieldFormat);
 
-        String expectedResult = personalProfileUiModel.getBirthYear();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        LocalDate date = LocalDate.parse(expectedResult, formatter);
-        String formattedString = date.format(sdf);
-
-        personalProfilePage.assertColumnValueEquals("birthday", formattedString);
+        personalProfilePage.assertColumnValueEquals("birthday", expectedBirthDate);
     }
 
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-95")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-95")
     @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-157")
-    public void popupDisplayed_when_enterDateInFuture() {
+    public void errorMessageDisplayed_when_fillBirthdateWithFutureDate() {
 
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
-    public void userSuccessfullyUpdateSkills() {
-        editPersonalProfilePage.updateSkillsInformation(skillUserUiModel);
-        personalProfilePage.assertSkillIsVisible(skillUserUiModel.getFirstSkill());
-        personalProfilePage.assertWeeklyAvailability(skillUserUiModel.getWeeklyAvailability());
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
+    public void userSuccessfullyUpdateSkill_when_fillSkillForm() {
+        skillInformation = uiDataGenerator.createSkills();
+        personalProfilePage.clickEditProfileButton();
+
+        editPersonalProfilePage.updateSkillsInformation(skillInformation);
+
+        personalProfilePage.assertSkillIsVisible(skillInformation.getFirstSkill());
+        personalProfilePage.assertWeeklyAvailability(skillInformation.getWeeklyAvailability());
     }
 
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-147")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-147")
     @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-158")
-    public void userSuccessfullyUpdateAvailability() {
-
+    public void weeklyAvailabilityDisplayed_when_userUpdateTheData() {
     }
-
-
 }

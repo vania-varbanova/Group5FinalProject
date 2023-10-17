@@ -1,6 +1,6 @@
 package RESTAssuredTests;
 
-import annotations.IssueLink;
+import annotations.Issue;
 import io.restassured.response.Response;
 import models.api.requestModel.EditSkillRequestModel;
 import models.api.responseModel.SkillsResponseModel;
@@ -38,7 +38,7 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("ProfileManagementAction")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
     public void skillSuccessfullyCreated() {
         String expectedProfessionId = String.valueOf(skillsRequestModel.getCategory());
         String actualProfessionId = String.valueOf(skillsResponseModel.getCategory());

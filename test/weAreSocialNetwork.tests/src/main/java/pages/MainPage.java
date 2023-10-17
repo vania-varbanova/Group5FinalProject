@@ -14,26 +14,18 @@ public class MainPage extends BasePage {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.baseUrl"));
     }
 
-    public WebElement buttonByLinkText(String text) {
-        String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionLinks"), text);
-        return driver.findElement(By.xpath(xpath));
+    public void logOut() {
+        clickButtonByLinkText("LOGOUT");
     }
-    public void assertAdminZoneButtonIsVisible(){
+
+    public void assertAdminZoneButtonIsVisible() {
         Assertions.assertTrue(adminZoneButton().isDisplayed());
     }
 
-    public WebElement adminZoneButton(){
+    public WebElement adminZoneButton() {
         return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.adminZoneButton"))));
     }
-    public WebElement viewUserButton(){
-        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.viewUsersButton"))));
-    }
-    public WebElement searchFieldByName(){
-        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.searchFieldByName"))));
-    }
-    public WebElement searchButton(){
-        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.searchButton"))));
-    }
+
     public void clickButtonByLinkText(String text) {
         buttonByLinkText(text).click();
     }

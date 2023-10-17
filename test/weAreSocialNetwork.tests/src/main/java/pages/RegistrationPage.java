@@ -1,6 +1,5 @@
 package pages;
 
-import models.ui.AdminUserUiModel;
 import models.ui.UserUiModel;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
@@ -15,28 +14,9 @@ public class RegistrationPage extends BasePage {
         super(driver, ConfigPropertiesReader.getValueByKey("weAreSocialNetwork.registrationPage"));
     }
 
-    public WebElement usernameInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldName")));
-    }
-
-    public WebElement emailInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldEmail")));
-    }
-
-    public WebElement passwordInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldPassword")));
-    }
-
-    public WebElement confirmInputField() {
-        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldConfirmPassword")));
-    }
-
-    public Select categoryDropDown() {
-        return new Select(driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.categoryIdButton"))));
-    }
-
-    public WebElement registerButton() {
-        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.registerButton")));
+    @Override
+    public void waitForPageToLoad() {
+        actions.waitForJavascript();
     }
 
     public void enterRegistrationCredentials(UserUiModel userUiModel) {
@@ -46,37 +26,41 @@ public class RegistrationPage extends BasePage {
         confirmInputField().sendKeys(userUiModel.getConfirmationPassword());
         categoryDropDown().selectByValue(userUiModel.getProfession());
         registerButton().click();
-        actions.waitFor(1000);
-    }
-    public void enterAdminRegistrationCredentials(AdminUserUiModel adminUserUiModel){
-        usernameInputField().sendKeys(adminUserUiModel.getUsername());
-        emailInputField().sendKeys(adminUserUiModel.getEmail());
-        passwordInputField().sendKeys(adminUserUiModel.getPassword());
-        confirmInputField().sendKeys(adminUserUiModel.getConfirmationPassword());
-        categoryDropDown().selectByValue(adminUserUiModel.getProfession());
-        registerButton().click();
-        actions.waitFor(1000);
-    }
-
-    public WebElement errorMessageTextField() {
-        String xpath = UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.errorMessageTextField");
-        return driver.findElement(By.xpath(xpath));
-    }
-
-    public WebElement buttonByLinkText() {
-        String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.navigationSectionButton"));
-        return driver.findElement(By.xpath(xpath));
+        
+        actions.waitForElementVisible("weAreSocialNetwork.heading");
     }
 
     public void assertErrorMessageEquals(String expectedErrorMessage) {
         String actualErrorMessage = errorMessageTextField().getText();
-
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
 
+    private WebElement usernameInputField() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldName")));
+    }
 
-    @Override
-    public void waitForPageToLoad() {
-        actions.waitForJavascript();
+    private WebElement emailInputField() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldEmail")));
+    }
+
+    private WebElement passwordInputField() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldPassword")));
+    }
+
+    private WebElement confirmInputField() {
+        return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.fieldConfirmPassword")));
+    }
+
+    private Select categoryDropDown() {
+        return new Select(driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.categoryIdButton"))));
+    }
+
+    private WebElement registerButton() {
+        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.registerButton")));
+    }
+
+    private WebElement errorMessageTextField() {
+        String xpath = UiPropertiesReader.getValueByKey("weAreSocialNetwork.Registration.errorMessageTextField");
+        return driver.findElement(By.xpath(xpath));
     }
 }

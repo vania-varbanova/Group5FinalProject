@@ -1,14 +1,8 @@
 package SeleniumTests;
 
-import annotations.IssueLink;
-import models.api.Authorities;
-import models.api.request.AuthenticateRequests;
-import models.api.request.ProfileManagementRequest;
-import models.api.request.UserRequests;
-import models.api.requestModel.ProfileManagementRequestModel;
+import annotations.Issue;
 import models.api.requestModel.UserRequestModel;
-import models.ui.AdminUserUiModel;
-import models.ui.PersonalProfileUiModel;
+import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -16,15 +10,26 @@ import org.junit.jupiter.api.Test;
 import utils.UiDataGenerator;
 
 public class ConnectionTests extends BaseSystemTest {
-    AdminUserUiModel adminUserUiModel;
+    private UserRequestModel user;
+    private UserResponseModel createdUser;
+    private UserRequestModel admin;
+
     @Override
     @BeforeEach
     public void beforeEach() {
         super.beforeEach();
         uiDataGenerator = new UiDataGenerator();
-        adminUserUiModel = uiDataGenerator.createAdminUser();
 
+        user = apiDataGenerator.createUserWithRoleUser();
+        admin = apiDataGenerator.createUserWithRoleAdmin();
+        userRequests.createUser(user);
+        createdUser = userRequests.createUser(admin);
 
+        loginPage.navigateToPage();
+        loginPage.enterLoginCredentials(admin.getUsername(), admin.getPassword());
+        adminViewAllUsersPage.navigateToPage();
+        adminViewAllUsersPage.clickSeeProfileButtonByUsername(user.getUsername());
+        personalProfilePage.clickConnectButton();
     }
 
     @Override
@@ -36,19 +41,8 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
-    public void ConnectionSendWhenClickSend() {
-        UserRequests userRequests = new UserRequests();
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        UserRequestModel adminUserRequestModel = apiDataGenerator.createUserWithRoleAdmin();
-        userRequests.createUser(userRequestModel);
-        userRequests.createUser(adminUserRequestModel);
-
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(adminUserRequestModel.getUsername(), adminUserRequestModel.getPassword());
-        adminViewAllUsersPage.navigateToPage();
-        adminViewAllUsersPage.getUserByName(userRequestModel.getUsername()).click();
-        personalProfilePage.buttonConnect().click();
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
+    public void connectionSuccessfullySend_when_clickConnectButton() {
         personalProfilePage.assertConnectMessageIsVisible();
 
     }
@@ -56,101 +50,52 @@ public class ConnectionTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
-    public void requestSuccessfullyApproved() throws InterruptedException {
-        UserRequests userRequests = new UserRequests();
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        UserRequestModel adminUserRequestModel = apiDataGenerator.createUserWithRoleAdmin();
-        userRequests.createUser(userRequestModel);
-        userRequests.createUser(adminUserRequestModel);
-
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    public void requestSuccessfullyApproved_when_clickApproveButton() {
+        mainPage.logOut();
         loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(adminUserRequestModel.getUsername(), adminUserRequestModel.getPassword());
-        adminViewAllUsersPage.navigateToPage();
-        adminViewAllUsersPage.getUserByName(userRequestModel.getUsername()).click();
-        personalProfilePage.buttonConnect().click();
-        mainPage.clickButtonByLinkText("LOGOUT");
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+        loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
         personalProfilePage.navigateToPersonalProfilePage();
-        personalProfilePage.friendRequestButton().click();
-        Thread.sleep(2000);
-        connectionPage.approveButton().click();
-        Thread.sleep(2000);
-        connectionPage.assertNoRequestMessageIsVisible();
-        System.out.println();
+        personalProfilePage.clickFriendRequestButton();
 
+        connectionPage.clickApproveButton();
+
+        connectionPage.assertNoRequestMessageIsVisible();
     }
 
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-51")
-    public void DisconnectSuccessfullyApprovedRequest() throws InterruptedException {
-        UserRequests userRequests = new UserRequests();
-        ProfileManagementRequest profileManagementRequest = new ProfileManagementRequest();
-        AuthenticateRequests authenticateRequests = new AuthenticateRequests();
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        UserRequestModel adminUserRequestModel = apiDataGenerator.createUserWithRoleAdmin();
-        userRequests.createUser(userRequestModel);
-        var userResposneModel = userRequests.createUser(adminUserRequestModel);
-
-
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-51")
+    public void userSuccessfullyDisconnect_when_clickDisconnectButton() {
+        mainPage.logOut();
         loginPage.navigateToPage();
-
-        loginPage.enterLoginCredentials(adminUserRequestModel.getUsername(), adminUserRequestModel.getPassword());
-        adminViewAllUsersPage.navigateToPage();
-        adminViewAllUsersPage.getUserByName(userRequestModel.getUsername()).click();
-        personalProfilePage.buttonConnect().click();
-        mainPage.clickButtonByLinkText("LOGOUT");
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
+        loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
         personalProfilePage.navigateToPersonalProfilePage();
-        personalProfilePage.friendRequestButton().click();
-        Thread.sleep(2000);
-        connectionPage.approveButton().click();
-        Thread.sleep(2000);
+        personalProfilePage.clickFriendRequestButton();
+        connectionPage.clickApproveButton();
         mainPage.navigateToPage();
-        personalProfilePage.navigateToConcreteUser(userResposneModel.getId());
-////        mainPage.searchFieldByName().click();
-//        mainPage.searchFieldByName().sendKeys(adminUserRequestModel.getUsername());
-//        mainPage.searchButton().click();
-//        searchPage.seeProfileButton().click();
-//        Thread.sleep(2000);
-        personalProfilePage.buttonDisconnect().click();
+
+        personalProfilePage.navigateToConcreteUser(createdUser.getId());
+        personalProfilePage.clickDisconnectButton();
 
         personalProfilePage.assertConnectButtonIsVisible();
-        System.out.println();
-
     }
 
     @Test
     @Tag("System")
     @Tag("OperationsConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-53")
-    public void userCanSeeListFriends() throws InterruptedException {
-        UserRequests userRequests = new UserRequests();
-        UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        UserRequestModel adminUserRequestModel = apiDataGenerator.createUserWithRoleAdmin();
-        userRequests.createUser(userRequestModel);
-        userRequests.createUser(adminUserRequestModel);
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-53")
+    public void userFriendListUpdated_when_approveFriendRequest() {
+        mainPage.logOut();
+        loginPage.navigateToPage();
+        loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
+        personalProfilePage.navigateToPersonalProfilePage();
+        personalProfilePage.clickFriendRequestButton();
+        connectionPage.clickApproveButton();
 
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(adminUserRequestModel.getUsername(), adminUserRequestModel.getPassword());
-        adminViewAllUsersPage.navigateToPage();
-        adminViewAllUsersPage.getUserByName(userRequestModel.getUsername()).click();
-        personalProfilePage.buttonConnect().click();
-        mainPage.clickButtonByLinkText("LOGOUT");
-        loginPage.navigateToPage();
-        loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
         personalProfilePage.navigateToPersonalProfilePage();
-        personalProfilePage.friendRequestButton().click();
-        Thread.sleep(2000);
-        connectionPage.approveButton().click();
-        Thread.sleep(2000);
-        personalProfilePage.navigateToPersonalProfilePage();
+
         personalProfilePage.assertColumnValueEquals("Friend list", "1 friends");
-
     }
-
 }

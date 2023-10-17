@@ -1,6 +1,6 @@
 package SeleniumTests;
 
-import annotations.IssueLink;
+import annotations.Issue;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
@@ -44,7 +44,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
     public void userCanCreateCommentUnderPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -58,7 +58,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
     public void userCanEditCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -73,7 +73,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
     public void userCanLikeCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -101,7 +101,7 @@ public class CommentTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("OperationsRelatedComment")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
     public void userCanDeleteCommentSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();

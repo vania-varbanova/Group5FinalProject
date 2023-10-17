@@ -1,6 +1,6 @@
 package RESTAssuredTests;
 
-import annotations.IssueLink;
+import annotations.Issue;
 import models.api.helpers.GetUserRequest;
 import models.api.requestModel.ConnectionSendRequestModel;
 import models.api.requestModel.FriendRequestAcceptRequestModel;
@@ -42,7 +42,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
     public void connectionSuccessfullySend_when_serverReturnsStatusCode200() {
         Assertions.assertEquals(senderResponseModel.getName(), connectionSendResponseModel.getSenderUsername(), "sender user name");
         Assertions.assertEquals(receiverResponseModel.getName(), connectionSendResponseModel.getReceiverUsername(), "receiver user name");
@@ -51,7 +51,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
     public void getUserRequestSend() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);
@@ -62,7 +62,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     @Test
     @Tag("Integration")
     @Tag("OperationsToConnectPeople")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
     public void approveSendRequest() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
 

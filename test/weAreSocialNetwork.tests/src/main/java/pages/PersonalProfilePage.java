@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.ConfigPropertiesReader;
 import utils.UiPropertiesReader;
 
@@ -19,6 +20,33 @@ public class PersonalProfilePage extends BasePage {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.editProfileButton")));
 
     }
+    public void clickEnableButton(){
+        actions.waitForElementVisible("weAreSocialNetwork.adminPage.enableButton");
+        enableButton().click();
+    }
+
+    public void clickDisableButton() {
+        actions.waitForElementVisible("weAreSocialNetwork.adminPage.disableButton");
+        disableButton().click();
+    }
+
+    public void clickEditProfileButton() {
+        editProfileButton().click();
+    }
+
+    public void clickConnectButton() {
+        connectButton().click();
+    }
+
+    public void clickDisconnectButton() {
+        actions.waitForElementVisible("weAreSocialNetwork.PersonalProfile.disconnectButton");
+        disconnectButton().click();
+    }
+
+    public void clickFriendRequestButton() {
+        friendRequestButton().click();
+        actions.waitForJavascript();
+    }
 
     private WebElement textFieldByColumnLabel(String columnLabel) {
         String xpath = String.format(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.informationTextField"), columnLabel);
@@ -28,7 +56,6 @@ public class PersonalProfilePage extends BasePage {
     public void assertColumnValueEquals(String columnName, String expectedResult) {
         String actualResult = textFieldByColumnLabel(columnName).getText();
         Assertions.assertEquals(expectedResult, actualResult);
-
     }
 
     public void assertSkillIsVisible(String skill) {
@@ -37,19 +64,19 @@ public class PersonalProfilePage extends BasePage {
         Assertions.assertTrue(skillTextFieldByText(skill).isDisplayed());
     }
 
-    public WebElement buttonByDisable() {
+    private WebElement disableButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.disableButton")));
     }
 
-    public WebElement buttonByEnable() {
+    public WebElement enableButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.enableButton")));
     }
 
-    public WebElement buttonConnect() {
+    private WebElement connectButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.connectButton")));
     }
 
-    public WebElement buttonDisconnect() {
+    public WebElement disconnectButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.PersonalProfile.disconnectButton")));
     }
 
@@ -62,7 +89,8 @@ public class PersonalProfilePage extends BasePage {
     }
 
     public void assertConnectButtonIsVisible() {
-        Assertions.assertTrue(buttonConnect().isDisplayed());
+        actions.waitForElementVisible("weAreSocialNetwork.adminPage.connectButton");
+        Assertions.assertTrue(connectButton().isDisplayed());
     }
 
     public void assertConnectMessageIsVisible() {
@@ -70,11 +98,13 @@ public class PersonalProfilePage extends BasePage {
     }
 
     public void assertButtonEnableIsVisible() {
-        Assertions.assertTrue(buttonByEnable().isDisplayed());
+        actions.waitForElementVisible("weAreSocialNetwork.adminPage.enableButton");
+        Assertions.assertTrue(enableButton().isDisplayed());
     }
 
     public void assertButtonDisableIsVisible() {
-        Assertions.assertTrue(buttonByDisable().isDisplayed());
+        actions.waitForElementVisible("weAreSocialNetwork.adminPage.disableButton");
+        Assertions.assertTrue(disableButton().isDisplayed());
     }
 
     public void assertWeeklyAvailability(String expectedWeeklyAvailability) {

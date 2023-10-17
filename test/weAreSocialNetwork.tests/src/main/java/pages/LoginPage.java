@@ -50,7 +50,4 @@ public class LoginPage extends BasePage {
     private WebElement errorMessageTextField() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Login.errorMessage")));
     }
-//    private WebElement loginForm(){
-//        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.Login.loginForm")));
-//    }
 }

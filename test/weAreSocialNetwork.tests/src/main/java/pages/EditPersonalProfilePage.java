@@ -69,17 +69,16 @@ public class EditPersonalProfilePage extends BasePage {
         actions.waitFor(1000);
     }
 
-    //todo: implement
     public void updateProfessionalInformation(PersonalProfileUiModel personalProfileUiModel) {
         firstNameInputField().sendKeys(personalProfileUiModel.getFirstName());
         lastNameInputField().sendKeys(personalProfileUiModel.getLastName());
         birthdayInputField().sendKeys(personalProfileUiModel.getBirthYear());
-        genderDropDownMenu().selectByValue("MALE");
+        genderDropDownMenu().selectByValue(personalProfileUiModel.getGender());
         emailInputField().clear();
         emailInputField().sendKeys(personalProfileUiModel.getEmail());
         cityDropDownMenu().selectByIndex(4);
         updateMyProfileButton().click();
-        actions.waitFor(1000);
+        actions.waitForElementClickable("weAreSocialNetwork.EditPersonalProfile.updateMyProfileButton");
     }
 
     @Override

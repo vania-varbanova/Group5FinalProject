@@ -6,24 +6,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.UiPropertiesReader;
 
-public class ConnectionPage extends BasePage{
+public class ConnectionPage extends BasePage {
     public ConnectionPage(WebDriver driver) {
-        super(driver,"");
+        super(driver, "");
     }
 
-    public WebElement approveButton() {
+    public void clickApproveButton() {
+        waitForPageToLoad();
+        approveButton().click();
+    }
+
+    private WebElement approveButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.connectionPage.approveRequestButton")));
     }
-    public WebElement noRequestMessage() {
+
+    private WebElement noRequestMessage() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.connectionPage.noRequestMessage")));
     }
-    public void assertNoRequestMessageIsVisible(){
+
+    public void assertNoRequestMessageIsVisible() {
+        actions.waitForElementVisible("weAreSocialNetwork.connectionPage.noRequestMessage");
         Assertions.assertTrue(noRequestMessage().isDisplayed());
     }
 
     @Override
     public void waitForPageToLoad() {
         actions.waitForJavascript();
-
+        actions.waitForElementVisible("weAreSocialNetwork.connectionPage.approveRequestButton");
     }
 }

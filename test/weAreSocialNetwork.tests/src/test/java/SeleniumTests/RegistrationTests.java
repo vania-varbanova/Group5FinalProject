@@ -1,31 +1,20 @@
 package SeleniumTests;
 
-import annotations.IssueLink;
-import models.api.request.UserRequests;
+import annotations.Bug;
+import annotations.Issue;
+import models.api.responseModel.UserResponseModel;
+import models.ui.AdminUserUiModel;
 import models.ui.UserUiModel;
-import org.junit.Ignore;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import utils.UiDataGenerator;
+import org.junit.jupiter.api.*;
 
 public class RegistrationTests extends BaseSystemTest {
-
-    private final String INVALID_PASSWORD_ERROR_MESSAGE = "Your password is not confirmed";
-    private final String INVALID_EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
-    private final String EXISTING_USER_ERROR_MESSAGE = "User with this username already exist";
-    private final String PAGE_HEADING = "Welcome to our community.";
-
-    private UserUiModel userUiModel;
+    private UserUiModel user;
 
     @Override
     @BeforeEach
     public void beforeEach() {
         super.beforeEach();
-
-        uiDataGenerator = new UiDataGenerator();
-        userUiModel = uiDataGenerator.createUser();
+        user = uiDataGenerator.createUser();
         registrationPage.navigateToPage();
     }
 
@@ -38,23 +27,22 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
-    public void userSuccessfullyRegister_when_validCredentials() throws InterruptedException {
-        registrationPage.enterRegistrationCredentials(userUiModel);
-        Thread.sleep(3000);
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
+    public void userSuccessfullyRegister_when_validCredentials() {
+        registrationPage.enterRegistrationCredentials(user);
+
         mainPage.assertPageHeadingEquals(MAIN_PAGE_HEADING);
-        System.out.println();
     }
 
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-33")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-33")
     public void errorMessageDisplayed_when_invalidEmail() {
-        String newEmail = userUiModel.getEmail().replace("@", "");
-        userUiModel.setEmail(newEmail);
+        String newEmail = user.getEmail().replace("@", "");
+        user.setEmail(newEmail);
 
-        registrationPage.enterRegistrationCredentials(userUiModel);
+        registrationPage.enterRegistrationCredentials(user);
 
         registrationPage.assertErrorMessageEquals(INVALID_EMAIL_ERROR_MESSAGE);
     }
@@ -62,12 +50,12 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-87")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-87")
     public void errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword() {
-        String newConfirmPassword = userUiModel.getConfirmationPassword().concat("ABC");
-        userUiModel.setConfirmationPassword(newConfirmPassword);
+        String newConfirmPassword = user.getConfirmationPassword().concat("ABC");
+        user.setConfirmationPassword(newConfirmPassword);
 
-        registrationPage.enterRegistrationCredentials(userUiModel);
+        registrationPage.enterRegistrationCredentials(user);
 
         registrationPage.assertErrorMessageEquals(INVALID_PASSWORD_ERROR_MESSAGE);
     }
@@ -75,11 +63,11 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-86")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-86")
     public void errorMessageDisplayed_when_enterEmptyConfirmPassword() {
-        userUiModel.setConfirmationPassword("");
+        user.setConfirmationPassword("");
 
-        registrationPage.enterRegistrationCredentials(userUiModel);
+        registrationPage.enterRegistrationCredentials(user);
 
         registrationPage.assertErrorMessageEquals(INVALID_PASSWORD_ERROR_MESSAGE);
     }
@@ -87,15 +75,13 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-35")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-35")
     public void errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername() {
-        UserRequests userRequests = new UserRequests();
-        var userRequestModel = apiDataGenerator.createUserWithRoleUser();
-        var userResponseModel = userRequests.createUser(userRequestModel);
-        String newUsername = userResponseModel.getName();
-        userUiModel.setUsername(newUsername);
+        UserResponseModel existingUser = userRequests.createUser(apiDataGenerator.createUserWithRoleUser());
+        String newUsername = existingUser.getName();
+        user.setUsername(newUsername);
 
-        registrationPage.enterRegistrationCredentials(userUiModel);
+        registrationPage.enterRegistrationCredentials(user);
 
         registrationPage.assertErrorMessageEquals(EXISTING_USER_ERROR_MESSAGE);
     }
@@ -103,55 +89,65 @@ public class RegistrationTests extends BaseSystemTest {
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-27")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-96")
-    public void AttemptCreateNewAccountWithCharacterBelowMinimumAllowedCharactersPassword() {
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-151")
+    public void userAdminSuccessfullyRegister_when_validCredentials() {
+        AdminUserUiModel adminUserInformation = uiDataGenerator.createAdminUser();
+        registrationPage.enterRegistrationCredentials(adminUserInformation);
+        loginPage.navigateToPage();
+
+        loginPage.enterLoginCredentials(adminUserInformation.getUsername(), adminUserInformation.getPassword());
+
+        mainPage.assertAdminZoneButtonIsVisible();
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-27")
+    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-96")
+    public void errorMessageDisplayed_when_passwordLengthBelowMinimalRequiredLength() {
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-28")
+    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-97")
+    public void errorMessageDisplayed_when_passwordDoesNotContainDigit() {
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-29")
+    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-98")
+
+    public void errorMessageDisplayed_when_passwordDoesNotContainCapitalLetter() {
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-30")
+    @Bug(key = "WSFP-100")
+    @Disabled
+    public void errorMessageDisplayed_when_passwordDoesNotContainSpecialSymbols() {
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-31")
+    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-99")
+    public void errorMessageDisplayed_when_passwordDoesNotContainLowerCaseLetter() {
 
     }
 
     @Test
     @Tag("System")
     @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-28")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-97")
-    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoDigit() {
-
+    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-32")
+    @Disabled(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-101")
+    public void errorMessageDisplayed_when_userTryToRegisterWithExisitingEmail() {
     }
-
-    @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-29")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-98")
-    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoCapitalLetter() {
-
-    }
-
-    @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-30")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-100")
-    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoSpecialSymbol() {
-
-    }
-
-    @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-31")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-99")
-    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoLowercaseLetter() {
-
-    }
-
-    @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-32")
-    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-101")
-    public void AttemptCreateNewAccountWithAlreadyRegisteredEmail() {
-
-    }
-
 }
