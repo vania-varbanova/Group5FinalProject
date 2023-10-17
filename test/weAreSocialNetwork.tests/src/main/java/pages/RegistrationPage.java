@@ -46,7 +46,7 @@ public class RegistrationPage extends BasePage {
         confirmInputField().sendKeys(userUiModel.getConfirmationPassword());
         categoryDropDown().selectByValue(userUiModel.getProfession());
         registerButton().click();
-
+        actions.waitFor(1000);
     }
     public void enterAdminRegistrationCredentials(AdminUserUiModel adminUserUiModel){
         usernameInputField().sendKeys(adminUserUiModel.getUsername());
@@ -55,6 +55,7 @@ public class RegistrationPage extends BasePage {
         confirmInputField().sendKeys(adminUserUiModel.getConfirmationPassword());
         categoryDropDown().selectByValue(adminUserUiModel.getProfession());
         registerButton().click();
+        actions.waitFor(1000);
     }
 
     public WebElement errorMessageTextField() {

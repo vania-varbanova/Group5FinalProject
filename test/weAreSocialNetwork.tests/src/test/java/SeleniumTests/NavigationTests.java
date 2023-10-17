@@ -32,6 +32,7 @@ public class NavigationTests extends BaseSystemTest {
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
     }
+
     @Override
     @AfterEach
     public void afterEach() {
@@ -44,23 +45,26 @@ public class NavigationTests extends BaseSystemTest {
         mainPage.navigateToPage();
         mainPage.navigateToAboutUsPage();
 
-        mainPage.assertPageHeadingEquals("About us");
+        mainPage.assertPageHeadingEquals(ABOUT_US_PAGE_HEADING);
     }
+
     @Test
     public void userCanSuccessfullyViewLatestPostsPage() {
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
 
-        mainPage.assertPageHeadingEquals("Explore all posts");
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
     }
+
     @Test
     public void userCanSuccessfullyViewCertainCategoryLatestPostsPage() {
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();
         latestPostsPage.selectCategory();
 
-        mainPage.assertPageHeadingEquals("Explore all posts");
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
     }
+
     @Test
     public void userCanSuccessfullyViewPersonalProfilePage() {
         mainPage.navigateToPage();

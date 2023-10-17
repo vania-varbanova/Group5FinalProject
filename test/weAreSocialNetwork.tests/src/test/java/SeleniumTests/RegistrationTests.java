@@ -10,10 +10,7 @@ import org.junit.jupiter.api.Test;
 import utils.UiDataGenerator;
 
 public class RegistrationTests extends BaseSystemTest {
-    private static final String INVALID_PASSWORD_ERROR_MESSAGE = "Your password is not confirmed";
-    private static final String INVALID_EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
-    private static final String EXISTING_USER_ERROR_MESSAGE = "User with this username already exist";
-    private static final String PAGE_HEADING = "Welcome to our community.";
+
     private UserUiModel userUiModel;
 
     @Override
@@ -39,7 +36,7 @@ public class RegistrationTests extends BaseSystemTest {
     public void userSuccessfullyRegister_when_validCredentials() throws InterruptedException {
         registrationPage.enterRegistrationCredentials(userUiModel);
         Thread.sleep(3000);
-        mainPage.assertPageHeadingEquals(PAGE_HEADING);
+        mainPage.assertPageHeadingEquals(MAIN_PAGE_HEADING);
         System.out.println();
     }
 

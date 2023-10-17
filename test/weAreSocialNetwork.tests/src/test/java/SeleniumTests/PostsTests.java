@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;
 
+import testFramework.UserActions;
 import utils.ApiDataGenerator;
+import utils.UiPropertiesReader;
 
 
 public class PostsTests extends BaseSystemTest {
@@ -25,42 +27,73 @@ public class PostsTests extends BaseSystemTest {
         userRequests = new UserRequests();
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
-
+        actions = new UserActions();
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(userRequestModel.getUsername(), userRequestModel.getPassword());
     }
+
     @Override
     @AfterEach
     public void afterEach() {
         super.afterEach();
-        //databaseService.deleteUserWithId(userResponseModel.getId());
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
+
     @Test
     public void userCanViewCreatePostPageSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
+
+        mainPage.assertPageHeadingEquals(CREATE_POST_PAGE_HEADING);
     }
+
     @Test
     public void userCanCreatePrivatePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePrivatePost();
+
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertPrivatePostCreated"));
     }
+
     @Test
     public void userCanCreatePublicPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
+
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertPublicPostCreated"));
     }
+
     @Test
     public void userCanLikePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
         latestPostsPage.likePost();
+
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.dislikeButton"));
     }
+
+    @Test
+    public void userCanDislikePostSuccessfully() {
+        mainPage.navigateToPage();
+        postsPage.navigateToCretePostsPage();
+        postsPage.cretePublicPost();
+        latestPostsPage.likePost();
+
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.dislikeButton"));
+        latestPostsPage.dislikePost();
+
+        mainPage.assertPageHeadingEquals(EXPLORE_ALL_POSTS_PAGE_HEADING);
+        actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.latestPostsPage.likeButton"));
+    }
+
     @Test
     public void userCanDeletePostSuccessfully() {
         mainPage.navigateToPage();
@@ -68,7 +101,10 @@ public class PostsTests extends BaseSystemTest {
         postsPage.cretePublicPost();
         latestPostsPage.navigateToExplorePostPage();
         explorePostsPage.deletePost();
+
+        mainPage.assertPageHeadingEquals(DELETE_POST_PAGE_HEADING);
     }
+
     @Test
     public void userCanEditPostSuccessfully() {
         mainPage.navigateToPage();
@@ -76,5 +112,7 @@ public class PostsTests extends BaseSystemTest {
         postsPage.cretePublicPost();
         latestPostsPage.navigateToExplorePostPage();
         explorePostsPage.editPost();
+
+        mainPage.assertPageHeadingEquals(EXPLORE_POST_PAGE_HEADING);
     }
 }

@@ -24,6 +24,7 @@ public class ExplorePostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.deletePostPage.submitPostButton");
         actions.clickElementWithJavaScript("weAreSocialNetwork.deletePostPage.submitPostButton");
+        actions.waitFor(1000);
     }
     public void editPost() {
         String content = (faker.lorem().characters(10, 20));
@@ -40,6 +41,7 @@ public class ExplorePostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.createPostPage.savePostButton");
         actions.clickElement("weAreSocialNetwork.createPostPage.savePostButton");
+        actions.waitFor(1000);
     }
     public void createComment() {
         String content = (faker.lorem().characters(10, 20));
@@ -50,11 +52,13 @@ public class ExplorePostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.createCommentButton");
         actions.clickElement("weAreSocialNetwork.explorePostsPage.createCommentButton");
+        actions.waitFor(1000);
     }
     private void showComments() {
         waitForPageToLoad();
         actions.scrollUntilElementVisible("weAreSocialNetwork.explorePostsPage.showCommentsButton");
         actions.clickElementWithJavaScript("weAreSocialNetwork.explorePostsPage.showCommentsButton");
+        actions.waitFor(1000);
     }
     public void editComment() {
         String content = (faker.lorem().characters(10, 20));
@@ -69,6 +73,7 @@ public class ExplorePostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.editCommentPage.editCommentButton");
         actions.clickElement("weAreSocialNetwork.editCommentPage.editCommentButton");
+        actions.waitFor(1000);
     }
     public void deleteComment() {
         showComments();
@@ -81,11 +86,19 @@ public class ExplorePostsPage extends BasePage {
 
         actions.waitForElementVisible("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
         actions.clickElementWithJavaScript("weAreSocialNetwork.deleteCommentPage.deleteCommentButton");
+        actions.waitFor(1000);
     }
     public void likeComment() {
         showComments();
         actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.likeCommentButton");
         actions.waitForElementClickable("weAreSocialNetwork.explorePostsPage.likeCommentButton");
         actions.clickElement("weAreSocialNetwork.explorePostsPage.likeCommentButton");
+        actions.waitFor(1000);
+    }
+    public void dislikeComment() {
+        actions.waitForElementVisible("weAreSocialNetwork.explorePostsPage.dislikeCommentButton");
+        actions.waitForElementClickable("weAreSocialNetwork.explorePostsPage.dislikeCommentButton");
+        actions.clickElement("weAreSocialNetwork.explorePostsPage.dislikeCommentButton");
+        actions.waitFor(1000);
     }
 }
