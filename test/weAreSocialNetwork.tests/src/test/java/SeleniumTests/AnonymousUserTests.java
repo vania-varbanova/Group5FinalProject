@@ -1,7 +1,9 @@
 package SeleniumTests;
 
+import annotations.IssueLink;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LatestPostsPage;
@@ -34,6 +36,9 @@ public class AnonymousUserTests {
         mainPage.assertPageHeadingEquals("About us");
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-39")
     public void anonymousUserCanSuccessfullyViewLatestPostsPage() {
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();

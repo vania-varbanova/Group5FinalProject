@@ -10,4 +10,5 @@ public class PersonalProfileUiModel {
     private String gender ;
     private String email;
     private String city;
+
 }

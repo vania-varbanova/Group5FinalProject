@@ -9,7 +9,7 @@ import utils.UiDataGenerator;
 
 public class BaseSystemTest {
     private WebDriver webDriver;
-    ;
+
     protected LoginPage loginPage;
     protected MainPage mainPage;
     protected LatestPostsPage latestPostsPage;
@@ -23,6 +23,7 @@ public class BaseSystemTest {
     protected PersonalProfilePage personalProfilePage;
     protected EditPersonalProfilePage editPersonalProfilePage;
     protected ConnectionPage connectionPage;
+    protected SearchPage searchPage;
 
     public void beforeEach() {
         UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
@@ -38,6 +39,7 @@ public class BaseSystemTest {
         connectionPage=new ConnectionPage(webDriver);
         explorePostsPage = new ExplorePostsPage(webDriver);
         personalProfilePage = new PersonalProfilePage(webDriver);
+        searchPage = new SearchPage(webDriver);
 
         uiDataGenerator = new UiDataGenerator();
         apiDataGenerator = new ApiDataGenerator();

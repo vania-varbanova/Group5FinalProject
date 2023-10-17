@@ -1,10 +1,12 @@
 package RESTAssuredTests;
 
+import annotations.IssueLink;
 import io.restassured.response.Response;
 import models.api.requestModel.EditSkillRequestModel;
 import models.api.responseModel.SkillsResponseModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import utils.ConsoleLogger;
 
@@ -34,6 +36,9 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
+    @Tag("Integration")
+    @Tag("ProfileManagementAction")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
     public void skillSuccessfullyCreated() {
         String expectedProfessionId = String.valueOf(skillsRequestModel.getCategory());
         String actualProfessionId = String.valueOf(skillsResponseModel.getCategory());

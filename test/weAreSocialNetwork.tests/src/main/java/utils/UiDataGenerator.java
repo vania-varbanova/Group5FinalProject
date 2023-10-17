@@ -1,10 +1,7 @@
 package utils;
 
 import models.api.requestModel.SkillsRequestModel;
-import models.ui.AdminUserUiModel;
-import models.ui.PersonalProfileUiModel;
-import models.ui.SkillUserUiModel;
-import models.ui.UserUiModel;
+import models.ui.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -50,6 +47,7 @@ public class UiDataGenerator extends BaseDataGenerator {
         String city = String.valueOf(faker.number().numberBetween(1, 39));
 
 
+
         PersonalProfileUiModel personalProfileUiModel = new PersonalProfileUiModel();
         personalProfileUiModel.setFirstName(firstName);
         personalProfileUiModel.setLastName(lastName);
@@ -59,7 +57,16 @@ public class UiDataGenerator extends BaseDataGenerator {
         personalProfileUiModel.setCity(city);
 
 
+
         return personalProfileUiModel;
+    }
+    public ProfessionalCategoryUiModel updateCategory(){
+        String profession = String.valueOf(faker.number().numberBetween(101, 157));
+        ProfessionalCategoryUiModel professionalCategoryUiModel=new ProfessionalCategoryUiModel();
+        professionalCategoryUiModel.setProfession(profession);
+
+        return professionalCategoryUiModel;
+
     }
 
     public SkillUserUiModel createSkills() {

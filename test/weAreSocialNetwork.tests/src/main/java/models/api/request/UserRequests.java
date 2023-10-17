@@ -35,7 +35,7 @@ public class UserRequests extends BaseRequest {
         return parsedResponse;
     }
 
-    private UserResponseModel getUserResponseModelFromResponseBody(String responseBody) {
+    public UserResponseModel getUserResponseModelFromResponseBody(String responseBody) {
         var parsedResponseBody = Arrays.stream(responseBody.split(" ")).collect(Collectors.toList());
         String name = parsedResponseBody.get(USERNAME_INDEX);
         String id = parsedResponseBody.get(USER_ID_INDEX);

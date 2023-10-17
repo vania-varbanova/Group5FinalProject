@@ -38,10 +38,21 @@ public class ProfileManagementIntegrationTests extends BaseIntegrationTest {
     }
     @Test
     @Tag("Integration")
-    @Tag("ProfileManagementAction")
-    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-146")
-    public void userSuccessfullyCreatedSkills_when_sendRequestWithValidData() {
-
-
+    @Tag("ProfileManagementActions")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-23")
+    public void userSuccessfullyEditBirthday() {
+        profileManagementResponseModel = profileManagementRequest.updateUser(userResponseModel.getId(), cookieValue, profileManagementRequestModel);
+        Assertions.assertEquals(profileManagementRequestModel.getBirthYear(), profileManagementResponseModel.getBirthYear(), formatErrorMessage("Birth Year"));
     }
+    @Test
+    @Tag("Integration")
+    @Tag("ProfileManagementActions")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-19")
+    public void userSuccessfullyEditName() {
+        profileManagementResponseModel = profileManagementRequest.updateUser(userResponseModel.getId(), cookieValue, profileManagementRequestModel);
+
+        Assertions.assertEquals(profileManagementRequestModel.getFirstName(), profileManagementResponseModel.getFirstName(), formatErrorMessage("first name"));
+        Assertions.assertEquals(profileManagementRequestModel.getLastName(), profileManagementResponseModel.getLastName(), formatErrorMessage("last name"));
+    }
+
 }

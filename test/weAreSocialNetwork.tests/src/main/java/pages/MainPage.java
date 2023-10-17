@@ -28,7 +28,12 @@ public class MainPage extends BasePage {
     public WebElement viewUserButton(){
         return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.adminPage.viewUsersButton"))));
     }
-
+    public WebElement searchFieldByName(){
+        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.searchFieldByName"))));
+    }
+    public WebElement searchButton(){
+        return driver.findElement(By.xpath((UiPropertiesReader.getValueByKey("weAreSocialNetwork.homePage.searchButton"))));
+    }
     public void clickButtonByLinkText(String text) {
         buttonByLinkText(text).click();
     }

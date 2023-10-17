@@ -80,7 +80,11 @@ public class ProfileManagementTests extends BaseSystemTest {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
 
-        System.out.println();
+        String expectedResultName = String.format("%s %s", personalProfileUiModel.getFirstName(), personalProfileUiModel.getLastName());
+        personalProfilePage.assertColumnValueEquals("Name", expectedResultName);
+        String expectedResultEmail = personalProfileUiModel.getEmail();
+        personalProfilePage.assertColumnValueEquals("Email", expectedResultEmail);
+
     }
 
     @Test
@@ -90,6 +94,7 @@ public class ProfileManagementTests extends BaseSystemTest {
     public void userSuccessfullyEditFirstAndLastNames() {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
+
         String expectedResult = String.format("%s %s", personalProfileUiModel.getFirstName(), personalProfileUiModel.getLastName());
         personalProfilePage.assertColumnValueEquals("Name", expectedResult);
     }
@@ -101,9 +106,9 @@ public class ProfileManagementTests extends BaseSystemTest {
     public void userSuccessfullyEditEmail() {
         editPersonalProfilePage.updateProfessionalInformation(personalProfileUiModel);
         personalProfilePage.navigateToPersonalProfilePage();
+
         String expectedResult = personalProfileUiModel.getEmail();
         personalProfilePage.assertColumnValueEquals("Email", expectedResult);
-
     }
 
     @Test
@@ -132,6 +137,7 @@ public class ProfileManagementTests extends BaseSystemTest {
     public void popupDisplayed_when_enterDateInFuture() {
 
     }
+
     @Test
     @Tag("System")
     @Tag("ProfileManagementActions")
@@ -150,5 +156,6 @@ public class ProfileManagementTests extends BaseSystemTest {
     public void userSuccessfullyUpdateAvailability() {
 
     }
+
 
 }

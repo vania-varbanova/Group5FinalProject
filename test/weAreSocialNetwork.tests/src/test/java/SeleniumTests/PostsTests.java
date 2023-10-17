@@ -1,10 +1,12 @@
 package SeleniumTests;
 
+import annotations.IssueLink;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import services.DatabaseService;
 
@@ -43,18 +45,27 @@ public class PostsTests extends BaseSystemTest {
         postsPage.navigateToCretePostsPage();
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-42")
     public void userCanCreatePrivatePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePrivatePost();
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-40")
     public void userCanCreatePublicPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
         postsPage.cretePublicPost();
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-67")
     public void userCanLikePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -62,6 +73,9 @@ public class PostsTests extends BaseSystemTest {
         latestPostsPage.likePost();
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-45")
     public void userCanDeletePostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();
@@ -70,6 +84,9 @@ public class PostsTests extends BaseSystemTest {
         explorePostsPage.deletePost();
     }
     @Test
+    @Tag("System")
+    @Tag("OperationsRelatedPosts")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-44")
     public void userCanEditPostSuccessfully() {
         mainPage.navigateToPage();
         postsPage.navigateToCretePostsPage();

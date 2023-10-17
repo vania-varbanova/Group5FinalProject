@@ -3,6 +3,7 @@ package SeleniumTests;
 import annotations.IssueLink;
 import models.api.request.UserRequests;
 import models.ui.UserUiModel;
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -10,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import utils.UiDataGenerator;
 
 public class RegistrationTests extends BaseSystemTest {
-    private static final String INVALID_PASSWORD_ERROR_MESSAGE = "Your password is not confirmed";
-    private static final String INVALID_EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
-    private static final String EXISTING_USER_ERROR_MESSAGE = "User with this username already exist";
-    private static final String PAGE_HEADING = "Welcome to our community.";
+    private final String INVALID_PASSWORD_ERROR_MESSAGE = "Your password is not confirmed";
+    private final String INVALID_EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
+    private final String EXISTING_USER_ERROR_MESSAGE = "User with this username already exist";
+    private final String PAGE_HEADING = "Welcome to our community.";
     private UserUiModel userUiModel;
 
     @Override
@@ -95,6 +96,60 @@ public class RegistrationTests extends BaseSystemTest {
         registrationPage.enterRegistrationCredentials(userUiModel);
 
         registrationPage.assertErrorMessageEquals(EXISTING_USER_ERROR_MESSAGE);
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-27")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-96")
+    public void AttemptCreateNewAccountWithCharacterBelowMinimumAllowedCharactersPassword() {
+
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-28")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-97")
+    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoDigit() {
+
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-29")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-98")
+    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoCapitalLetter() {
+
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-30")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-100")
+    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoSpecialSymbol() {
+
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-31")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-99")
+    public void AttemptCreateNewAccountWithValidNumberCharactersPasswordButNoLowercaseLetter() {
+
+    }
+
+    @Test
+    @Tag("System")
+    @Tag("RegistrationProcess")
+    @IssueLink(jiraLink = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-32")
+    @Ignore(value = "Bug reported: https://wearesocialfinalproject.atlassian.net/browse/WSFP-101")
+    public void AttemptCreateNewAccountWithAlreadyRegisteredEmail() {
+
     }
 
 }

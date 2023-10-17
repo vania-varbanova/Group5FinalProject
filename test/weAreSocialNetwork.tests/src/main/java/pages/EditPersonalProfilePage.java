@@ -49,7 +49,12 @@ public class EditPersonalProfilePage extends BasePage {
     private WebElement availabilityDropDownMenu() {
         return driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldsAvailability")));
     }
-
+    private Select categoryDropDownMenu() {
+        return new Select(driver.findElement(By.id(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.fieldCategory"))));
+    }
+    private WebElement updateProfessionCategoryButton() {
+        return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.updateCategoryButton")));
+    }
     private WebElement updateSkillsButton() {
         return driver.findElement(By.xpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.EditPersonalProfile.updateSkillButton")));
     }
