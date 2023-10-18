@@ -24,10 +24,12 @@ public class AnonymousUserTests {
         mainPage = new MainPage(driver);
         latestPostsPage = new LatestPostsPage(driver);
     }
+
     @AfterEach
     public void afterEach() {
         driver.quit();
     }
+
     @Test
     public void anonymousUserCanSuccessfullyViewAboutUsPage() {
         mainPage.navigateToPage();
@@ -35,6 +37,7 @@ public class AnonymousUserTests {
 
         mainPage.assertPageHeadingEquals("About us");
     }
+
     @Test
     @Tag("System")
     @Tag("OperationsRelatedPosts")
@@ -45,6 +48,7 @@ public class AnonymousUserTests {
 
         mainPage.assertPageHeadingEquals("Explore all posts");
     }
+
     @Test
     public void anonymousUserCanSuccessfullyViewCertainCategoryLatestPostsPage() {
         mainPage.navigateToPage();

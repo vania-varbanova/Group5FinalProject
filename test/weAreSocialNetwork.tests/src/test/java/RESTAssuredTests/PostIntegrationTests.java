@@ -4,7 +4,6 @@ import annotations.Issue;
 import io.restassured.response.ResponseOptions;
 import models.api.requestModel.EditPostRequestModel;
 import org.junit.jupiter.api.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PostIntegrationTests extends BaseIntegrationTest {
