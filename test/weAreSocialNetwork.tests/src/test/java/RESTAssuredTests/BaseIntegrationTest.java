@@ -51,7 +51,7 @@ public class BaseIntegrationTest {
 
     @SneakyThrows
     public void afterEach() {
-        databaseService.deleteUserWithId(userResponseModel.getId());
+        //  databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     protected String formatErrorMessage(String field) {

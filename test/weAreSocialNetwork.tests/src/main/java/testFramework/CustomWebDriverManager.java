@@ -29,5 +29,6 @@ public class CustomWebDriverManager {
             this.driver = driver;
             return driver;
         }
+
     }
 }
