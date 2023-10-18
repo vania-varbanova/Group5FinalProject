@@ -143,7 +143,6 @@ public class RegistrationTests extends BaseSystemTest {
     @Bug(key = "WSFP-99")
     @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainLowerCaseLetter() {
-
     }
 
     @Test

@@ -28,7 +28,6 @@ public class BaseSystemTest {
     protected ApiDataGenerator apiDataGenerator;
 
     protected UserRequests userRequests;
-
     protected LoginPage loginPage;
     protected MainPage mainPage;
     protected LatestPostsPage latestPostsPage;
@@ -66,5 +65,6 @@ public class BaseSystemTest {
 
     public void afterEach() {
         UserActions.quitDriver();
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
 }

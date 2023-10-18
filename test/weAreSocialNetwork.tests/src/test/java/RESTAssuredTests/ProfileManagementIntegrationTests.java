@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -29,6 +28,7 @@ public class ProfileManagementIntegrationTests extends BaseIntegrationTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedString = currentDate.format(formatter);
         profileManagementResponseModel = profileManagementRequest.updateUser(userResponseModel.getId(), cookieValue, profileManagementRequestModel);
+
         Assertions.assertEquals(profileManagementRequestModel.getBirthYear(), profileManagementResponseModel.getBirthYear(), formatErrorMessage("Birth Year"));
         Assertions.assertEquals(profileManagementRequestModel.getFirstName(), profileManagementResponseModel.getFirstName(), formatErrorMessage("first name"));
         Assertions.assertEquals(profileManagementRequestModel.getLastName(), profileManagementResponseModel.getLastName(), formatErrorMessage("last name"));
@@ -36,14 +36,17 @@ public class ProfileManagementIntegrationTests extends BaseIntegrationTest {
         Assertions.assertEquals(formattedString, profileManagementResponseModel.getMemberSince(), "date since");
         Assertions.assertNotNull(profileManagementResponseModel.getLocation().getLocationId());
     }
+
     @Test
     @Tag("Integration")
     @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-23")
     public void userSuccessfullyEditBirthday() {
         profileManagementResponseModel = profileManagementRequest.updateUser(userResponseModel.getId(), cookieValue, profileManagementRequestModel);
+
         Assertions.assertEquals(profileManagementRequestModel.getBirthYear(), profileManagementResponseModel.getBirthYear(), formatErrorMessage("Birth Year"));
     }
+
     @Test
     @Tag("Integration")
     @Tag("ProfileManagementActions")

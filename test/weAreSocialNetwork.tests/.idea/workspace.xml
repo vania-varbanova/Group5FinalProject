@@ -5,25 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
+      <change beforePath="$PROJECT_DIR$/../../src/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/ui/ProfessionalCategoryUiModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/EditPersonalProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UiDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DatabaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/CommentsIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ConnectionIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/PostIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/ProfileManagementIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/RegistrationProcessIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RESTAssuredTests/SkillIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/AdminActionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/AdminActionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/CommentTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/CommentTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/PostsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/PostsTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/ProfileManagementTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/ProfileManagementTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/RegistrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/RegistrationTests.java" afterDir="false" />
     </list>
@@ -92,8 +85,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminActionTests.adminSuccessfullyEditProfessionUser">
-    <configuration name="AdminActionTests.adminSuccessfullyDisableUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RegistrationTests.errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword">
+    <configuration name="NavigationTests.userCanSuccessfullyViewCertainCategoryLatestPostsPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -102,14 +95,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.AdminActionTests" />
-      <option name="METHOD_NAME" value="adminSuccessfullyDisableUser" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.NavigationTests" />
+      <option name="METHOD_NAME" value="userCanSuccessfullyViewCertainCategoryLatestPostsPage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminActionTests.adminSuccessfullyEditNameUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProfileManagementTests.userSuccessfullyEditPersonalData_when_fillFieldsWithValidInformation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -118,14 +111,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.AdminActionTests" />
-      <option name="METHOD_NAME" value="adminSuccessfullyEditNameUser" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.ProfileManagementTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyEditPersonalData_when_fillFieldsWithValidInformation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminActionTests.adminSuccessfullyEditProfessionUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProfileManagementTests.userSuccessfullyUpdateSkill_when_fillSkillForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -134,30 +127,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.AdminActionTests" />
-      <option name="METHOD_NAME" value="adminSuccessfullyEditProfessionUser" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.ProfileManagementTests" />
+      <option name="METHOD_NAME" value="userSuccessfullyUpdateSkill_when_fillSkillForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminActionTests.adminSuccessfullyEnableUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WeAreSocialQA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.AdminActionTests" />
-      <option name="METHOD_NAME" value="adminSuccessfullyEnableUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationTests.userSuccessfullyRegister_when_validCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeAreSocialQA" />
       <extension name="coverage">
         <pattern>
@@ -167,7 +144,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
       <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
-      <option name="METHOD_NAME" value="userSuccessfullyRegister_when_validCredentials" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationTests.errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeAreSocialQA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.RegistrationTests" />
+      <option name="METHOD_NAME" value="errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -175,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminActionTests.adminSuccessfullyEditProfessionUser" />
-        <item itemvalue="JUnit.AdminActionTests.adminSuccessfullyEditNameUser" />
-        <item itemvalue="JUnit.AdminActionTests.adminSuccessfullyEnableUser" />
-        <item itemvalue="JUnit.AdminActionTests.adminSuccessfullyDisableUser" />
-        <item itemvalue="JUnit.RegistrationTests.userSuccessfullyRegister_when_validCredentials" />
+        <item itemvalue="JUnit.RegistrationTests.errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword" />
+        <item itemvalue="JUnit.RegistrationTests" />
+        <item itemvalue="JUnit.ProfileManagementTests.userSuccessfullyUpdateSkill_when_fillSkillForm" />
+        <item itemvalue="JUnit.ProfileManagementTests.userSuccessfullyEditPersonalData_when_fillFieldsWithValidInformation" />
+        <item itemvalue="JUnit.NavigationTests.userCanSuccessfullyViewCertainCategoryLatestPostsPage" />
       </list>
     </recent_temporary>
   </component>
@@ -204,6 +196,7 @@
       <workItem from="1697172010219" duration="4332000" />
       <workItem from="1697179174031" duration="51613000" />
       <workItem from="1697350174757" duration="70733000" />
+      <workItem from="1697626707313" duration="5143000" />
     </task>
     <task id="LOCAL-00001" summary="added jira key and tag">
       <option name="closed" value="true" />

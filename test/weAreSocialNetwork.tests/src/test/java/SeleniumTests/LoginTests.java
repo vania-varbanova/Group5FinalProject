@@ -18,7 +18,7 @@ public class LoginTests extends BaseSystemTest {
     public void beforeEach() {
         super.beforeEach();
         user = apiDataGenerator.createUserWithRoleUser();
-        userRequests.createUser(user);
+        userResponseModel = userRequests.createUser(user);
 
         loginPage.navigateToPage();
     }
@@ -27,7 +27,6 @@ public class LoginTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
-       //databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test

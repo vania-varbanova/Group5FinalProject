@@ -22,7 +22,7 @@ public class ProfileManagementTests extends BaseSystemTest {
         super.beforeEach();
         personalProfileInformation = uiDataGenerator.createPersonalProfile(true);
         user = apiDataGenerator.createUserWithRoleUser();
-        userRequests.createUser(user);
+        userResponseModel = userRequests.createUser(user);
 
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(user.getUsername(), user.getPassword());
@@ -48,7 +48,6 @@ public class ProfileManagementTests extends BaseSystemTest {
 
         personalProfilePage.assertColumnValueEquals("Name", expectedName);
         personalProfilePage.assertColumnValueEquals("Email", expectedEmail);
-
     }
 
     @Test
@@ -93,7 +92,6 @@ public class ProfileManagementTests extends BaseSystemTest {
     @Bug(key = "WSFP-157")
     @Disabled
     public void errorMessageDisplayed_when_fillBirthdateWithFutureDate() {
-
     }
 
     @Test

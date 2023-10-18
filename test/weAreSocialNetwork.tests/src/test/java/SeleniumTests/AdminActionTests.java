@@ -2,18 +2,20 @@ package SeleniumTests;
 
 import annotations.Issue;
 import models.api.requestModel.UserRequestModel;
+import models.api.responseModel.UserResponseModel;
 import models.ui.PersonalProfileUiModel;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import testFramework.UserActions;
 
 
 public class AdminActionTests extends BaseSystemTest {
     private UserRequestModel admin;
     private UserRequestModel user;
     private PersonalProfileUiModel personalProfileInformation;
-
-
+    private UserResponseModel adminResponse;
 
     @Override
     @BeforeEach
@@ -21,8 +23,8 @@ public class AdminActionTests extends BaseSystemTest {
         super.beforeEach();
         user = apiDataGenerator.createUserWithRoleUser();
         admin = apiDataGenerator.createUserWithRoleAdmin();
-        userRequests.createUser(user);
-        userRequests.createUser(admin);
+        userResponseModel = userRequests.createUser(user);
+        adminResponse = userRequests.createUser(admin);
 
         loginPage.navigateToPage();
         loginPage.enterLoginCredentials(admin.getUsername(), admin.getPassword());
@@ -30,17 +32,19 @@ public class AdminActionTests extends BaseSystemTest {
         adminViewAllUsersPage.clickSeeProfileButtonByUsername(user.getUsername());
     }
 
-
     @Override
+    @AfterEach
     public void afterEach() {
-        super.afterEach();
+        super.beforeEach();
+        UserActions.quitDriver();
+        databaseService.deleteUserWithId(adminResponse.getId());
     }
 
     @Test
     @Tag("System")
     @Tag("AdminActionProcess")
     @Issue(key = "WSFP-80")
-    public void adminSuccessfullyDisableUser() throws InterruptedException {
+    public void adminSuccessfullyDisableUser() {
         personalProfilePage.clickDisableButton();
 
         personalProfilePage.assertButtonEnableIsVisible();

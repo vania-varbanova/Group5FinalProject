@@ -56,6 +56,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);
         GetUserRequest takeRequest = request[0];
+
         Assertions.assertNotNull(takeRequest.getRequestId(), "Friend request id is not null.");
     }
 
@@ -70,6 +71,7 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
         GetUserRequest takeRequest = request[0];
         friendRequestAcceptRequestModel = apiDataGenerator.createAcceptFriendRequest(receiverResponseModel.getId(), takeRequest.getRequestId());
         var result = connectionRequests.acceptRequest(friendRequestAcceptRequestModel, cookieValue);
+
         Assertions.assertEquals(senderUser.getUsername(), result.getSenderUsername());
         Assertions.assertEquals(receiverUser.getUsername(), result.getReceiverUsername());
     }

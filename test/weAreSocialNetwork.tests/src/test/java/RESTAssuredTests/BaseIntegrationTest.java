@@ -16,7 +16,7 @@ public class BaseIntegrationTest {
     protected ApiDataGenerator apiDataGenerator;
     protected DatabaseService databaseService;
     protected String cookieValue;
-    //Request
+
     protected UserRequests userRequests;
     protected AuthenticateRequests authenticateRequests;
     protected ProfileManagementRequest profileManagementRequest;
@@ -24,25 +24,16 @@ public class BaseIntegrationTest {
     protected CommentRequest commentRequest;
     protected ConnectionRequests connectionRequests;
     protected SkillsRequests skillsRequests;
-
-
-
     protected UserRequestModel userRequestModel;
     protected ProfileManagementRequestModel profileManagementRequestModel;
     protected PostRequestModel postRequestModel;
     protected CommentRequestModel commentRequestModel;
     protected SkillsRequestModel skillsRequestModel;
-
-    // End of request models
-
-    //Response models
     protected UserResponseModel userResponseModel;
     protected ProfileManagementResponseModel profileManagementResponseModel;
     protected PostResponseModel postResponseModel;
     protected CommentResponseModel commentResponseModel;
     protected SkillsResponseModel skillsResponseModel;
-
-    //End of response models
 
     @SneakyThrows
     public void beforeEach() {
