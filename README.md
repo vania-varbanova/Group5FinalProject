@@ -1,6 +1,6 @@
 # WEare Social Testing Project
 
-This repository contains automated tests for the social media platform "WEare Social". The tests are written in Postman for API testing, Rest Assured for integration testing, and Selenium WebDriver for UI testing.
+This repository contains automated tests for the social media platform "WEare Social".
 
 ## Table of Contents
 
@@ -8,8 +8,7 @@ This repository contains automated tests for the social media platform "WEare So
 - [Installation](#installation)
 - [Running Tests](#running-tests)
 - [Test Reports](#test-reports)
-- [Folder Structure](#folder-structure)
-- [Additional Information](#additional-information)
+
 
 ## Prerequisites
 
