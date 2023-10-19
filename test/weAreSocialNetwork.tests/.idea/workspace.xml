@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/AnonymousUserTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/BaseSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/ConnectionTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/ProfileManagementTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/ProfileManagementTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTests/RegistrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTests/RegistrationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="4653da4b-18fe-4bf9-82a6-303169b6a8f0" name="Changes" comment="added jira key and tag" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\viktor.varbanov\Desktop\vania\Group5FinalProject\test\weAreSocialNetwork.tests\src\main\resources" />
@@ -203,7 +195,7 @@
       <workItem from="1697655452441" duration="3873000" />
       <workItem from="1697663832496" duration="24000" />
       <workItem from="1697664113523" duration="6966000" />
-      <workItem from="1697688975863" duration="6480000" />
+      <workItem from="1697688975863" duration="6673000" />
     </task>
     <task id="LOCAL-00001" summary="added jira key and tag">
       <option name="closed" value="true" />

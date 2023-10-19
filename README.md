@@ -20,6 +20,7 @@ Before running the tests, ensure you have the following dependencies installed:
 - [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [Maven](https://maven.apache.org/download.cgi)
 - [Selenium WebDriver](https://www.selenium.dev/downloads/)
+- [Allure framework](https://allurereport.org/docs/)
 
 ## Installation
 
@@ -43,3 +44,7 @@ Before running the tests, ensure you have the following dependencies installed:
 ### Selenium WebDriver Tests
 1. Navigate to the SeleniumTests folder in IntelliJ using path - test -> weAreSocialNetwork.tests -> src -> test -> java -> SeleniumTests.
 2. Right-click on the test suite and select "Run" or use the provided command files.
+
+### Executing Tests
+1. Navigate to to the  test -> weAreSocialNetwork.tests
+2. Execute run-tests.cmd
