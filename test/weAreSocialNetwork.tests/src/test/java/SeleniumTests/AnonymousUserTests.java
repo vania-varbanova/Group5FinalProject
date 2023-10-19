@@ -19,6 +19,7 @@ public class AnonymousUserTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
+        actions.waitFor(500);
     }
 
     @Test
@@ -34,7 +35,7 @@ public class AnonymousUserTests extends BaseSystemTest {
     @Tag("OperationsRelatedPosts")
     @Issue(key = "WSFP-39")
     @Description("As an unregistered user of a WEare social network, I want to see all posts of a selected user.")
-    @Link(url= "https://wearesocialfinalproject.atlassian.net/browse/WSFP-39")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-39")
     public void anonymousUserCanSuccessfullyViewLatestPostsPage() {
         mainPage.navigateToPage();
         latestPostsPage.navigateToLatestPostsPage();

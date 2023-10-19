@@ -30,6 +30,7 @@ public class LoginTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test

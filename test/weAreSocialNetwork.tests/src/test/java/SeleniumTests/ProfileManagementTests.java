@@ -36,6 +36,7 @@ public class ProfileManagementTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test
