@@ -3,6 +3,7 @@ package testFramework;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import utils.BrowserType;
 
 import java.util.Properties;
 
@@ -11,9 +12,10 @@ public class Utils {
     private static final Properties configProperties = PropertiesManager.PropertiesManagerEnum.INSTANCE.getConfigProperties();
     public static final Logger LOGGER = LogManager.getRootLogger();
 
-    public static WebDriver getWebDriver() {
+
+    public static WebDriver getWebDriver(BrowserType browserType) {
         LOGGER.info("Initializing WebDriver");
-        return CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
+        return CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver(browserType);
     }
 
     public static void tearDownWebDriver() {

@@ -4,7 +4,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import models.api.requestModel.UserRequestModel;
 import utils.ConfigPropertiesReader;
-import utils.ConsoleLogger;
 
 public class AuthenticateRequests extends BaseRequest {
     public String authenticateUser(UserRequestModel userRequestModel) {

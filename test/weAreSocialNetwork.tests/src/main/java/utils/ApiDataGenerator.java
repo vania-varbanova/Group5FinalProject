@@ -1,6 +1,7 @@
 package utils;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 import models.api.Authorities;
 import models.api.helpers.Category;
 import models.api.helpers.City;
@@ -17,7 +18,7 @@ public class ApiDataGenerator extends BaseDataGenerator {
         adminUser.setUsername(adminName);
         return adminUser;
     }
-
+    @Step("Creating user request model")
     public UserRequestModel createUserWithRoleUser() {
         UserRequestModel user = createUser(false);
         return user;
