@@ -61,10 +61,10 @@ public class BaseSystemTest {
         apiDataGenerator = new ApiDataGenerator();
         userResponseModel = new UserResponseModel();
         userRequests = new UserRequests();
+
     }
 
     public void afterEach() {
         UserActions.quitDriver();
-        databaseService.deleteUserWithId(userResponseModel.getId());
     }
 }

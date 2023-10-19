@@ -5,29 +5,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import pages.LatestPostsPage;
-import pages.LoginPage;
-import pages.MainPage;
-import testFramework.CustomWebDriverManager;
-import testFramework.Driver;
+import testFramework.UserActions;
 
-public class AnonymousUserTests {
-    private Driver driver;
-    protected LoginPage loginPage;
-    protected MainPage mainPage;
-    protected LatestPostsPage latestPostsPage;
+public class AnonymousUserTests extends BaseSystemTest {
+    @Override
     @BeforeEach
     public void beforeEach() {
-        WebDriver webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
-        driver = new Driver(webDriver);
-        mainPage = new MainPage(driver);
-        latestPostsPage = new LatestPostsPage(driver);
+        super.beforeEach();
+        actions = new UserActions();
     }
 
+    @Override
     @AfterEach
     public void afterEach() {
-        driver.quit();
+        super.afterEach();
+        actions.waitFor(500);
     }
 
     @Test

@@ -22,6 +22,7 @@ public class RegistrationTests extends BaseSystemTest {
     @AfterEach
     public void afterEach() {
         super.afterEach();
+        databaseService.deleteUserWithId(userResponseModel.getId());
     }
 
     @Test
