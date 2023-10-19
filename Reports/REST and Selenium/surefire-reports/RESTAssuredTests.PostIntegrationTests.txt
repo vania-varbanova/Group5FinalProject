@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: RESTAssuredTests.PostIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 46.938 s - in RESTAssuredTests.PostIntegrationTests

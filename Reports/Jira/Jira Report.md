@@ -1,0 +1,1 @@
+Jira report click [here.](https://wearesocialfinalproject.atlassian.net/plugins/servlet/ac/com.xpandit.plugins.xray/testplans-metrics-report-page?project.key=WSFP&project.id=10002&ac.reportId=6531398bbefe8bcc6d876476)

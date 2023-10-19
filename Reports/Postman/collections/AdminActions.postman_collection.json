@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "bd41398d-f0d4-41b9-a279-4ebcae5917e4",
+		"name": "Admin actions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-bd41398d-f0d4-41b9-a279-4ebcae5917e4?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create admin user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const adminProfessionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const adminPassword = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const adminEmail = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const adminUsername = pm.variables.replaceIn('admin{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"adminPassword\", adminPassword);\r",
+							"pm.collectionVariables.set(\"adminEmail\", adminEmail);\r",
+							"pm.collectionVariables.set(\"adminUsername\", adminUsername);\r",
+							"pm.collectionVariables.set(\"adminProfessionId\", adminProfessionId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const adminUserId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"adminUserId\",adminUserId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"adminUsername\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"adminUserId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"adminUserId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_ADMIN\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{adminProfessionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{adminPassword}}\",\r\n  \"email\": \"{{adminEmail}}\",\r\n  \"password\": \"{{adminPassword}}\",\r\n  \"username\": \"{{adminUsername}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"Response body contains all users\", function(){\r",
+							"    pm.expect(response).to.be.not.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"next\": true,\r\n  \"searchParam1\": \"\",\r\n  \"searchParam2\": \"\",\r\n  \"size\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "adminPassword",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminEmail",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminUsername",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminProfessionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminUserId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

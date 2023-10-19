@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: RESTAssuredTests.ConnectionIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.227 s - in RESTAssuredTests.ConnectionIntegrationTests
