@@ -2,15 +2,15 @@ package SeleniumTests;
 
 import annotations.Bug;
 import annotations.Issue;
+import io.qameta.allure.*;
 import models.api.requestModel.UserRequestModel;
 import models.ui.PersonalProfileUiModel;
 import models.ui.SkillUserUiModel;
-import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+@Feature("Profile management actions")
 public class ProfileManagementTests extends BaseSystemTest {
     private UserRequestModel user;
     private PersonalProfileUiModel personalProfileInformation;
@@ -40,9 +40,9 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-171")
+    @Description("Testing updating user’s data in an already existing account.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-171")
     public void userSuccessfullyEditPersonalData_when_fillFieldsWithValidInformation() {
         String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
         String expectedEmail = personalProfileInformation.getEmail();
@@ -52,9 +52,9 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-19")
+    @Description("Testing updating the user’s name in an already existing account.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-19")
     public void userSuccessfullyUpdateFirstAndLastName_when_fillFirstNameAndLastNameFields() {
         String expectedName = String.format("%s %s", personalProfileInformation.getFirstName(), personalProfileInformation.getLastName());
 
@@ -62,9 +62,9 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-22")
+    @Description("Testing updating user’s email in an already existing account.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-22")
     public void userSuccessfullyUpdateEmail_when_fillEmailField() {
         String expectedEmail = personalProfileInformation.getEmail();
 
@@ -72,9 +72,9 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-23")
+    @Description("Testing updating user’s birthday date in an already existing account.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-23")
     public void userSuccessfullyUpdateBirthDate_when_fillBirthDateField() {
         DateTimeFormatter birthDayFieldFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter birthDayUiFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
@@ -87,8 +87,6 @@ public class ProfileManagementTests extends BaseSystemTest {
 
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-95")
     @Bug(key = "WSFP-157")
     @Disabled
@@ -96,8 +94,6 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-146")
     public void userSuccessfullyUpdateSkill_when_fillSkillForm() {
         skillInformation = uiDataGenerator.createSkills();
@@ -110,11 +106,16 @@ public class ProfileManagementTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("ProfileManagementActions")
     @Issue(key = "WSFP-147")
     @Bug(key = "WSFP-158")
     @Disabled
     public void weeklyAvailabilityDisplayed_when_userUpdateTheData() {
+    }
+
+    @Test
+    @Issue(key = "WSFP-94")
+    @Bug(key = "WSFP-172")
+    @Disabled
+    public void errorMessageDisplayed_when_emailIsAlreadyExists() {
     }
 }

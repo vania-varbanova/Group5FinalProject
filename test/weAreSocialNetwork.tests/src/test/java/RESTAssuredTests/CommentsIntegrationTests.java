@@ -1,11 +1,15 @@
 package RESTAssuredTests;
 
 import annotations.Issue;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
 import io.restassured.response.ResponseOptions;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Feature("Operations related to comments")
 public class CommentsIntegrationTests extends BaseIntegrationTest {
     @Override
     @BeforeEach
@@ -29,9 +33,8 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToCommentPost")
-    @Issue(key = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
+    @Issue(key = "WSFP-58")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
     public void commentSuccessfullyCreated_when_serverReturnsStatusCode200() {
         assertNotNull(commentResponseModel.getId(), "");
         assertEquals(commentRequestModel.getContentComment(), commentResponseModel.getContent(), formatErrorMessage("comment content"));
@@ -39,9 +42,8 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToCommentPost")
     @Issue(key = "WSFP-63")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
     public void commentSuccessfullyLiked_when_serverReturnsStatusCode200() {
         var updateCommentModel = commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
 
@@ -50,9 +52,8 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToCommentPost")
     @Issue(key = "WSFP-64")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-64")
     public void commentSuccessfullyDisliked_when_serverReturnsStatusCode200() {
         commentRequest.likeComment(commentResponseModel.getId(), cookieValue);
         var updatedCommentModel = commentRequest.dislikeComment(commentResponseModel.getId(), cookieValue);
@@ -61,9 +62,8 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToCommentPost")
     @Issue(key = "WSFP-62")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
     public void commentEditedSuccessfully_when_serverReturnsStatusCode200() {
         var responseOptions = commentRequest.editComment(commentResponseModel.getId(), cookieValue, commentRequestModel);
 
@@ -71,9 +71,8 @@ public class CommentsIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToCommentPost")
     @Issue(key = "WSFP-61")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
     public void commentSuccessfullyDeleted_when_sendRequestWithValidBody() {
         ResponseOptions responseOptions = commentRequest.deleteComment(commentResponseModel.getId(), cookieValue);
 

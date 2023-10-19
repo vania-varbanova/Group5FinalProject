@@ -20,15 +20,15 @@ public class UserActions {
         return driver;
     }
 
-    public UserActions() {
-        driver = Utils.getWebDriver();
+    public UserActions(WebDriver driver) {
+        this.driver = driver;
         timeoutSettings = new TimeoutSettings();
         driverActions = new Actions(driver);
     }
-
-    public static void loadBrowser(String baseUrlKey) {
-        Utils.getWebDriver().get(Utils.getConfigPropertyByKey(baseUrlKey));
-    }
+//
+//    public static void loadBrowser(String baseUrlKey) {
+//        Utils..(Utils.getConfigPropertyByKey(baseUrlKey));
+//    }
 
     public static void quitDriver() {
         Utils.tearDownWebDriver();
@@ -110,7 +110,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-                 Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -120,7 +120,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         } catch (Exception exception) {
-             Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -130,7 +130,7 @@ public class UserActions {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
-               Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
 
@@ -222,12 +222,14 @@ public class UserActions {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         waitForElementVisibleUntilTimeout(locator);
     }
+
     public void clickElementWithJavaScript(String locator, Object... locatorArguments) {
         String xpath = getLocatorValueByKey(locator, locatorArguments);
         WebElement element = driver.findElement(By.xpath(xpath));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
+
     public void assertElementPresentByXpath(String xpath) {
         try {
             WebElement element = driver.findElement(By.xpath(xpath));

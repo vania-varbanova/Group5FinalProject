@@ -2,11 +2,15 @@ package SeleniumTests;
 
 import annotations.Bug;
 import annotations.Issue;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
 import models.api.responseModel.UserResponseModel;
 import models.ui.AdminUserUiModel;
 import models.ui.UserUiModel;
 import org.junit.jupiter.api.*;
 
+@Feature("Registration process")
 public class RegistrationTests extends BaseSystemTest {
     private UserUiModel user;
 
@@ -26,9 +30,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-13")
+    @Description("Testing if user is able to register successfully on the WEare social platform.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-13")
     public void userSuccessfullyRegister_when_validCredentials() {
         registrationPage.enterRegistrationCredentials(user);
 
@@ -36,9 +40,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-33")
+    @Description("Testing account creation with an invalid email in the system and valid username and password.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-33")
     public void errorMessageDisplayed_when_invalidEmail() {
         String newEmail = user.getEmail().replace("@", "");
         user.setEmail(newEmail);
@@ -49,9 +53,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-87")
+    @Description("Testing if an account can be created if the password in the “Confirm password“ field is different than the password in the Password field.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-87")
     public void errorMessageDisplayed_when_passwordDoesNotMatchConfirmPassword() {
         String newConfirmPassword = user.getConfirmationPassword().concat("ABC");
         user.setConfirmationPassword(newConfirmPassword);
@@ -62,9 +66,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-86")
+    @Description("Testing if an account can be created if the “Confirm password“ field is left empty.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-86")
     public void errorMessageDisplayed_when_enterEmptyConfirmPassword() {
         user.setConfirmationPassword("");
 
@@ -74,9 +78,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-35")
+    @Description("Testing account creation with an already existing username in the system and valid email and password.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-35")
     public void errorMessageDisplayed_when_createANewAccountWithAnAlreadyExistingUsername() {
         UserResponseModel existingUser = userRequests.createUser(apiDataGenerator.createUserWithRoleUser());
         String newUsername = existingUser.getName();
@@ -88,9 +92,9 @@ public class RegistrationTests extends BaseSystemTest {
     }
 
     @Test
-    @Tag("System")
-    @Tag("RegistrationProcess")
     @Issue(key = "WSFP-151")
+    @Description("This test verifies that an user is able to successfully register as an Admin user in WeAre social platform.")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-151")
     public void userAdminSuccessfullyRegister_when_validCredentials() {
         AdminUserUiModel adminUserInformation = uiDataGenerator.createAdminUser();
         registrationPage.enterRegistrationCredentials(adminUserInformation);
@@ -123,7 +127,7 @@ public class RegistrationTests extends BaseSystemTest {
     @Tag("System")
     @Tag("RegistrationProcess")
     @Issue(key = "WSFP-29")
-    @Bug(key = "WSFP-98" )
+    @Bug(key = "WSFP-98")
     @Disabled
     public void errorMessageDisplayed_when_passwordDoesNotContainCapitalLetter() {
     }
@@ -152,6 +156,6 @@ public class RegistrationTests extends BaseSystemTest {
     @Issue(key = "WSFP-32")
     @Bug(key = "WSFP-101")
     @Disabled
-    public void errorMessageDisplayed_when_userTryToRegisterWithExisitingEmail() {
+    public void errorMessageDisplayed_when_userTryToRegisterWithExistingEmail() {
     }
 }

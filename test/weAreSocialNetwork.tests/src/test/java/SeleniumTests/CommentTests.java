@@ -1,6 +1,9 @@
 package SeleniumTests;
 
 import annotations.Issue;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import org.junit.jupiter.api.AfterEach;
@@ -11,9 +14,8 @@ import services.DatabaseService;
 import testFramework.UserActions;
 import utils.ApiDataGenerator;
 import utils.UiPropertiesReader;
-
+@Feature("Operations related to comments")
 public class CommentTests extends BaseSystemTest {
-
     @Override
     @BeforeEach
     public void beforeEach() {
@@ -21,7 +23,6 @@ public class CommentTests extends BaseSystemTest {
         userRequests = new UserRequests();
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
-        actions = new UserActions();
         UserRequestModel userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();
@@ -44,6 +45,8 @@ public class CommentTests extends BaseSystemTest {
     @Tag("System")
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-58")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-58")
+    @Description("As a registered user of the WEare social network, I want to be able to comment on my posts.")
     public void userCanCreateCommentUnderPostSuccessfully() {
         actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentCreated"));
     }
@@ -52,6 +55,8 @@ public class CommentTests extends BaseSystemTest {
     @Tag("System")
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-62")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-62")
+    @Description("As a registered user of the WEare social network, I want to be able to edit my comments")
     public void userCanEditCommentSuccessfully() {
         explorePostsPage.editComment();
 
@@ -62,6 +67,8 @@ public class CommentTests extends BaseSystemTest {
     @Tag("System")
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-63")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-63")
+    @Description("As a registered user of the WEare social network, I want to see the comments on the posts and Like some of them.")
     public void userCanLikeCommentSuccessfully() {
         explorePostsPage.likeComment();
 
@@ -72,6 +79,8 @@ public class CommentTests extends BaseSystemTest {
     @Tag("System")
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-64")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-64")
+    @Description("As a registered user of the WEare social network, I want to see the comments to the post and Dislike some of them.")
     public void userCanDislikeCommentSuccessfully() {
         explorePostsPage.likeComment();
         actions.assertElementPresentByXpath(UiPropertiesReader.getValueByKey("weAreSocialNetwork.explorePostsPage.assertCommentLiked"));
@@ -84,6 +93,8 @@ public class CommentTests extends BaseSystemTest {
     @Tag("System")
     @Tag("OperationsRelatedComment")
     @Issue(key = "WSFP-61")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-61")
+    @Description("As a registered user of the WEare social network, I want to be able to delete my comments")
     public void userCanDeleteCommentSuccessfully() {
         explorePostsPage.deleteComment();
 

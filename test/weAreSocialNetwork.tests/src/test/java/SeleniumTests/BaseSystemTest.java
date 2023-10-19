@@ -8,6 +8,7 @@ import services.DatabaseService;
 import testFramework.CustomWebDriverManager;
 import testFramework.UserActions;
 import utils.ApiDataGenerator;
+import utils.BrowserType;
 import utils.UiDataGenerator;
 
 public class BaseSystemTest {
@@ -43,9 +44,8 @@ public class BaseSystemTest {
     protected UserResponseModel userResponseModel;
 
     public void beforeEach() {
-        UserActions.loadBrowser("weAreSocialNetwork.baseUrl");
-        webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
-
+        webDriver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver(BrowserType.EDGE);
+        actions = new UserActions(webDriver);
         loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
         registrationPage = new RegistrationPage(webDriver);

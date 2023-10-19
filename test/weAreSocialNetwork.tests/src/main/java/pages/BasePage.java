@@ -24,7 +24,7 @@ public abstract class BasePage {
         String pageUrl = getConfigPropertyByKey(urlKey);
         this.driver = driver;
         this.url = pageUrl;
-        actions = new UserActions();
+        actions = new UserActions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
