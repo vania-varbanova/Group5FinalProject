@@ -7,7 +7,6 @@ This repository contains automated tests for the social media platform "WEare So
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running Tests](#running-tests)
-- [Test Reports](#test-reports)
 
 
 ## Prerequisites
