@@ -1,6 +1,7 @@
 package RESTAssuredTests;
 
 import annotations.Issue;
+import io.qameta.allure.*;
 import models.api.helpers.GetUserRequest;
 import models.api.requestModel.ConnectionSendRequestModel;
 import models.api.requestModel.FriendRequestAcceptRequestModel;
@@ -9,6 +10,7 @@ import models.api.responseModel.ConnectionSendResponseModel;
 import models.api.responseModel.UserResponseModel;
 import org.junit.jupiter.api.*;
 
+@Feature("Operations to connect people")
 public class ConnectionIntegrationTests extends BaseIntegrationTest {
     private UserRequestModel senderUser;
     private UserRequestModel receiverUser;
@@ -40,19 +42,18 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToConnectPeople")
     @Issue(key = "WSFP-50")
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-50")
+    @Description("As a user of the WEare social network, I would like to be able to send a connection request to another user")
     public void connectionSuccessfullySend_when_serverReturnsStatusCode200() {
         Assertions.assertEquals(senderResponseModel.getName(), connectionSendResponseModel.getSenderUsername(), "sender user name");
         Assertions.assertEquals(receiverResponseModel.getName(), connectionSendResponseModel.getReceiverUsername(), "receiver user name");
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToConnectPeople")
     @Issue(key = "WSFP-52")
-    public void getUserRequestSend() {
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    public void userSuccessfullyGetRequests_when_serverReturnsStatusCode200() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);
         GetUserRequest takeRequest = request[0];
@@ -61,10 +62,9 @@ public class ConnectionIntegrationTests extends BaseIntegrationTest {
     }
 
     @Test
-    @Tag("Integration")
-    @Tag("OperationsToConnectPeople")
     @Issue(key = "WSFP-52")
-    public void approveSendRequest() {
+    @Link(url = "https://wearesocialfinalproject.atlassian.net/browse/WSFP-52")
+    public void requestSuccessfullyApproved_when_serverReturnsStatusCode200() {
         cookieValue = authenticateRequests.authenticateUser(receiverUser);
 
         GetUserRequest[] request = connectionRequests.getRequests(receiverResponseModel.getId(), cookieValue);

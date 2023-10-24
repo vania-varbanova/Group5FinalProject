@@ -1,5 +1,6 @@
 package SeleniumTests;
 
+import io.qameta.allure.Feature;
 import models.api.request.UserRequests;
 import models.api.requestModel.UserRequestModel;
 import models.api.responseModel.UserResponseModel;
@@ -11,13 +12,13 @@ import testFramework.UserActions;
 import utils.ApiDataGenerator;
 import utils.UiPropertiesReader;
 
+@Feature("Searching functionality")
 public class NavigationTests extends BaseSystemTest {
     private UserRequests userRequests;
     private ApiDataGenerator apiDataGenerator;
     private DatabaseService databaseService;
     private UserResponseModel userResponseModel;
     private UserRequestModel userRequestModel;
-    private UserActions actions;
 
     @Override
     @BeforeEach
@@ -26,7 +27,7 @@ public class NavigationTests extends BaseSystemTest {
         userRequests = new UserRequests();
         apiDataGenerator = new ApiDataGenerator();
         databaseService = new DatabaseService();
-        actions = new UserActions();
+
         userRequestModel = apiDataGenerator.createUserWithRoleUser();
         userResponseModel = userRequests.createUser(userRequestModel);
         loginPage.navigateToPage();

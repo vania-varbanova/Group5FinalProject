@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: SeleniumTests.ProfileManagementTests
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 83.622 s <<< FAILURE! - in SeleniumTests.ProfileManagementTests
+SeleniumTests.ProfileManagementTests.userSuccessfullyUpdateBirthDate_when_fillBirthDateField  Time elapsed: 14.745 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1966-11-13> but was: <1966-11-12>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
+	at pages.PersonalProfilePage.assertColumnValueEquals(PersonalProfilePage.java:59)
+	at SeleniumTests.ProfileManagementTests.userSuccessfullyUpdateBirthDate_when_fillBirthDateField(ProfileManagementTests.java:85)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+

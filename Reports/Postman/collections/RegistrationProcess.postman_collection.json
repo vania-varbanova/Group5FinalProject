@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "695ab75c-8599-41ae-a16c-ab6e2a8635c6",
+		"name": "Registration process",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28621618",
+		"_collection_link": "https://universal-star-838878.postman.co/workspace/Group5FinalProject~d555d5c3-cfb6-4eb9-a7be-f11016610e46/collection/30147531-695ab75c-8599-41ae-a16c-ab6e2a8635c6?action=share&source=collection_link&creator=28621618"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const professionId = Math.floor(Math.random() * (157 - 101 + 1) + 101);\r",
+							"\r",
+							"const password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"const email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"const username = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"password\", password);\r",
+							"pm.collectionVariables.set(\"email\", email);\r",
+							"pm.collectionVariables.set(\"username\", username);\r",
+							"pm.collectionVariables.set(\"professionId\", professionId);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const repsonse = pm.response.text();\r",
+							"const responseArray = repsonse.split(\" \");\r",
+							"const userId=responseArray[6];\r",
+							"pm.collectionVariables.set(\"userId\",userId)\r",
+							"\r",
+							"\r",
+							"pm.test(\"User name is as expected\", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"username\");\r",
+							"\r",
+							"    const actualUserName= responseArray[3];\r",
+							"\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is not null\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"userId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"    pm.expect(actualUserId).is.not.null;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id is as expected\", function(){\r",
+							"    const expectedUserId = pm.collectionVariables.get(\"userId\");\r",
+							"\r",
+							"    const actualUserId= responseArray[6];\r",
+							"\r",
+							"    pm.expect(actualUserId).to.equals(expectedUserId)\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"authorities\": [\r\n    \"ROLE_USER\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": \"{{professionId}}\"\r\n  },\r\n  \"confirmPassword\": \"{{password}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"username\": \"{{username}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/users/",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData=pm.response.json()\r",
+							"\r",
+							"pm.test(\"The username's is the expected \", function(){\r",
+							"    const expectedUserName = pm.collectionVariables.get(\"username\");\r",
+							"\r",
+							"\r",
+							"    const actualUserName=responseData.username;\r",
+							"    pm.expect(actualUserName).to.equals(expectedUserName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The username's email is the expected \", function(){\r",
+							"    const expectedEmail = pm.collectionVariables.get(\"email\");\r",
+							"\r",
+							"\r",
+							"    const actualEmail=responseData.email;\r",
+							"    pm.expect(actualEmail).to.equals(expectedEmail);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseApiUrl}}/users/auth/{{userId}}?principal={{username}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"users",
+						"auth",
+						"{{userId}}"
+					],
+					"query": [
+						{
+							"key": "principal",
+							"value": "{{username}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{randomPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{randomUsername}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "professionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminUserId",
+			"value": ""
+		}
+	]
+}

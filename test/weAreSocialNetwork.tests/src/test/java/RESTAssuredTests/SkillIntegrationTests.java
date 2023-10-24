@@ -27,7 +27,7 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
 
     @Override
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
         super.beforeEach();
         skillsRequestModel = apiDataGenerator.createSkill();
         skillsResponseModel = skillsRequests.createSkill(skillsRequestModel);
@@ -58,7 +58,7 @@ public class SkillIntegrationTests extends BaseIntegrationTest {
         Response deleteResponse = skillsRequests.deleteSkill(skillIdToDelete);
 
         Assertions.assertEquals(200, deleteResponse.getStatusCode(), DELETION_MESSAGE + deleteResponse.getStatusCode());
-        }
+    }
 
 
     @Test

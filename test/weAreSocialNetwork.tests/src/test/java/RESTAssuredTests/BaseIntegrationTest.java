@@ -1,14 +1,12 @@
 package RESTAssuredTests;
 
-
+import io.qameta.allure.Step;
 import io.restassured.response.ResponseOptions;
 import lombok.SneakyThrows;
 import models.api.request.*;
 import models.api.requestModel.*;
 import models.api.responseModel.*;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import services.DatabaseService;
 import utils.ApiDataGenerator;
 
@@ -36,6 +34,7 @@ public class BaseIntegrationTest {
     protected SkillsResponseModel skillsResponseModel;
 
     @SneakyThrows
+    @Step("Initializing required data")
     public void beforeEach() {
         Thread.sleep(3000);
         apiDataGenerator = new ApiDataGenerator();

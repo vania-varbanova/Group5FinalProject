@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: RESTAssuredTests.SkillIntegrationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.694 s - in RESTAssuredTests.SkillIntegrationTests
